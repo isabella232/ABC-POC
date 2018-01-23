@@ -9,104 +9,35 @@
 	<meta name="description" content="Australia's leading source of information and entertainment" />
 	<meta name="keywords" content="ABC, Australia, TV, Television, Radio, Internet, arts, business, economy, computers, education, entertainment, politics, health, lifestyle, media, news, sport, sports, recreation, regional, science, environment, society, culture, Radio National, Triple J, NewsRadio, Radio Australia, ABC Classic FM, News, Australia, Digital, Broadband, ABC2, kids, children" />
 	<meta name="publisher" content="Australian Broadcasting Corporation" />
-	<meta name="dcterms.rights" content="Copyright 2013, Australian Broadcasting Corporation. Other rights may be held as detailed in text. www.abc.net.au/common/copyrigh.htm" />
-	<meta name="dcterms.date" content="2013-02-27" />
-	<meta name="ABC-DateReversed" content="20130227" />
-	<meta name="ABC-Gateway" content="ABC Homepage" />
-	<meta name="ABC-Site" content="ABC Homepage, About the ABC, Online" />
-	<meta name="ABC-Author" content="Wallace" />
-	<meta name="ABC-ResourceType" content="0" />
-	<meta name="WT.pi" content="ABCHome2013" />
-
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
 	<link rel="canonical" data-abc-platform="standard" href="index.html" />
 	<link rel="alternate" data-abc-platform="mobile" media="only screen and (max-width: 640px)" href="http://mobile.abc.net.au/" />
 	<link rel="alternate" type="application/rss+xml" href="http://www.abc.net.au/homepage/rss.xml" />
-
+	<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 	<link rel="apple-touch-icon-precomposed"                 href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-72x72.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-114x114.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-144x144.png" />
-
-
 	<link rel="stylesheet" type="text/css" media="all" href="homepage/2013/styles/combined.min.css%3F20171228163719.css" />
-
-
-
-
-    
-<!-- Start ABC Bundle Styles 2.0.13 -->
-<link rel="stylesheet" type="text/css" href="../res.abc.net.au/bundles/2.0.13/styles/abc.bundle.2.0.13.min.css" media="all" />
-<!-- Shiv must go in HEAD --><!--[if lt IE 9]><script type="text/javascript" src="https://res.abc.net.au/bundles/common/html5shiv-printshiv.min.js"></script><![endif]-->
-<!-- End ABC Bundle Styles 2.0.13 -->
-
-
-
-	<script type="text/javascript">
-	// <![CDATA[
-		document.getElementsByTagName("html")[0].className = "js";
-
-		// Apple Smart App Banners
-		if (navigator.userAgent.match(/iPad/i)) {
-			document.write('<meta name="apple-itunes-app" content="app-id=376620068, app-argument=https://itunes.apple.com/au/app/australian-broadcasting-corporation/id376620068?mt=8">');
-		} else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
-			document.write('<meta name="apple-itunes-app" content="app-id=306583229, app-argument=https://itunes.apple.com/au/app/australian-broadcasting-corporation/id306583229?mt=8">');
-		}
-
-	// ]]>
-	</script>
-
-	<!--[if lt IE 8]><script type="text/javascript" src="/res/libraries/json/json2.min.js"></script><![endif]-->
+	<link rel="stylesheet" type="text/css" media="all" href="override.css" />
 
 </head>
 
 <!--[if lte IE 7 ]><body id="home" class="ie ie7 platform-standard"><![endif]-->
 <!--[if IE 8 ]><body id="home" class="ie ie8 platform-standard"><![endif]-->
 <!--[if IE 9 ]><body id="home" class="ie ie9 platform-standard"><![endif]-->
-<!--[if !IE]><!--><body id="home" class="platform-standard"><!--<![endif]-->
+<!--[if !IE]><!--><body id="home" class="platform-standard"><!--<![endif]-->    
 
-	
-	<div id="skiplinks">
-		<p>Welcome to the ABC Homepage. Skip to:</p>
-		<ul>
-			<li><a href="index.html#hero">Main Content</a></li>
-			<li><a href="index.html#newsjustin">News Just In</a></li>
-			<li><a href="index.html#ourpicks">Our Picks</a></li>
-			<li><a href="index.html#opinion">Analysis &amp; Opinion</a></li>
-			<li><a href="index.html#highlights">Highlights</a></li>
+	<div id="nav" aria-label="Main Navigation">
+		<img id="nav-logo" src="homepage/2013/styles/img/abc-logo-white.png" height="40" alt="ABC logo" />
+		<input id="search-input" placeholder="Search the ABC">
+		<ul role="presentation">
+			<li class="news"><a href="http://www.abc.net.au/news/">News</a></li>
+			<li class="iview"><a href="http://iview.abc.net.au/">iview</a></li>
+			<li class="tv"><a href="http://www.abc.net.au/tv/">TV</a></li>
+			<li class="radio"><a href="https://radio.abc.net.au/">Radio</a></li>
 		</ul>
 	</div>
-
-    
-<!-- Start ABC Bundle Header 2.0.13 -->
-<!--noindex-->
-<nav id="abcHeader" class="global" aria-label="ABC Network Navigation" data-resourcebase="https://res.abc.net.au/bundles/2.0.13/" data-scriptsbase="https://res.abc.net.au/bundles/2.0.13/scripts/" data-version="2.0.13">
-	<a class="abcLink home" href="index.html" data-mobile="http://mobile.abc.net.au/"><img src="../res.abc.net.au/bundles/2.0.13/images/logo-abc@2x.png" width="72" height="18" alt="" />ABC Home</a>
-	<div class="sites">
-		<a class="controller" href="javascript:;" aria-controls="abcNavSites"><img src="../res.abc.net.au/bundles/2.0.13/images/icon-menu-grey@1x.gif" 
-			data-src="images/icon-menu-grey@1x.gif" data-hover="images/icon-menu-blue@1x.gif" class="icon" alt="" /><span class='text'><span>Open</span> Sites <span>menu</span></span></a>
-		<div id="abcNavSites" class="menu" role="menu" aria-expanded="false">
-			<ul>
-				<li class='odd'><a class="abcLink" role="menuitem" href="index.html" data-mobile="http://mobile.abc.net.au/">ABC Home</a></li>
-				<li><a class="abcLink" role="menuitem" href="http://www.abc.net.au/news/" data-mobile="http://mobile.abc.net.au/news/">News</a></li>
-				<li class='odd'><a class="abcLink" role="menuitem" href="http://www.abc.net.au/iview/" data-mobile="http://www.abc.net.au/iview/">iview</a></li>
-				<li><a class="abcLink" role="menuitem" href="http://www.abc.net.au/tv/" data-mobile="http://www.abc.net.au/tv/">TV</a></li>
-				<li class='odd'><a class="abcLink" role="menuitem" href="http://www.abc.net.au/radio/" data-mobile="http://www.abc.net.au/radio/">Radio</a></li>
-				<li><a class="abcLink" role="menuitem" href="http://www.abc.net.au/children/" data-mobile="http://mobile.abc.net.au/children/">Kids</a></li>
-				<li class='odd'><a class="abcLink" role="menuitem" href="https://shop.abc.net.au/" data-mobile="https://shop.abc.net.au/">Shop</a></li>
-				<li><a class="abcLink more" role="menuitem" href="http://www.abc.net.au/more/" data-mobile="http://www.abc.net.au/more/">More</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="accounts">
-		<!-- Accounts is currently injected due to different URLs --><span data-src="images/icon-user-grey@1x.png" data-hover="images/icon-user-blue@1x.png"></span>
-	</div>
-	<a class="abcLink search" href="http://search.abc.net.au/s/search.html?collection=abcall_meta&form=simple"
-		data-mobile="http://search.abc.net.au/s/search.html?collection=abcall_meta&form=simple"><span>Search</span>
-		<img src="../res.abc.net.au/bundles/2.0.13/images/icon-search-grey@1x.png" data-hover="images/icon-search-blue@1x.png" class="icon" alt="" /></a>
-</nav>
-<!--endnoindex-->
-<!-- End ABC Bundle Header 2.0.13 -->
-
 
 
 	<div class="abcSiteHeader">
@@ -176,22 +107,6 @@
 				</div>		
 			</div>
 
-		</div>
-
-
-
-
-		
-		<div id="nav" aria-label="Main Navigation">
-			<ul role="presentation">
-				<li class="news"><a href="http://www.abc.net.au/news/">News</a></li>
-				<li class="iview"><a href="http://iview.abc.net.au/">iview</a></li>
-				<li class="tv"><a href="http://www.abc.net.au/tv/">TV</a></li>
-				<li class="radio"><a href="https://radio.abc.net.au/">Radio</a></li>
-				<li class="kids"><a href="http://www.abc.net.au/children/">Kids</a></li>
-				<li class="shop"><a href="http://shop.abc.net.au">Shop</a></li>
-				<li class="more"><a href="index.html#explore">More&hellip;</a></li>
-			</ul>
 		</div>
 		<div id="subNav" aria-label="Secondary Navigation">
 			<ul role="presentation">
@@ -715,79 +630,8 @@
 		<a href="index.html#close" class="closeBtn"><span>Close</span></a>
 	</div>
 	<div id="modalOverlay" tabindex="-1"></div>
-
-
-	<script type="text/javascript">
-		var ABCPagePrefs = {
-			"allowMultipleJQuery": false
-		}
-	</script>
-	
-<!-- Start ABC Bundle Footer 2.0.13 -->
-<!--noindex-->
-<nav id="abcFooter" class="global" aria-label="ABC Footer Navigation" data-version="2.0.13">
-	<ul>
-		<li><a class="abcLink" href="http://about.abc.net.au/terms-of-use/">Terms of Use</a></li>
-		<li><a class="abcLink" href="http://about.abc.net.au/abc-privacy-policy/">Privacy Policy</a></li>
-		<li><a class="abcLink" href="http://about.abc.net.au/accessibility-statement/">Accessibility</a></li>
-		<li><a class="abcLink" href="http://about.abc.net.au/talk-to-the-abc/">Contact Us</a></li>
-		<li><a class="abcLink" href="http://about.abc.net.au/terms-of-use/#UseOfContent">&copy; <time>2018</time> ABC</a></li>
-	</ul>
-</nav>
-<script type="text/javascript" src="../res.abc.net.au/bundles/common/jquery-1.11.1.min.js"></script>
-<script type="text/javascript">var ABCAllowMultipleJQuery = true;</script>
-<script type="text/javascript" src="../res.abc.net.au/bundles/2.0.13/scripts/abc.bundle.2.0.13.min.js"></script>
-<script type="text/javascript" src="../res.abc.net.au/libraries/stats/abc.stats.bundle.js"></script>
-<noscript>
-	<img alt="dcsimg" id="dcsimg" width="1" height="1" src="../statse.webtrendslive.com/dcsg85fae000004n0vfjpj8oa_9m4q/njs.gif%3Fdcsuri=%252Fnojavascript&amp;WT.js=No&amp;WT.tv=10.2.10&amp;dcssip=www.abc.net.au">
-</noscript>
-<!-- START Nielsen Online SiteCensus V6.0 -->
-<!-- COPYRIGHT 2010 Nielsen Online -->
-<script type="text/javascript" src="../secure-au.imrworldwide.com/v60.js"></script>
-<script type="text/javascript">
-var pvar = { cid: "abc-aust", content: "0", server: "secure-au" };
-if (typeof nol_t === 'function') {
-    var trac = nol_t(pvar);
-    trac.record().post();
-}
-</script>
-<noscript><div><img src="../secure-au.imrworldwide.com/cgi-bin/m%3Fci=abc-aust&amp;cg=0&amp;cc=1&amp;ts=noscript" width="1" height="1" alt=""></div></noscript>
-<!-- END Nielsen Online SiteCensus V6.0 -->
-<!-- Google Tag Manager -->
-<script type="text/javascript">
-// <![CDATA[
-	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-PB2GX');
-	// ]]>
-</script>
-<noscript>
-	<iframe src="../www.googletagmanager.com/ns.html%3Fid=GTM-PB2GX.html" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager -->
-<!--endnoindex-->
-<!-- End ABC Bundle Footer 2.0.13 -->
-
-
-
-
-	
-<script type="text/javascript" src="../res.abc.net.au/libraries/recommendations/recommendations-3.0.0.min.js"></script>
-
-
-	<script type="text/javascript" src="homepage/2013/scripts/utilities_combined.min.js%3F20171228163719"></script>
-	<script type="text/javascript" src="../search.abc.net.au/search/res/abc/js/search.querycompletion.combined.min.js"></script>
-	<script type="text/javascript" src="homepage/2013/scripts/abc.homepage.min.js%3F20171228163719"></script>
-	<script type="text/javascript" src="homepage/2013/scripts/abc.homepage.recommendations.min.js%3F20171228163719"></script>
-	<script type="text/javascript" src="homepage/2013/scripts/doubleclick.js"></script>
-	<script type="text/javascript" src="homepage/2013/scripts/chartbeat.js"></script>
-
-
-
-
-
+	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+	<script src="algolia-search.js"></script>
 </body>
 </html>
 
