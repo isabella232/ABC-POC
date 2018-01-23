@@ -1,4 +1,29 @@
+#nav ul {
+    background: none;
+}
+
+#logo-search {
+    margin-left: 200px;
+
+}
 #nav-logo {
-   padding-top: 5px;
-   padding-left: 200px;
+    padding-top: 5px;
+    height: 32px;
+}
+
+#search-input {
+    margin: 10px;
+    width: 250px;
+    height: 20px;
+    font-size: 14px;
+}
+
+/* .weather {
+    float: left;
+    padding-left: 15px;
+} */
+
+#nav ul {
+    width: 35%;
+    margin-left: 770px
 }
