@@ -1,5 +1,8 @@
 #nav {
     height: 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
 #nav ul {
@@ -19,6 +22,7 @@
     height: 32px;
 }
 
+
 #search-input {
     margin: 10px;
     width: 250px;
@@ -27,12 +31,19 @@
     padding-left: 5px;
 }
 
-/* .weather {
-    float: left;
-    padding-left: 15px;
-} */
-
 #nav ul {
     width: 35%;
     margin-left: 770px
+} 
+
+#main-content {
+    position:relative;
+    top: 50px;
+} 
+
+header h1 {
+    float: left;
+    width: 200px;
+    margin: 0 0 15px 30px;
+    padding: 21px 0 0;
 }

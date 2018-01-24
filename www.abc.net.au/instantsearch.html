@@ -27,8 +27,8 @@
     <link rel="stylesheet" type="text/css" media="all" href="homepage/2013/styles/combined.min.css%3F20171228163719.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch-theme-algolia.min.css">
-    <link rel="stylesheet" type="text/css" media="all" href="override.css" />
     <link rel="stylesheet" type="text/css" media="all" href="instantsearch.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="override.css" />
 </head>
 
 <!--[if lte IE 7 ]><body id="home" class="ie ie7 platform-standard"><![endif]-->
@@ -61,9 +61,47 @@
         </ul>
 
     </div>
-    <div id="mainContent" class="abcContent">
-        <div id="search-box">
-            <!-- SearchBox widget will appear here -->
+    <div id="main">
+        <div class="searchContainer">
+            <div class="container">
+                <form novalidate="" class="ais-SearchBox" action="" role="search">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-13" viewBox="0 0 40 40">
+                            <path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"
+                                fill-rule="evenodd"></path>
+                        </symbol>
+                        <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-3" viewBox="0 0 20 20">
+                            <path d="M8.114 10L.944 2.83 0 1.885 1.886 0l.943.943L10 8.113l7.17-7.17.944-.943L20 1.886l-.943.943-7.17 7.17 7.17 7.17.943.944L18.114 20l-.943-.943-7.17-7.17-7.17 7.17-.944.943L0 18.114l.943-.943L8.113 10z"
+                                fill-rule="evenodd"></path>
+                        </symbol>
+                    </svg>
+                    <div role="search" class="ais-SearchBox__wrapper">
+                        <input type="search" placeholder="Search for Articles, News..." autocomplete="off" autocorrect="off"
+                            autocapitalize="off" spellcheck="false" required="" value="e" class="ais-SearchBox__input" data-com.agilebits.onepassword.user-edited="yes">
+                        <button type="submit" title="Submit your search query." class="ais-SearchBox__submit">
+                            <svg role="img" width="1em" height="1em">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-13"></use>
+                            </svg>
+                        </button>
+                        <button type="reset" title="Clear" class="ais-SearchBox__reset">
+                            <svg role="img" width="1em" height="1em">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-clear-3"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+                <div class="searchbox__info">
+                    <span class="ais-Stats__root">216,791 results found in 103ms</span>
+                    <div class="right">
+                        <span class="sortby">Sort by: </span>
+                        <select class="ais-SortBy__root">
+                            <option value="cnn_content_v5_prod-all">Relevance</option>
+                            <option value="cnn_content_v5_prod-all_date_desc">Newest</option>
+                            <option value="cnn_content_v5_prod-all_date_asc">Oldest</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="hits">
