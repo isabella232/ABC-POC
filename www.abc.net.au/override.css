@@ -1,5 +1,13 @@
+#nav {
+    height: 50px;
+}
+
 #nav ul {
     background: none;
+}
+
+#nav li a {
+    padding: 15px 10px;
 }
 
 #logo-search {
@@ -7,15 +15,16 @@
 
 }
 #nav-logo {
-    padding-top: 5px;
+    padding-top: 8px;
     height: 32px;
 }
 
 #search-input {
     margin: 10px;
     width: 250px;
-    height: 20px;
-    font-size: 14px;
+    height: 25px;
+    font-size: 18px;
+    padding-left: 5px;
 }
 
 /* .weather {

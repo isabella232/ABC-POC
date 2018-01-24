@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>ABC - Australian Broadcasting Corporation</title>
+    <meta name="dcterms.title" content="ABC - Australian Broadcasting Corporation" />
+    <meta name="description" content="Australia's leading source of information and entertainment" />
+    <meta name="keywords" content="ABC, Australia, TV, Television, Radio, Internet, arts, business, economy, computers, education, entertainment, politics, health, lifestyle, media, news, sport, sports, recreation, regional, science, environment, society, culture, Radio National, Triple J, NewsRadio, Radio Australia, ABC Classic FM, News, Australia, Digital, Broadband, ABC2, kids, children"
+    />
+    <meta name="publisher" content="Australian Broadcasting Corporation" />
+    <link rel="canonical" data-abc-platform="standard" href="index.html" />
+    <link rel="alternate" data-abc-platform="mobile" media="only screen and (max-width: 640px)" href="http://mobile.abc.net.au/"
+    />
+    <link rel="alternate" type="application/rss+xml" href="http://www.abc.net.au/homepage/rss.xml" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-57x57.png"
+    />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-72x72.png"
+    />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-114x114.png"
+    />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-144x144.png"
+    />
+    <link rel="stylesheet" type="text/css" media="all" href="homepage/2013/styles/combined.min.css%3F20171228163719.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch-theme-algolia.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="override.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="instantsearch.css" />
+</head>
+
+<!--[if lte IE 7 ]><body id="home" class="ie ie7 platform-standard"><![endif]-->
+<!--[if IE 8 ]><body id="home" class="ie ie8 platform-standard"><![endif]-->
+<!--[if IE 9 ]><body id="home" class="ie ie9 platform-standard"><![endif]-->
+<!--[if !IE]><!-->
+
+<body id="home" class="platform-standard">
+    <div id="nav" aria-label="Main Navigation">
+        <div id="logo-search">
+            <a href="index.html">
+                <li>
+                    <img id="nav-logo" src="homepage/2013/styles/img/logo-abc@2x.png" alt="ABC logo" />
+                </li>
+            </a>
+        </div>
+        <ul role="presentation">
+            <li class="news">
+                <a href="http://www.abc.net.au/news/">News</a>
+            </li>
+            <li class="iview">
+                <a href="http://iview.abc.net.au/">iview</a>
+            </li>
+            <li class="tv">
+                <a href="http://www.abc.net.au/tv/">TV</a>
+            </li>
+            <li class="radio">
+                <a href="https://radio.abc.net.au/">Radio</a>
+            </li>
+        </ul>
+
+    </div>
+    <div id="mainContent" class="abcContent">
+        <div id="search-box">
+            <!-- SearchBox widget will appear here -->
+        </div>
+
+        <div id="hits">
+            <!-- Hits widget will appear here -->
+        </div>
+
+
+    </div>
+
+    <!-- TEMPLATES -->
+    <script type="text/html" id="hit-template">
+    <div class="hit">
+        <div class="hit-card col-xs-12">
+            <div class ="hit-card-content">
+                <div class="article-image-container">
+                    <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
+                </div>
+                <div class="article-text-container">
+                    <div class="hit-elem-title">
+                        <span>{{{_highlightResult.title.value}}}</span>
+                    </div>
+                    <div class="hit-elem-title">
+                        <div class="instant-article-sub">
+                            <span class="article-attribution">{{{_highlightResult.attribution.value}}}</span>
+                            <span class="article-date">{{{dates.displayPublished}}}</span>
+                        </div>
+                    </div>
+
+                    <p class="article-synopsis">{{{synopsis}}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </script>
+    <!-- /TEMPLATES -->
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    <script src="algolia-search.js"></script>
+    <!-- /SCRIPTS -->
+</body>
+
+</html>
