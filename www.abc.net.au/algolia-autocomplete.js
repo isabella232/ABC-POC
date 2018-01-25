@@ -20,7 +20,7 @@ autocomplete('#aa-search-input', {
     templates: {
         dropdownMenu: '<div class="left-wrapper"><div class="aa-dataset-news"></div><div class="aa-dataset-radio"></div></div>' +
             '<div class="right-wrapper"><div class="aa-dataset-iview"></div><div class="aa-dataset-tv"></div></div>'
-           }
+    }
 }, [{
         source: autocomplete.sources.hits(articlesIndex, {
             hitsPerPage: 5,
@@ -61,7 +61,12 @@ autocomplete('#aa-search-input', {
             //'suggestion' templating function used to render a single suggestion
             header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/iview-logo.png"></div>',
             suggestion: function (suggestion) {
-                return '<span>' + suggestion._highlightResult.title.value + '</span>'
+                console.log(suggestion)
+                return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
+                    '<img class="video-thumbnail" src="' + suggestion.media.image.thumbnail.images['16x9'] + '">' +
+                    '</a></div>' +
+                    '<div class="video-text-wrapper"><span class="video-title">' + suggestion._highlightResult.series.title.value +
+                    ':</span><span class="video-title">' + suggestion._highlightResult.title.value + '</span></div>'
             }
         }
     },
@@ -75,14 +80,16 @@ autocomplete('#aa-search-input', {
             //'suggestion' templating function used to render a single suggestion
             header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/television-logo.jpg"></div>',
             suggestion: function (suggestion) {
-                console.log('tvsuggestion', suggestion)
-                return '<span>' + suggestion._highlightResult.title.value + '</span>'
+                return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
+                    '<img class="video-thumbnail" src="' + suggestion.media.image.poster.images['16x9'] + '">' +
+                    '</a></div>' +
+                    '<span class="video-title">' + suggestion._highlightResult.title.value +
+                    '</span></div>'
             }
         }
     },
 
-]
-);
+]);
 
 
 function getTemplate(templateName) {
