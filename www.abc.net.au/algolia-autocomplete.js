@@ -29,12 +29,12 @@ autocomplete('#aa-search-input', {
         displayKey: 'title_t',
         name: 'news',
         templates: {
-            header: '<div class="aa-suggestions-category"><img id="news" src="/homepage/2013/styles/img/news-logo.png"></div>',
+            header: '<div id="aa-news-header" class="aa-suggestions-category"><img id="news" src="/homepage/2013/styles/img/news-logo.png" ></div>',
             //'suggestion' templating function used to render a single suggestion
             suggestion: function (suggestion) {
-                return '<span>' + suggestion._highlightResult.title.value + '</span>'
+                return '<div class="aa-title-wrapper"><span>' + suggestion._highlightResult.title.value + '</span></div>'
             },
-            empty: '<div class="aa-empty">No matching ABC articles</div>'
+            empty: '<div class="aa-empty">No matching ABC articles.</div>'
         }
     },
     {
@@ -45,10 +45,11 @@ autocomplete('#aa-search-input', {
         name: 'radio',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/radio-logo.jpeg"></div>',
+            header: '<div id="aa-radio-header" class="aa-suggestions-category"><img src="/homepage/2013/styles/img/radio-logo.png" style="height: 40px;"></div>',
             suggestion: function (suggestion) {
                 return '<span>' + suggestion._highlightResult.title.value + '</span>'
-            }
+            },
+            empty: '<div class="aa-empty">No matching ABC audio.</div>'
         }
     },
     {
@@ -67,7 +68,8 @@ autocomplete('#aa-search-input', {
                     '</a></div>' +
                     '<div class="video-text-wrapper"><span class="video-title">' + suggestion._highlightResult.series.title.value +
                     ':</span><span class="video-title">' + suggestion._highlightResult.title.value + '</span></div>'
-            }
+            },
+            empty: '<div class="aa-empty">No matching iView media.</div>'
         }
     },
     {
@@ -78,14 +80,15 @@ autocomplete('#aa-search-input', {
         name: 'tv',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/television-logo.jpg"></div>',
+            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/television-logo.jpeg"></div>',
             suggestion: function (suggestion) {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="' + suggestion.media.image.poster.images['16x9'] + '">' +
                     '</a></div>' +
                     '<span class="video-title">' + suggestion._highlightResult.title.value +
                     '</span></div>'
-            }
+            },
+            empty: '<div class="aa-empty">No matching ABC television shows.</div>'
         }
     },
 
