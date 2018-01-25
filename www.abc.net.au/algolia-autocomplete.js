@@ -29,7 +29,7 @@ autocomplete('#aa-search-input', {
         displayKey: 'title_t',
         name: 'news',
         templates: {
-            header: '<div class="aa-suggestions-category">News</div>',
+            header: '<div class="aa-suggestions-category"><img id="news" src="/homepage/2013/styles/img/news-logo.png"></div>',
             //'suggestion' templating function used to render a single suggestion
             suggestion: function (suggestion) {
                 return '<span>' + suggestion._highlightResult.title.value + '</span>'
@@ -45,7 +45,7 @@ autocomplete('#aa-search-input', {
         name: 'radio',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div class="aa-suggestions-category">Radio</div>',
+            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/radio-logo.jpeg"></div>',
             suggestion: function (suggestion) {
                 return '<span>' + suggestion._highlightResult.title.value + '</span>'
             }
@@ -59,7 +59,7 @@ autocomplete('#aa-search-input', {
         name: 'iview',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div class="aa-suggestions-category">iView</div>',
+            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/iview-logo.png"></div>',
             suggestion: function (suggestion) {
                 return '<span>' + suggestion._highlightResult.title.value + '</span>'
             }
@@ -73,7 +73,7 @@ autocomplete('#aa-search-input', {
         name: 'tv',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div class="aa-suggestions-category">Television</div>',
+            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/television-logo.jpg"></div>',
             suggestion: function (suggestion) {
                 console.log('tvsuggestion', suggestion)
                 return '<span>' + suggestion._highlightResult.title.value + '</span>'
