@@ -39,7 +39,7 @@ autocomplete('#aa-search-input', {
     },
     {
         source: autocomplete.sources.hits(radioIndex, {
-            hitsPerPage: 1
+            hitsPerPage: 2
         }),
         displayKey: 'title_t',
         name: 'radio',
@@ -47,7 +47,7 @@ autocomplete('#aa-search-input', {
             //'suggestion' templating function used to render a single suggestion
             header: '<div id="aa-radio-header" class="aa-suggestions-category"><img src="/homepage/2013/styles/img/radio-logo.png" style="height: 40px;"></div>',
             suggestion: function (suggestion) {
-                return '<span>' + suggestion._highlightResult.title.value + '</span>'
+                return '<div class="aa-radio-wrapper"><div id="audio-play"></div><span>' + suggestion._highlightResult.title.value + '</span></div>'
             },
             empty: '<div class="aa-empty">No matching ABC audio.</div>'
         }
@@ -94,7 +94,3 @@ autocomplete('#aa-search-input', {
 
 ]);
 
-
-function getTemplate(templateName) {
-    return document.querySelector(`#${templateName}-template`).innerHTML;
-}
