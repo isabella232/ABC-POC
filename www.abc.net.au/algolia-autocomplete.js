@@ -32,7 +32,9 @@ autocomplete('#aa-search-input', {
             header: '<div id="aa-news-header" class="aa-suggestions-category"><img id="news" src="/homepage/2013/styles/img/news-logo.png" ></div>',
             //'suggestion' templating function used to render a single suggestion
             suggestion: function (suggestion) {
-                return '<div class="aa-title-wrapper"><span>' + suggestion._highlightResult.title.value + '</span></div>'
+                return '<a href="'+
+                suggestion.canonicalURL +
+                '"><div class="aa-title-wrapper"><span>' + suggestion._highlightResult.title.value + '</span></div></a>'
             },
             empty: '<div class="aa-empty">No matching ABC articles.</div>'
         }
@@ -47,7 +49,9 @@ autocomplete('#aa-search-input', {
             //'suggestion' templating function used to render a single suggestion
             header: '<div id="aa-radio-header" class="aa-suggestions-category"><img src="/homepage/2013/styles/img/radio-logo.png" style="height: 40px;"></div>',
             suggestion: function (suggestion) {
-                return '<div class="aa-radio-wrapper"><div id="audio-play"></div><span>' + suggestion._highlightResult.title.value + '</span></div>'
+                return '<a href="'+
+                suggestion.canonicalURL +
+                '"><div class="aa-radio-wrapper"><div id="audio-play"></div><span>' + suggestion._highlightResult.title.value + '</span></div></a>'
             },
             empty: '<div class="aa-empty">No matching ABC audio.</div>'
         }
@@ -62,7 +66,6 @@ autocomplete('#aa-search-input', {
             //'suggestion' templating function used to render a single suggestion
             header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/iview-logo.png"></div>',
             suggestion: function (suggestion) {
-                console.log(suggestion)
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="' + suggestion.media.image.thumbnail.images['16x9'] + '">' +
                     '</a></div>' +

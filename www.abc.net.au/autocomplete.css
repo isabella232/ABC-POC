@@ -1,7 +1,37 @@
+  .aa-suggestion a {
+    padding: 0 !important;
+    text-transform: none !important;
+    color: black !important;
+  }
+
+  .aa-suggestion a:hover {
+    border-bottom: none !important;
+  }
+
+  .aa-suggestion:hover,
+  .aa-suggestion.aa-cursor {
+    background-color: rgba(241, 241, 241, 0.35);
+  }
+
   .aa-suggestion em {
-    /* font-weight: 1000; */
+    font-weight: 1000;
     text-decoration: underline;
+  }
+
+  .aa-dataset-iview em {
     color: #00C3C1;
+  }
+
+  .aa-dataset-news em {
+    color: black;
+  }
+
+  .aa-dataset-radio em {
+    color: #493E4E;
+  }
+
+  .aa-dataset-tv em {
+    background-color: lightgray
   }
 
   .aa-input-container {
@@ -103,7 +133,6 @@
   .right-wrapper {
     width: 65%;
     float: right;
-    padding-right: 20px;
   }
 
   .aa-dataset-iview span {
@@ -187,13 +216,14 @@
   #audio-play {
     height: 50px;
     width: 50px;
+    padding-right: 20px;
   }
 
   #audio-play:after {
-  content: "\f01d";
-  font-family: FontAwesome;
-  font-size: 35px;
-  color: #fff;
-  opacity: .8;
-  text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    content: "\f01d";
+    font-family: FontAwesome;
+    font-size: 35px;
+    color: #fff;
+    opacity: .8;
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
   }
