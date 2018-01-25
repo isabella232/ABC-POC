@@ -18,7 +18,7 @@ search.addWidget(
     instantsearch.widgets.hits({
         container: '#hits',
         templates: {
-            item: getTemplate('hit')
+            item: getTemplate('article')
           }
     })
 );

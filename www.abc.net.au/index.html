@@ -26,6 +26,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-144x144.png"
 	/>
 	<link rel="stylesheet" type="text/css" media="all" href="homepage/2013/styles/combined.min.css%3F20171228163719.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="autocomplete.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="override.css" />
 
 
@@ -45,7 +46,10 @@
 				<img id="nav-logo" src="homepage/2013/styles/img/logo-abc@2x.png" alt="ABC logo" />
 			</li>
 			<li>
-				<input id="search-input" placeholder="Search the ABC...">
+				<div class="aa-input-container" id="aa-input-container">
+					<input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search the ABC..." name="search" autocomplete="off"
+					/>
+				</div>
 			</li>
 		</div>
 		<ul role="presentation">
@@ -351,8 +355,7 @@
 					<a href="http://www.abc.net.au/news/2018-01-25/larry-nassar-sentenced-up-to-175-years-for-sexual-abuse/9359938" data-itemposition="0"
 					 data-contentsource="news" data-contenttype="article" data-contentid="4794146" data-wt.z_ca="hero" data-wt.z_dest="news">
 						<h3>Judge 'signs death warrant' of Larry Nassar, sentences him to 175 years' jail</h3>
-						<img class="img-460" src="http://www.abc.net.au/news/image/9359950-3x2-460x307.jpg"
-						 alt="Larry Nassar (ABC News)">
+						<img class="img-460" src="http://www.abc.net.au/news/image/9359950-3x2-460x307.jpg" alt="Larry Nassar (ABC News)">
 						<cite>ABC News</cite>
 						<p>The disgraced US Gymnastics team doctor is sentenced up to 175 years in prison for sexual assault.</p>
 					</a>
@@ -363,8 +366,7 @@
 					 data-itemposition="1" data-contentsource="news" data-contenttype="article" data-contentid="4794147" data-wt.z_ca="hero"
 					 data-wt.z_dest="news">
 						<h3>Monkeys cloned, and humans could be next</h3>
-						<img class="img-300" src="http://www.abc.net.au/news/image/9359946-3x2-300x200.jpg"
-						 alt="Cloned monkeys (AP: Sun Qiang and Poo Muming/Chinese Academy of Sciences)">
+						<img class="img-300" src="http://www.abc.net.au/news/image/9359946-3x2-300x200.jpg" alt="Cloned monkeys (AP: Sun Qiang and Poo Muming/Chinese Academy of Sciences)">
 						<cite>ABC Science</cite>
 						<p>Chinese scientists have cloned monkeys, a breakthrough that could open the door to copying humans.</p>
 					</a>
@@ -374,8 +376,7 @@
 					<a href="http://www.abc.net.au/news/2018-01-25/the-police-officer-who-put-away-ex-cop-for-murder-qld/9355838" data-itemposition="2"
 					 data-contentsource="news" data-contenttype="article" data-contentid="4794148" data-wt.z_ca="hero" data-wt.z_dest="news">
 						<h3 style="font-size: 15px;">Lone officer trusted his gut and uncovered a murder</h3>
-						<img class="img-300" src="http://www.abc.net.au/news/image/9358210-3x2-300x200.jpg"
-						 alt="Sergeant Gerry Thornton (ABC: Amy Phillips)">
+						<img class="img-300" src="http://www.abc.net.au/news/image/9358210-3x2-300x200.jpg" alt="Sergeant Gerry Thornton (ABC: Amy Phillips)">
 						<cite>ABC News</cite>
 						<p>Lainie Coldwell's death was ruled a freak accident, but to one officer something didn't seem right.</p>
 					</a>
@@ -1039,6 +1040,43 @@
 		</div>
 	</div>
 	<div id="modalOverlay" tabindex="-1"></div>
+
+	<!-- TEMPLATES -->
+	<script type="text/html" id="article-template">
+		<div class="hit">
+			<div class="hit-card col-xs-12">
+				<div class ="hit-card-content">
+					<div class="article-image-container">
+						<img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
+					</div>
+					<div class="article-text-container">
+						<div class="hit-elem-title">
+							<span>{{{_highlightResult.title.value}}}</span>
+						</div>
+						<div class="hit-elem-title">
+							<div class="instant-article-sub">
+								<span class="article-attribution">{{{_highlightResult.attribution.value}}}</span>
+								<span class="article-date">{{{dates.displayPublished}}}</span>
+							</div>
+						</div>
+	
+						<p class="article-synopsis">{{{synopsis}}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </script>
+	<!-- /TEMPLATES -->
+
+	<!-- SCRIPTS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	 crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+	<script src="algolia-autocomplete.js"></script>
+	<!-- /SCRIPTS -->
 </body>
 
 </html>

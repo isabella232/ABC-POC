@@ -23,13 +23,16 @@
 }
 
 
-#search-input {
+/* input#aa-search-input {
     margin: 10px;
     width: 250px;
-    height: 25px;
+    line-height: 30px;
     font-size: 18px;
     padding-left: 5px;
-}
+    border: 0;
+    border-radius: 0;
+    color: #000000;
+} */
 
 #nav ul {
     width: 35%;
