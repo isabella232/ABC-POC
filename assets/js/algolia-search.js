@@ -36,6 +36,10 @@ function app(opts) {
         }
     });
 
+    if ($('.ais-search-box').length){
+        $('.ais-search-box').remove();
+    }
+
 
 
     search.addWidget(
