@@ -269,3 +269,8 @@ select.ais-sort-by-selector {
 .ais-pagination--item__active .ais-pagination--link {
     background-color: #5fb3f1;
 }
+
+em {
+    text-decoration: underline !important;
+    background-color: #F8F8F8;
+}
