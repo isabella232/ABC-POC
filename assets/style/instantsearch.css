@@ -179,6 +179,7 @@ select.ais-sort-by-selector {
 
 .hitsContainer {
     width: 70%;
+    margin-left: 25px;
 }
 
 .hit-card {
@@ -245,3 +246,26 @@ select.ais-sort-by-selector {
     padding-right: 10px;
 }
 
+#pagination-container {
+    text-align: center;
+}
+
+.ais-pagination {
+    padding: 8px 50px;
+    margin: 25px;
+    border-radius: 0px;
+}
+
+.ais-pagination--item {
+    border-radius: 1px;
+    font-size: 18px;
+    text-align: center;
+    width: 50px;
+}
+.ais-pagination--item__active {
+    background: #5fb3f1;
+}
+
+.ais-pagination--item__active .ais-pagination--link {
+    background-color: #5fb3f1;
+}
