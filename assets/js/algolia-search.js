@@ -2,25 +2,40 @@
 
 var appID = 'Y63Q32NVDL',
     apiKey = '45bce7c03e206c4f2618e69a9f6acfc1',
-    articlesIndexName = 'ABC_TEST_coremedia_article',
-    iviewIndexName = 'ABC_TEST_iview',
-    radioIndexName = 'ABC_TEST_coremedia_audio',
-    tvIndexName = 'ABC_TEST_coremedia_video',
-    lang = $("#language-select :selected").text();
+    indices = {
+        news: 'ABC_TEST_coremedia_article',
+        iview: 'ABC_TEST_iview',
+        radio: 'ABC_TEST_coremedia_audio',
+        tv: 'ABC_TEST_coremedia_video'
+    },
+    lang = $("#language-select :selected").text(),
+    currIndex = $('ul#indices-ul > li > a.active').text().toLowerCase();
 
 app({
     appID,
     apiKey,
-    articlesIndexName,
+    articlesIndexName: indices[currIndex],
     lang
 });
+
+$("ul#indices-ul > li > a").click(function (e) {
+    $("ul#indices-ul > li > a").removeClass("active");
+    currIndex = e.target.text.toLowerCase();
+    $(e.target).addClass("active");
+    app({
+        appID,
+        apiKey,
+        articlesIndexName: indices[currIndex],
+        lang
+    });
+})
 
 
 $("#language-select").change(function (e) {
     app({
         appID,
         apiKey,
-        articlesIndexName,
+        articlesIndexName: indices[currIndex],
         lang: e.target.value
     });
 });
@@ -36,11 +51,11 @@ function app(opts) {
         }
     });
 
-    if ($('.ais-search-box').length){
+    console.log('Using', search)
+
+    if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();
     }
-
-
 
     search.addWidget(
         instantsearch.widgets.searchBox({
@@ -163,7 +178,6 @@ function app(opts) {
     );
 
     search.addWidget(bestBetWidget);
-
     search.start();
 }
 
