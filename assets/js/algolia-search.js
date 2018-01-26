@@ -148,7 +148,7 @@ search.addWidget(
     })
   );
 
-
+search.addWidget(bestBetWidget);
 
 search.start();
 
