@@ -6,20 +6,7 @@ var appID = 'Y63Q32NVDL',
     iviewIndexName = 'ABC_TEST_iview',
     radioIndexName = 'ABC_TEST_coremedia_audio',
     tvIndexName = 'ABC_TEST_coremedia_video',
-
-    client = algoliasearch(appID, apiKey),
-
-    articlesIndex = client.initIndex(articlesIndexName),
-    iviewIndex = client.initIndex(iviewIndexName),
-    radioIndex = client.initIndex(radioIndexName),
-    tvIndex = client.initIndex(tvIndexName),
-    indices = {
-        news: articlesIndex,
-        iview: iviewIndex,
-        radio: radioIndex,
-        tv: tvIndex
-    }
-lang = $("#language-select :selected").text();
+    lang = $("#language-select :selected").text();
 
 app({
     appID,
@@ -27,7 +14,6 @@ app({
     articlesIndexName,
     lang
 });
-
 
 
 $("#language-select").change(function (e) {
