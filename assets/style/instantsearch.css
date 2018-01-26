@@ -280,3 +280,14 @@ li a.active {
     border-bottom: 4px solid #5fb3f1;
     outline: 0;
 }
+
+#lang-selector {
+    display: flex;
+    padding: 0 25px !important;
+    margin-top: 10px !important;
+    color: white;
+}
+
+span#lang {
+    padding: 7px;
+}

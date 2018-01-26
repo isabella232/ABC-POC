@@ -18,140 +18,164 @@ var appID = 'Y63Q32NVDL',
         iview: iviewIndex,
         radio: radioIndex,
         tv: tvIndex
-    };
+    }
+lang = $("#language-select :selected").text();
 
-
-var search = instantsearch({
-    appId: appID,
-    apiKey: apiKey,
-    indexName: articlesIndexName,
-    urlSync: true
+app({
+    appID,
+    apiKey,
+    articlesIndexName,
+    lang
 });
 
-search.addWidget(
-    instantsearch.widgets.searchBox({
-        container: '#search-box',
-        placeholder: 'Search the ABC for news...'
-        // poweredBy: [boolean|SearchBoxPoweredByOption], 
-        // reset: [boolean|SearchBoxResetOption], 
-        // magnifier: [boolean|SearchBoxMagnifierOption], 
-        // loadingIndicator: [boolean|SearchBoxLoadingIndicatorOption], 
-        // wrapInput: [boolean], 
-        // autofocus: [boolean|string], 
-        // searchOnEnterKeyPressOnly: [boolean], 
-        // cssClasses: [SearchBoxCSSClasses], 
-        // queryHook: [function], 
-    })
-);
 
-search.addWidget(
-    instantsearch.widgets.stats({
-        container: '#search-stats',
-        // templates: [StatsWidgetTemplates], 
-        // transformData: [StatsWidgetTransforms], 
-        // autoHideContainer: [boolean], 
-        // cssClasses: [StatsWidgetCssClasses], 
-    })
-);
 
-search.addWidget(
-    instantsearch.widgets.sortBySelector({
-        container: '#sort-by-container',
-        indices: [
-            {name: 'ABC_TEST_coremedia_article', label: 'Relevance'},
-            {name: 'newest-article', label: 'Newest'},
-            {name: 'oldest-article', label: 'Oldest'}
-        ], 
+$("#language-select").change(function (e) {
+    app({
+        appID,
+        apiKey,
+        articlesIndexName,
+        lang: e.target.value
+    });
+});
+
+function app(opts) {
+    var search = instantsearch({
+        appId: opts.appID,
+        apiKey: opts.apiKey,
+        indexName: opts.articlesIndexName,
+        urlSync: true,
+        searchParameters: {
+            filters: `lang:${opts.lang}`
+        }
+    });
+
+
+
+    search.addWidget(
+        instantsearch.widgets.searchBox({
+            container: '#search-box',
+            placeholder: 'Search the ABC for news...'
+            // poweredBy: [boolean|SearchBoxPoweredByOption], 
+            // reset: [boolean|SearchBoxResetOption], 
+            // magnifier: [boolean|SearchBoxMagnifierOption], 
+            // loadingIndicator: [boolean|SearchBoxLoadingIndicatorOption], 
+            // wrapInput: [boolean], 
+            // autofocus: [boolean|string], 
+            // searchOnEnterKeyPressOnly: [boolean], 
+            // cssClasses: [SearchBoxCSSClasses], 
+            // queryHook: [function], 
+        })
+    );
+
+    search.addWidget(
+        instantsearch.widgets.stats({
+            container: '#search-stats',
+            // templates: [StatsWidgetTemplates], 
+            // transformData: [StatsWidgetTransforms], 
+            // autoHideContainer: [boolean], 
+            // cssClasses: [StatsWidgetCssClasses], 
+        })
+    );
+
+    search.addWidget(
+        instantsearch.widgets.sortBySelector({
+            container: '#sort-by-container',
+            indices: [
+                { name: 'ABC_TEST_coremedia_article', label: 'Relevance' },
+                { name: 'newest-article', label: 'Newest' },
+                { name: 'oldest-article', label: 'Oldest' }
+            ],
             // autoHideContainer: [boolean], 
             // cssClasses: [SortByWidgetCssClasses], 
         })
-);
+    );
 
 
-search.addWidget(
-    instantsearch.widgets.hits({
-        container: '#hits',
-        templates: {
-            item: getTemplate('article')
-        }
-    })
-);
+    search.addWidget(
+        instantsearch.widgets.hits({
+            container: '#hits',
+            templates: {
+                item: getTemplate('article')
+            }
+        })
+    );
 
-search.addWidget(
-    instantsearch.widgets.refinementList({
-      container: '#genre-facet',
-      attributeName: 'genre',
-      operator: 'or',
-      limit: 5,
-      showMore: {
-        templates: {
-            active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-            inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-        }
-    },
-      templates: {
-        header: 'Genre'
-      }
-    })
-  );
+    search.addWidget(
+        instantsearch.widgets.refinementList({
+            container: '#genre-facet',
+            attributeName: 'genre',
+            operator: 'or',
+            limit: 5,
+            showMore: {
+                templates: {
+                    active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                    inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                }
+            },
+            templates: {
+                header: 'Genre'
+            }
+        })
+    );
 
-  search.addWidget(
-    instantsearch.widgets.refinementList({
-      container: '#keyword-facet',
-      attributeName: 'keywords',
-      operator: 'or',
-      limit: 5,
-      searchForFacetValues: {
-          placeholder: 'Search for keywords'
-      },
-      showMore: {
-        templates: {
-            active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-            inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-        }
-    },
-      templates: {
-        header: 'Keywords'
-      }
-    })
-  );
+    search.addWidget(
+        instantsearch.widgets.refinementList({
+            container: '#keyword-facet',
+            attributeName: 'keywords',
+            operator: 'or',
+            limit: 5,
+            searchForFacetValues: {
+                placeholder: 'Search for keywords'
+            },
+            showMore: {
+                templates: {
+                    active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                    inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                }
+            },
+            templates: {
+                header: 'Keywords'
+            }
+        })
+    );
 
-  search.addWidget(
-    instantsearch.widgets.refinementList({
-      container: '#author-facet',
-      attributeName: 'attribution',
-      operator: 'or',
-      limit: 5,
-      searchForFacetValues: {
-        placeholder: 'Search for authors'
-    },
-      showMore: {
-          templates: {
-            active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-            inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-          }
-      },
-      templates: {
-        header: 'Author'
-      }
-    })
-  );
-  
+    search.addWidget(
+        instantsearch.widgets.refinementList({
+            container: '#author-facet',
+            attributeName: 'attribution',
+            operator: 'or',
+            limit: 5,
+            searchForFacetValues: {
+                placeholder: 'Search for authors'
+            },
+            showMore: {
+                templates: {
+                    active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                    inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                }
+            },
+            templates: {
+                header: 'Author'
+            }
+        })
+    );
 
-search.addWidget(
-    instantsearch.widgets.pagination({
-      container: '#pagination-container',
-      maxPages: 20,
-      // default is to scroll to 'body', here we disable this behavior
-      scrollTo: false,
-      showFirstLast: false,
-    })
-  );
 
-search.addWidget(bestBetWidget);
+    search.addWidget(
+        instantsearch.widgets.pagination({
+            container: '#pagination-container',
+            maxPages: 20,
+            // default is to scroll to 'body', here we disable this behavior
+            scrollTo: false,
+            showFirstLast: false,
+        })
+    );
 
-search.start();
+    search.addWidget(bestBetWidget);
 
+    search.start();
+}
 
 function getTemplate(templateName) {
     return document.querySelector(`#${templateName}-template`).innerHTML;
