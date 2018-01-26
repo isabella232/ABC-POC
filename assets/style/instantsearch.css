@@ -3,6 +3,34 @@
     top: 50px;
 }
 
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px; 
+}
+
+.container::after {
+    content: "";
+    display: table;
+    clear: both; }
+@media (min-width: 576px) {
+    .container {
+    width: 540px;
+    max-width: 100%; } }
+@media (min-width: 768px) {
+    .container {
+    width: 720px;
+    max-width: 100%; } }
+@media (min-width: 992px) {
+    .container {
+    width: 960px;
+    max-width: 100%; } }
+@media (min-width: 1200px) {
+    .container {
+    width: 1140px;
+    max-width: 100%; } }
+
 .searchContainer {
     width: 100%;
     position: fixed;
@@ -10,44 +38,22 @@
     z-index: 99;
     background-color: white;
     border-bottom: 1px solid #d9d9d9;
+    box-sizing: inherit;
+    height: 100px;
 }
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px; }
-    .container::after {
-      content: "";
-      display: table;
-      clear: both; }
-    @media (min-width: 576px) {
-      .container {
-        width: 540px;
-        max-width: 100%; } }
-    @media (min-width: 768px) {
-      .container {
-        width: 720px;
-        max-width: 100%; } }
-    @media (min-width: 992px) {
-      .container {
-        width: 960px;
-        max-width: 100%; } }
-    @media (min-width: 1200px) {
-      .container {
-        width: 1140px;
-        max-width: 100%; } }
-
-
+#search-box {
+    margin: 0;
+    box-sizing: inherit;
+}
 .ais-search-box {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    max-width: 100%;
 }
 
 .ais-search-box--input {
     width: 100%;
-    height: 40px;
     border-radius: 0;
     padding: 0;
     color: black;
@@ -58,6 +64,7 @@
     font-size: 20px;
     padding-left: 30px;
 }
+
 #search-info {
     display: flex;
     justify-content: space-between;
@@ -66,30 +73,34 @@
 }
 
 .ais-stats {
-    color: black;
     font-size: 18px;
 }
 
-.searchbox__info .sortby {
-    font-size: .8em;
+.right {
+    display: flex;
 }
 
-.ais-SortBy__root {
+#sort-by {
+    padding: 5px 15px;
+}
+
+select.ais-sort-by-selector {
     cursor: pointer;
     padding: 5px 10px;
     background: transparent;
     color: #5fb3f1;
     border-radius: 0;
     font-weight: 700;
-    font-size: .9em;
+    font-size: 18px;
     border: solid 1px #D9D9D9;
     -webkit-appearance: none;
     outline: none;
 }
 
 .bodyContainer {
-    padding-top: 150px;
-    padding-left: 200px;
+    padding-top: 170px;
+    display: flex;
+    background-color: white;
 }
 
 .hit-card {

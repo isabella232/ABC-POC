@@ -56,7 +56,7 @@ search.addWidget(
 
 search.addWidget(
     instantsearch.widgets.sortBySelector({
-        container: '#sort-by',
+        container: '#sort-by-container',
         indices: [
             {name: 'ABC_TEST_coremedia_article', label: 'Relevance'},
             {name: 'newest-article', label: 'Newest'},

@@ -16,14 +16,6 @@
     />
     <link rel="alternate" type="application/rss+xml" href="http://www.abc.net.au/homepage/rss.xml" />
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon-precomposed" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-57x57.png"
-    />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-72x72.png"
-    />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-114x114.png"
-    />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.abc.net.au/homepage/2013/styles/img/apple-touch-icon-144x144.png"
-    />
     <link rel="stylesheet" type="text/css" media="all" href="homepage/2013/styles/combined.min.css%3F20171228163719.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch-theme-algolia.min.css">
@@ -63,26 +55,28 @@
     </div>
     <div id="main">
         <div class="searchContainer">
-            <div="container">
+            <div class="container">
                 <div id="search-box"></div>
                 <div id="search-info">
                     <div id="search-stats"></div>
                     <div class="right">
-                        <div id="sort-by"></div>
+                        <span id="sort-by">Sort by:</span>
+                        <span id="sort-by-container"></div>
                     </div>
                 </div>
+            </div>
         </div>
         <div class="bodyContainer container">
-            <div class="facetContainer"></div>
-            <div class="refinement-list" id="genre-facet"></div>
-            <div class="refinement-list" id="keyword-facet"></div>
-            <div class="refinement-list" id="author-facet"></div>
+            <div class="facetContainer">
+                <div class="refinement-list" id="genre-facet"></div>
+                <div class="refinement-list" id="keyword-facet"></div>
+                <div class="refinement-list" id="author-facet"></div>
+            </div>
             <div class="hitsContainer">
                 <div id="hits"></div>
             </div>
         </div>
         <div id="pagination-container"></div>
-    </div>
 
     </div>
 
