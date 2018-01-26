@@ -4,10 +4,10 @@
 }
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px; 
+    /* margin-left: auto;
+    margin-right: auto; */
+    padding-left: 10%;
+    padding-right: 10%; 
 }
 
 .container::after {
@@ -98,9 +98,87 @@ select.ais-sort-by-selector {
 }
 
 .bodyContainer {
-    padding-top: 170px;
+    padding-top: 200px;
     display: flex;
     background-color: white;
+}
+
+.facetContainer {
+    width: 25%;
+    margin-right: 20px;
+}
+
+.refinement-list {
+    padding: 10px;
+    background-color: white;
+    border: solid 1px #D3D3D3;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.ais-refinement-list--label {
+    color: #141618;
+    font-size: 18px;
+}
+
+.ais-refinement-list--checkbox {
+    visibility: hidden;
+}
+
+.ais-refinement-list--count {
+    color: #141618;
+    font-size: 16px;
+    background: none;
+}
+
+.ais-refinement-list--item:hover {
+    background-color: lightgray;
+    color: #5fb3f1 !important;
+}
+
+.ais-header {
+    border-bottom: none;
+    text-transform: none;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 2px;
+    margin-bottom: 5px;
+    color: #404040;
+    text-align: center;
+    background-color: #F2F2F2;
+    overflow: hidden;
+    padding-left: 5px;
+}
+.ais-show-more {
+    outline: none !important;
+    font-size: 18px;
+}
+
+.sbx-sffv__input {
+    border-radius: 0px;
+    font-size: 16px;
+}
+
+.ais-RefinementList__showMore {
+    outline: none !important;
+    background-color: #F8F8F8;
+    border: solid 1px #D3D3D3;
+    height: 30px;
+    width: 100%;
+    font-size: 17px;
+    overflow: hidden;
+    margin: 5px 0 0 0;
+}
+
+.show-more button {
+    background: #F8F8F8 !important;
+    border: solid 1px #D3D3D3 !important;
+    cursor: pointer !important;
+    font-size: 17px !important;
+}
+
+.hitsContainer {
+    width: 70%;
 }
 
 .hit-card {
@@ -128,10 +206,9 @@ select.ais-sort-by-selector {
 }
 
 
-.article-image-container{
-    display: inline-block;
-    width: 110px;
-    height: 75px;
+.article-image-container {
+    width: 170px;
+    height: 90px;
     margin-top: 8px;
     margin-right: 10px;
     float: left;
@@ -168,8 +245,3 @@ select.ais-sort-by-selector {
     padding-right: 10px;
 }
 
-.facetContainer {
-    font-size: 0.9em;
-    width: 25%;
-    margin-right: 20px;
-}

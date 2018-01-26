@@ -83,7 +83,12 @@ search.addWidget(
       attributeName: 'genre',
       operator: 'or',
       limit: 5,
-      showMore: true,
+      showMore: {
+        templates: {
+            active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+        }
+    },
       templates: {
         header: 'Genre'
       }
@@ -96,8 +101,15 @@ search.addWidget(
       attributeName: 'keywords',
       operator: 'or',
       limit: 5,
-      searchForFacetValues: true,
-      showMore: true,
+      searchForFacetValues: {
+          placeholder: 'Search for keywords'
+      },
+      showMore: {
+        templates: {
+            active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+        }
+    },
       templates: {
         header: 'Keywords'
       }
@@ -110,8 +122,15 @@ search.addWidget(
       attributeName: 'attribution',
       operator: 'or',
       limit: 5,
-      searchForFacetValues: true,
-      showMore: true,
+      searchForFacetValues: {
+        placeholder: 'Search for authors'
+    },
+      showMore: {
+          templates: {
+            active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+          }
+      },
       templates: {
         header: 'Author'
       }
