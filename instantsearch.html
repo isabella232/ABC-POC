@@ -121,6 +121,78 @@
         </div>
     </div>
   </script>
+
+  <script type="text/html" id="iview-template">
+    <div class="hit">
+        <div class="hit-card col-xs-12">
+            <div class ="hit-card-content">
+                <div class="article-image-container">
+                    <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
+                </div>
+                <div class="article-text-container">
+                    <div class="hit-elem-title">
+                        <span>{{{_highlightResult.title.value}}}</span>
+                    </div>
+                    <div class="hit-elem-title">
+                        <div class="instant-article-sub">
+                            <span class="article-attribution">NO ATTRIBUTION</span>
+                            <span class="article-date">{{{dates.displayPublished}}}</span>
+                        </div>
+                    </div>
+                    <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </script>
+
+  <script type="text/html" id="radio-template">
+    <div class="hit">
+        <div class="hit-card col-xs-12">
+            <div class ="hit-card-content">
+                <div class="article-image-container">
+                    <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
+                </div>
+                <div class="article-text-container">
+                    <div class="hit-elem-title">
+                        <span>{{{_highlightResult.title.value}}}</span>
+                    </div>
+                    <div class="hit-elem-title">
+                        <div class="instant-article-sub">
+                            <span class="article-attribution">NO ATTRIBUTION</span>
+                            <span class="article-date">{{{dates.displayPublished}}}</span>
+                        </div>
+                    </div>
+                    <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </script>
+  <script type="text/html" id="tv-template">
+    <div class="hit">
+        <div class="hit-card col-xs-12">
+            <div class ="hit-card-content">
+                <div class="article-image-container">
+                    <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
+                </div>
+                <div class="article-text-container">
+                    <div class="hit-elem-title">
+                        <span>{{{_highlightResult.title.value}}}</span>
+                    </div>
+                    <div class="hit-elem-title">
+                        <div class="instant-article-sub">
+                            <span class="article-attribution">NO ATTRIBUTION</span>
+                            <span class="article-date">{{{dates.displayPublished}}}</span>
+                        </div>
+                    </div>
+                    <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </script>
+
     <!-- /TEMPLATES -->
 
     <!-- SCRIPTS -->
@@ -131,6 +203,7 @@
     <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
     <script src="/assets/js/banner-widget.js"></script>
+    <script src="/assets/js/is-settings.js"></script>
     <script src="/assets/js/algolia-search.js"></script>
     <!-- /SCRIPTS -->
 </body>

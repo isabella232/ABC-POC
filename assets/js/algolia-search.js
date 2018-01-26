@@ -3,19 +3,23 @@
 var appID = 'Y63Q32NVDL',
     apiKey = '45bce7c03e206c4f2618e69a9f6acfc1',
     indices = {
-        news: 'ABC_TEST_coremedia_article',
-        iview: 'ABC_TEST_iview',
-        radio: 'ABC_TEST_coremedia_audio',
-        tv: 'ABC_TEST_coremedia_video'
+        news: newsSettings,
+        iview: iviewSettings,
+        radio: radioSettings,
+        tv: tvSettings
     },
     lang = $("#language-select :selected").text(),
     currIndex = $('ul#indices-ul > li > a.active').text().toLowerCase();
 
+
+
 app({
     appID,
     apiKey,
-    articlesIndexName: indices[currIndex],
-    lang
+    lang,
+    articlesIndexName: indices[currIndex].name,
+    settings: indices[currIndex].settings
+
 });
 
 $("ul#indices-ul > li > a").click(function (e) {
@@ -25,8 +29,9 @@ $("ul#indices-ul > li > a").click(function (e) {
     app({
         appID,
         apiKey,
-        articlesIndexName: indices[currIndex],
-        lang
+        lang,
+        articlesIndexName: indices[currIndex].name,
+        settings: indices[currIndex].settings
     });
 })
 
@@ -35,8 +40,9 @@ $("#language-select").change(function (e) {
     app({
         appID,
         apiKey,
-        articlesIndexName: indices[currIndex],
-        lang: e.target.value
+        lang: e.target.value,
+        articlesIndexName: indices[currIndex].name,
+        settings: indices[currIndex].settings
     });
 });
 
@@ -60,39 +66,20 @@ function app(opts) {
     search.addWidget(
         instantsearch.widgets.searchBox({
             container: '#search-box',
-            placeholder: 'Search the ABC for news...'
-            // poweredBy: [boolean|SearchBoxPoweredByOption], 
-            // reset: [boolean|SearchBoxResetOption], 
-            // magnifier: [boolean|SearchBoxMagnifierOption], 
-            // loadingIndicator: [boolean|SearchBoxLoadingIndicatorOption], 
-            // wrapInput: [boolean], 
-            // autofocus: [boolean|string], 
-            // searchOnEnterKeyPressOnly: [boolean], 
-            // cssClasses: [SearchBoxCSSClasses], 
-            // queryHook: [function], 
+            placeholder: opts.settings.searchPlaceholder
         })
     );
 
     search.addWidget(
         instantsearch.widgets.stats({
             container: '#search-stats',
-            // templates: [StatsWidgetTemplates], 
-            // transformData: [StatsWidgetTransforms], 
-            // autoHideContainer: [boolean], 
-            // cssClasses: [StatsWidgetCssClasses], 
         })
     );
 
     search.addWidget(
         instantsearch.widgets.sortBySelector({
             container: '#sort-by-container',
-            indices: [
-                { name: 'ABC_TEST_coremedia_article', label: 'Relevance' },
-                { name: 'newest-article', label: 'Newest' },
-                { name: 'oldest-article', label: 'Oldest' }
-            ],
-            // autoHideContainer: [boolean], 
-            // cssClasses: [SortByWidgetCssClasses], 
+            indices: opts.settings.sortByIndices
         })
     );
 
@@ -101,77 +88,21 @@ function app(opts) {
         instantsearch.widgets.hits({
             container: '#hits',
             templates: {
-                item: getTemplate('article')
+                item: getTemplate(opts.settings.templateName)
             }
         })
     );
 
-    search.addWidget(
-        instantsearch.widgets.refinementList({
-            container: '#genre-facet',
-            attributeName: 'genre',
-            operator: 'or',
-            limit: 5,
-            showMore: {
-                templates: {
-                    active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-                    inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-                }
-            },
-            templates: {
-                header: 'Genre'
-            }
-        })
-    );
-
-    search.addWidget(
-        instantsearch.widgets.refinementList({
-            container: '#keyword-facet',
-            attributeName: 'keywords',
-            operator: 'or',
-            limit: 5,
-            searchForFacetValues: {
-                placeholder: 'Search for keywords'
-            },
-            showMore: {
-                templates: {
-                    active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-                    inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-                }
-            },
-            templates: {
-                header: 'Keywords'
-            }
-        })
-    );
-
-    search.addWidget(
-        instantsearch.widgets.refinementList({
-            container: '#author-facet',
-            attributeName: 'attribution',
-            operator: 'or',
-            limit: 5,
-            searchForFacetValues: {
-                placeholder: 'Search for authors'
-            },
-            showMore: {
-                templates: {
-                    active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-                    inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-                }
-            },
-            templates: {
-                header: 'Author'
-            }
-        })
-    );
-
+    opts.settings.refinementLists.forEach(list => {
+        search.addWidget(
+            instantsearch.widgets.refinementList(list)
+        )
+    });
 
     search.addWidget(
         instantsearch.widgets.pagination({
             container: '#pagination-container',
             maxPages: 20,
-            // default is to scroll to 'body', here we disable this behavior
             scrollTo: false,
             showFirstLast: false,
         })
