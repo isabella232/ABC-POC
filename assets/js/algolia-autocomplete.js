@@ -41,7 +41,7 @@ autocomplete('#aa-search-input', {
     },
     {
         source: autocomplete.sources.hits(radioIndex, {
-            hitsPerPage: 2
+            hitsPerPage: 1
         }),
         displayKey: 'title_t',
         name: 'radio',

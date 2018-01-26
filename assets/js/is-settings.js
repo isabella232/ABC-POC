@@ -95,7 +95,7 @@ var radioSettings = {
 var tvSettings = {
     name: 'ABC_TEST_coremedia_video',
     settings: {
-        searchPlaceholder: 'Search for radio programs by title or keyword...',
+        searchPlaceholder: 'Search for television programs by title or keyword...',
         sortByIndices: [
             { name: 'ABC_TEST_coremedia_video', label: 'Relevance' },
             { name: 'shortest-tv', label: 'Shortest' },

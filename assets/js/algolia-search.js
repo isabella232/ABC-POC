@@ -47,6 +47,7 @@ $("#language-select").change(function (e) {
 });
 
 function app(opts) {
+    console.log('current settings', opts.settings)
     var search = instantsearch({
         appId: opts.appID,
         apiKey: opts.apiKey,
@@ -62,6 +63,7 @@ function app(opts) {
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();
     }
+
 
     search.addWidget(
         instantsearch.widgets.searchBox({

@@ -37,12 +37,12 @@
                 </li>
             </a>
             <li id="lang-selector">
-                    <span id="lang">lang:</span>
-                    <span >
-                        <div>
-                            <div class="ais-root ais-sort-by-selector">
-                                <div class="ais-body">
-                                    <select id="language-select" class="ais-sort-by-selector">
+                <span id="lang">lang:</span>
+                <span>
+                    <div>
+                        <div class="ais-root ais-sort-by-selector">
+                            <div class="ais-body">
+                                <select id="language-select" class="ais-sort-by-selector">
                                     <option class="ais-sort-by-selector--item" selected value="en">en</option>
                                     <option class="ais-sort-by-selector--item" value="in">in</option>
                                     <option class="ais-sort-by-selector--item" value="zh">zh</option>
@@ -77,22 +77,23 @@
                     <div id="search-stats"></div>
                     <div class="right">
                         <span id="sort-by">Sort by:</span>
-                        <span id="sort-by-container"></div>
+                        <span id="sort-by-container">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="bodyContainer container">
-            <div class="facetContainer">
-                <div class="refinement-list" id="genre-facet"></div>
-                <div class="refinement-list" id="keyword-facet"></div>
-                <div class="refinement-list" id="author-facet"></div>
-            </div>
-            <div class="hitsContainer">
-                <div id="hits"></div>
-                <div id="pagination-container"></div>
-            </div>
+    </div>
+    <div class="bodyContainer container">
+        <div class="facetContainer">
+            <div class="refinement-list" id="genre-facet"></div>
+            <div class="refinement-list" id="keyword-facet"></div>
+            <div class="refinement-list" id="author-facet"></div>
         </div>
+        <div class="hitsContainer">
+            <div id="hits"></div>
+            <div id="pagination-container"></div>
+        </div>
+    </div>
 
 
     </div>
@@ -101,54 +102,58 @@
     <script type="text/html" id="article-template">
     <div class="hit">
         <div class="hit-card col-xs-12">
-            <div class ="hit-card-content">
-                <div class="article-image-container">
-                    <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
-                </div>
-                <div class="article-text-container">
-                    <div class="hit-elem-title">
-                        <span>{{{_highlightResult.title.value}}}</span>
+            <a href={{canonicalURL}}>
+                <div class ="hit-card-content">
+                    <div class="article-image-container">
+                        <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
                     </div>
-                    <div class="hit-elem-title">
-                        <div class="instant-article-sub">
-                            <span class="article-attribution">{{{_highlightResult.attribution.value}}}</span>
-                            <span class="article-date">{{{dates.displayPublished}}}</span>
+                    <div class="article-text-container">
+                        <div class="hit-elem-title">
+                            <span>{{{_highlightResult.title.value}}}</span>
                         </div>
+                        <div class="hit-elem-title">
+                            <div class="instant-article-sub">
+                                <span class="article-date">{{{dates.displayPublished}}}</span>
+                                <span class="article-attribution">{{{_highlightResult.attribution.value}}}</span>    
+                            </div>
+                        </div>
+                        <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
                     </div>
-                    <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
   </script>
 
-  <script type="text/html" id="iview-template">
+    <script type="text/html" id="iview-template">
     <div class="hit">
         <div class="hit-card col-xs-12">
+            <a href={{canonicalURL}}>
             <div class ="hit-card-content">
                 <div class="article-image-container">
                     <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
                 </div>
                 <div class="article-text-container">
                     <div class="hit-elem-title">
-                        <span>{{{_highlightResult.title.value}}}</span>
+                        <span>{{{_highlightResult.series.title.value}}}</span>
                     </div>
                     <div class="hit-elem-title">
                         <div class="instant-article-sub">
-                            <span class="article-attribution">NO ATTRIBUTION</span>
-                            <span class="article-date">{{{dates.displayPublished}}}</span>
+                            <span class="episode">Episode: {{{_highlightResult.title.value}}}</span>
                         </div>
                     </div>
                     <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
                 </div>
             </div>
+            </a>
         </div>
     </div>
   </script>
 
-  <script type="text/html" id="radio-template">
+    <script type="text/html" id="radio-template">
     <div class="hit">
         <div class="hit-card col-xs-12">
+            <a href={{canonicalURL}}>
             <div class ="hit-card-content">
                 <div class="article-image-container">
                     <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
@@ -159,19 +164,21 @@
                     </div>
                     <div class="hit-elem-title">
                         <div class="instant-article-sub">
-                            <span class="article-attribution">NO ATTRIBUTION</span>
                             <span class="article-date">{{{dates.displayPublished}}}</span>
+                            <span class="article-attribution">{{{genre}}}</span>
                         </div>
                     </div>
                     <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
                 </div>
             </div>
+            </a>
         </div>
     </div>
   </script>
-  <script type="text/html" id="tv-template">
+    <script type="text/html" id="tv-template">
     <div class="hit">
         <div class="hit-card col-xs-12">
+            <a href={{canonicalURL}}>
             <div class ="hit-card-content">
                 <div class="article-image-container">
                     <img src="{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}">
@@ -182,13 +189,13 @@
                     </div>
                     <div class="hit-elem-title">
                         <div class="instant-article-sub">
-                            <span class="article-attribution">NO ATTRIBUTION</span>
                             <span class="article-date">{{{dates.displayPublished}}}</span>
                         </div>
                     </div>
                     <p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
                 </div>
             </div>
+            </a>
         </div>
     </div>
   </script>
