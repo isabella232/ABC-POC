@@ -29,7 +29,7 @@ autocomplete('#aa-search-input', {
         displayKey: 'title_t',
         name: 'news',
         templates: {
-            header: '<div id="aa-news-header" class="aa-suggestions-category"><img id="news" src="/homepage/2013/styles/img/news-logo.png" ></div>',
+            header: '<div id="aa-news-header" class="aa-suggestions-category"><img id="news" /2013/styles/img/news-logo.png" ></div>',
             //'suggestion' templating function used to render a single suggestion
             suggestion: function (suggestion) {
                 return '<a href="'+
@@ -47,7 +47,7 @@ autocomplete('#aa-search-input', {
         name: 'radio',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div id="aa-radio-header" class="aa-suggestions-category"><img src="/homepage/2013/styles/img/radio-logo.png" style="height: 40px;"></div>',
+            header: '<div id="aa-radio-header" class="aa-suggestions-category"><img src="homepage/2013/styles/img/radio-logo.png" style="height: 40px;"></div>',
             suggestion: function (suggestion) {
                 return '<a href="'+
                 suggestion.canonicalURL +
@@ -64,7 +64,7 @@ autocomplete('#aa-search-input', {
         name: 'iview',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/iview-logo.png"></div>',
+            header: '<div class="aa-suggestions-category"><img /2013/styles/img/iview-logo.png"></div>',
             suggestion: function (suggestion) {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="' + suggestion.media.image.thumbnail.images['16x9'] + '">' +
@@ -83,7 +83,7 @@ autocomplete('#aa-search-input', {
         name: 'tv',
         templates: {
             //'suggestion' templating function used to render a single suggestion
-            header: '<div class="aa-suggestions-category"><img src="/homepage/2013/styles/img/television-logo.jpeg"></div>',
+            header: '<div class="aa-suggestions-category"><img /2013/styles/img/television-logo.jpeg"></div>',
             suggestion: function (suggestion) {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="' + suggestion.media.image.poster.images['16x9'] + '">' +
