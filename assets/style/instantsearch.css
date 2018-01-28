@@ -63,6 +63,17 @@
     outline: none;
     font-size: 20px;
     padding-left: 30px;
+    height: 46px;
+}
+
+.ais-search-box--magnifier {
+    top: 18px;
+    left: 18px;
+}
+
+.ais-search-box--reset {
+    top: 18px;
+    right: 18px;
 }
 
 #search-info {
@@ -286,10 +297,9 @@ li.active a{
     outline: 0;
 }
 
-.hidden {
+li.hidden {
     visibility: hidden;
 }
-
 
 #lang-selector {
     display: flex;

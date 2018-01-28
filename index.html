@@ -37,13 +37,12 @@
 	<div id="app">
 		<div id="nav" aria-label="Main Navigation">
 			<div id="logo-search">
+				<a href="index.html">
+					<li id="nav-logo">
+						<img id="nav-logo" src="homepage/2013/styles/img/logo-abc@2x.png" alt="ABC logo" />
+					</li>
 
-				<li id="nav-logo">
-					<a href="index.html"></a>
-					<img id="nav-logo" src="homepage/2013/styles/img/logo-abc@2x.png" alt="ABC logo" />
-					</a>
-				</li>
-
+				</a>
 				<li v-bind:class="{ hidden: indexSelected }">
 					<div class="aa-input-container" id="aa-input-container">
 						<input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search the ABC..." name="search" autocomplete="off"
@@ -949,7 +948,6 @@
 
 				</div>
 			</div>
-
 			<div id="footer" class="abcSiteFooter">
 
 				<!--noindex-->
@@ -1023,32 +1021,32 @@
 					<p class="abcSpan12 disclaimer">This service may include material from Getty.</p>
 				</div>
 			</div>
-
-
-			<div id="setLocation" class="setLocation" role="dialog" aria-hidden="true" aria-labelledby="dialog-title" tabindex="-1">
-				<h3 id="dialog-title">Set Location</h3>
-
-				<form class="autocomplete">
-					<label for="suburb">Enter an Australian postcode or suburb</label>
-					<input id="suburb" name="suburb" type="text">
-				</form>
-
-				<!-- p>or</p -->
-				<!-- h4><a href="javascript:void(0)" class="detectCurrent">detect current location</a></h4 -->
-
-				<div class="recentLocations">
-					<h3>Recent Locations</h3>
-					<ul></ul>
+		</div>
+		<div v-bind:class="{ hidden: !indexSelected }">
+			<div id="main">
+				<div class="searchContainer">
+					<div class="container">
+						<div id="search-box"></div>
+						<div id="search-info">
+							<div id="search-stats"></div>
+							<div class="right">
+								<span id="sort-by">Sort by:</span>
+								<span id="sort-by-container">
+							</div>
+						</div>
+					</div>
 				</div>
-
-				<p class="links">
-					<a href="index.html#" class="remove-location">Delete your location</a>
-					<a href="http://www.abc.net.au/privacy.htm" class="privacy">Privacy Policy</a>
-				</p>
-
-				<a href="index.html#close" class="closeBtn">
-					<span>Close</span>
-				</a>
+			</div>
+			<div class="bodyContainer container">
+				<div class="facetContainer">
+					<div class="refinement-list" id="genre-facet"></div>
+					<div class="refinement-list" id="keyword-facet"></div>
+					<div class="refinement-list" id="author-facet"></div>
+				</div>
+				<div class="hitsContainer">
+					<div id="hits"></div>
+					<div id="pagination-container"></div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -1091,6 +1089,9 @@
 	<script src="assets/js/vue-nav.js"></script>
 	<script src="assets/js/curr-index.js"></script>
 	<script src="assets/js/algolia-autocomplete.js"></script>
+	<script src="/assets/js/banner-widget.js"></script>
+    <script src="/assets/js/is-settings.js"></script>
+    <script src="/assets/js/algolia-search.js"></script>
 	<!-- /SCRIPTS -->
 </body>
 

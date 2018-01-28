@@ -19,7 +19,7 @@
 }
 li#nav-logo {
     position: relative;
-    top: -22px;
+    top: 5px;
     left: -15px;
 }
 
@@ -38,4 +38,8 @@ header h1 {
     width: 200px;
     margin: 0 0 15px 30px;
     padding: 21px 0 0;
+}
+
+div.hidden {
+    display: none;
 }

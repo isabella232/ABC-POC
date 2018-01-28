@@ -3,11 +3,6 @@ Vue.component('nav-item', {
     template: '<li ><a>{{ index.text }}</a></li>'
 })
 
-// var navItem = {
-//         props: ['index'],
-//         template: '<li ><a>{{ index.text }}</a></li>'
-//     }
-
 new Vue({
     el: '#app',
     data: {
