@@ -28,7 +28,6 @@ new Vue({
             $(event.target).parent().toggleClass('active').siblings().removeClass('active');
             if ($(event.target).parent().hasClass("active")) this.currentIndex = $(event.target).text()
             else this.currentIndex = ''
-            console.log('currentIndex', this.currentIndex);
         }
     },
 })

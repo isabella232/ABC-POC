@@ -6,13 +6,10 @@ var appID = 'Y63Q32NVDL',
         news: newsSettings,
         iview: iviewSettings,
         radio: radioSettings,
-        tv: tvSettings
+        television: tvSettings
     },
     lang = 'en',
-    // currIndex = $('ul#indices-ul > li > a.active').text().toLowerCase();
     currIndex = 'news';
-
-
 
 app({
     appID,
@@ -22,7 +19,6 @@ app({
     settings: indices[currIndex].settings
 
 });
-
 
 $("#language-select").change(function (e) {
     app({
@@ -34,29 +30,33 @@ $("#language-select").change(function (e) {
     });
 });
 
-
 $("ul#indices-ul > li > a").click(function (e) {
     app({
         appID,
         apiKey,
         lang,
-        articlesIndexName: indices[currIndex].name,
-        settings: indices[currIndex].settings
+        articlesIndexName: indices[e.target.text].name,
+        settings: indices[e.target.text].settings
     });
 })
 
-
-
-
 function app(opts) {
-    var search = instantsearch({
+    var search;
+    if (opts.articlesIndexName === 'ABC_TEST_coremedia_article')
+        search = instantsearch({
+            appId: opts.appID,
+            apiKey: opts.apiKey,
+            indexName: opts.articlesIndexName,
+            urlSync: true,
+            searchParameters: {
+                filters: `lang:${opts.lang}`
+            }
+        });
+    else search = instantsearch({
         appId: opts.appID,
         apiKey: opts.apiKey,
         indexName: opts.articlesIndexName,
-        urlSync: true,
-        searchParameters: {
-            filters: `lang:${opts.lang}`
-        }
+        urlSync: true
     });
 
     if ($('.ais-search-box').length) {

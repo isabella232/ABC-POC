@@ -70,8 +70,8 @@ var iviewSettings = {
         searchPlaceholder: 'Search for iView programs by series, episode title, or keyword...',
         sortByIndices: [
             { name: 'ABC_TEST_iview', label: 'Relevance' },
-            { name: 'shortest-iview', label: 'Shortest' },
-            { name: 'longest-iview', label: 'Longest' }
+            { name: 'newest-iview', label: 'Newest' },
+            { name: 'oldest-iview', label: 'Oldest' }
         ],
         templateName: 'iview',
         refinementLists: []
@@ -98,8 +98,8 @@ var tvSettings = {
         searchPlaceholder: 'Search for television programs by title or keyword...',
         sortByIndices: [
             { name: 'ABC_TEST_coremedia_video', label: 'Relevance' },
-            { name: 'shortest-tv', label: 'Shortest' },
-            { name: 'longest-tv', label: 'Longest' }
+            { name: 'newest-tv', label: 'Newest' },
+            { name: 'oldest-tv', label: 'Oldest' }
         ],
         templateName: 'tv',
         refinementLists: []
