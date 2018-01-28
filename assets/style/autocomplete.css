@@ -122,12 +122,11 @@
 
   .aa-dataset-iview span {
     display: flex !important;
-    flex-wrap: wrap;
   }
+
 
   .aa-dataset-tv span {
     display: flex !important;
-    flex-wrap: wrap;
   }
 
   .video-wrapper {
@@ -170,6 +169,13 @@
   .video-title {
     width: 200px;
     font-size: 16px;
+    text-align: left;
+  }
+
+  .iview-title {
+    font-weight: 600;
+    font-size: 17px;
+    padding: 5px 0;
   }
 
   .aa-dataset-news .aa-suggestion {
@@ -180,6 +186,7 @@
   .aa-dataset-radio .aa-suggestion {
     border-bottom: 1px solid lightgray;
     overflow: hidden;
+    height: 65px;
   }
 
   .aa-title-wrapper {
@@ -205,6 +212,8 @@
   }
 
   #audio-play:after {
+    position: relative;
+    top: 10%;
     content: "\f01d";
     font-family: FontAwesome;
     font-size: 35px;

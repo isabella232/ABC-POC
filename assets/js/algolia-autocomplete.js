@@ -69,8 +69,8 @@ autocomplete('#aa-search-input', {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="' + suggestion.media.image.thumbnail.images['16x9'] + '">' +
                     '</a></div>' +
-                    '<div class="video-text-wrapper"><span class="video-title">' + suggestion._highlightResult.series.title.value +
-                    ':</span><span class="video-title">' + suggestion._highlightResult.title.value + '</span></div>'
+                    '<div class="video-text-wrapper"><div class="video-title iview-title">' + suggestion._highlightResult.series.title.value +
+                    ':</div><div class="video-title">' + suggestion._highlightResult.title.value + '</div></div>'
             },
             empty: '<div class="aa-empty">No matching iView media.</div>'
         }
@@ -88,8 +88,8 @@ autocomplete('#aa-search-input', {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="' + suggestion.media.image.poster.images['16x9'] + '">' +
                     '</a></div>' +
-                    '<span class="video-title">' + suggestion._highlightResult.title.value +
-                    '</span></div>'
+                    '<div class="video-title">' + suggestion._highlightResult.title.value +
+                    '</div></div>'
             },
             empty: '<div class="aa-empty">No matching ABC television shows.</div>'
         }
