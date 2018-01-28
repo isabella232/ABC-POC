@@ -213,7 +213,7 @@
 
   #audio-play:after {
     position: relative;
-    top: 10%;
+    top: 5%;
     content: "\f01d";
     font-family: FontAwesome;
     font-size: 35px;
