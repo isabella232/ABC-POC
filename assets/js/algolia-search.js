@@ -9,7 +9,8 @@ var appID = 'Y63Q32NVDL',
         tv: tvSettings
     },
     lang = $("#language-select :selected").text(),
-    currIndex = $('ul#indices-ul > li > a.active').text().toLowerCase();
+    // currIndex = $('ul#indices-ul > li > a.active').text().toLowerCase();
+    currIndex = 'news';
 
 
 
@@ -22,18 +23,18 @@ app({
 
 });
 
-$("ul#indices-ul > li > a").click(function (e) {
-    $("ul#indices-ul > li > a").removeClass("active");
-    currIndex = e.target.text.toLowerCase();
-    $(e.target).addClass("active");
-    app({
-        appID,
-        apiKey,
-        lang,
-        articlesIndexName: indices[currIndex].name,
-        settings: indices[currIndex].settings
-    });
-})
+// $("ul#indices-ul > li > a").click(function (e) {
+//     $("ul#indices-ul > li > a").removeClass("active");
+//     currIndex = e.target.text.toLowerCase();
+//     $(e.target).addClass("active");
+//     app({
+//         appID,
+//         apiKey,
+//         lang,
+//         articlesIndexName: indices[currIndex].name,
+//         settings: indices[currIndex].settings
+//     });
+// })
 
 
 $("#language-select").change(function (e) {
@@ -47,7 +48,6 @@ $("#language-select").change(function (e) {
 });
 
 function app(opts) {
-    console.log('currentIndex', opts.indexName)
     var search = instantsearch({
         appId: opts.appID,
         apiKey: opts.apiKey,

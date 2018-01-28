@@ -53,20 +53,14 @@
                 </span>
             </li>
         </div>
-        <ul id="indices-ul" role="presentation">
-            <li class="news">
-                <a class="active" href="#">News</a>
-            </li>
-            <li class="iview">
-                <a href="#">iview</a>
-            </li>
-            <li class="tv">
-                <a href="#">TV</a>
-            </li>
-            <li class="radio">
-                <a href="#">Radio</a>
-            </li>
+        <ul @click="selectIndex($event)" id="indices-ul" role="presentation">
+                <nav-item
+                v-for="item in indices"
+                v-bind:index="item"
+                v-bind:key="item.id">
+              </nav-item>
         </ul>
+
 
     </div>
     <div id="main">
@@ -207,10 +201,12 @@
     <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    <script src="assets/js/vue-nav.js"></script>
     <script src="/assets/js/banner-widget.js"></script>
     <script src="/assets/js/is-settings.js"></script>
     <script src="/assets/js/algolia-search.js"></script>

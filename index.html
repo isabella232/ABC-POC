@@ -33,7 +33,6 @@
 
 <body id="home" class="platform-standard">
 	<!--<![endif]-->
-
 	<div id="nav" aria-label="Main Navigation">
 		<div id="logo-search">
 			<li>
@@ -47,17 +46,17 @@
 			</li>
 		</div>
 		<ul id="indices-ul" role="presentation">
-			<li class="news">
+			<li class="news" @click="selectIndex($event)">
 				<a href="instantsearch.html">News</a>
 			</li>
-			<li class="iview">
-				<a href="instantsearch.html">iview</a>
+			<li class="iview" @click="selectIndex($event)">
+				<a href="#">iview</a>
 			</li>
-			<li class="tv">
-				<a href="instantsearch.html">TV</a>
+			<li class="tv" @click="selectIndex($event)">
+				<a href="#">TV</a>
 			</li>
-			<li class="radio">
-				<a href="instantsearch.html">Radio</a>
+			<li class="radio" @click="selectIndex($event)">
+				<a href="#">Radio</a>
 			</li>
 		</ul>
 	</div>
@@ -1075,10 +1074,12 @@
 	<!-- SCRIPTS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	 crossorigin="anonymous"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+	<script src="assets/js/vue-nav.js"></script>
 	<script src="assets/js/curr-index.js"></script>
 	<script src="assets/js/algolia-autocomplete.js"></script>
 	<!-- /SCRIPTS -->
