@@ -47,7 +47,7 @@ $("#language-select").change(function (e) {
 });
 
 function app(opts) {
-    console.log('current settings', opts.settings)
+    console.log('currentIndex', opts.indexName)
     var search = instantsearch({
         appId: opts.appID,
         apiKey: opts.apiKey,
@@ -57,8 +57,6 @@ function app(opts) {
             filters: `lang:${opts.lang}`
         }
     });
-
-    console.log('Using', search)
 
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();

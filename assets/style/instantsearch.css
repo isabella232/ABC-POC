@@ -121,6 +121,16 @@ select.ais-sort-by-selector {
     font-size: 18px;
 }
 
+.ais-refinement-list--item:hover {
+    background-color: rgba(241, 241, 241, 0.35);
+    color: #141618 !important;
+    font-weight: 1000;
+}
+
+.ais-refinement-list--label:hover {
+    color: #141618 !important;
+}
+
 .ais-refinement-list--checkbox {
     visibility: hidden;
 }
@@ -129,11 +139,6 @@ select.ais-sort-by-selector {
     color: #141618;
     font-size: 16px;
     background: none;
-}
-
-.ais-refinement-list--item:hover {
-    background-color: lightgray;
-    color: #5fb3f1 !important;
 }
 
 .ais-header {
@@ -205,7 +210,6 @@ select.ais-sort-by-selector {
     border: none;
     border-top: solid 1px #D3D3D3;
 }
-
 
 .article-image-container {
     width: 170px;

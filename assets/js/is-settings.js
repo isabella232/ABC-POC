@@ -4,8 +4,8 @@ var newsSettings = {
         searchPlaceholder: 'Search the ABC for news by title, keyword, or author...',
         sortByIndices: [
             { name: 'ABC_TEST_coremedia_article', label: 'Relevance' },
-            { name: 'newest-article', label: 'Newest' },
-            { name: 'oldest-article', label: 'Oldest' }
+            { name: 'newest-articles', label: 'Newest' },
+            { name: 'oldest-articles', label: 'Oldest' }
         ],
         templateName: 'article',
         refinementLists: [
