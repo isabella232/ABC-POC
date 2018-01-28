@@ -16,22 +16,7 @@
   .aa-suggestion em {
     font-weight: 1000;
     text-decoration: underline;
-  }
-
-  .aa-dataset-iview em {
     color: #00C3C1;
-  }
-
-  .aa-dataset-news em {
-    color: black;
-  }
-
-  .aa-dataset-radio em {
-    color: #493E4E;
-  }
-
-  .aa-dataset-tv em {
-    background-color: lightgray
   }
 
   .aa-input-container {
