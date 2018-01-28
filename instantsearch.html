@@ -36,7 +36,7 @@
                     <img id="nav-logo" src="homepage/2013/styles/img/logo-abc@2x.png" alt="ABC logo" />
                 </li>
             </a>
-            <li id="lang-selector">
+            <li v-bind:class="{ hidden: !newsSelected }" id="lang-selector">
                 <span id="lang">lang:</span>
                 <span>
                     <div>

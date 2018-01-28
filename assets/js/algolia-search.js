@@ -8,7 +8,7 @@ var appID = 'Y63Q32NVDL',
         radio: radioSettings,
         tv: tvSettings
     },
-    lang = $("#language-select :selected").text(),
+    lang = 'en',
     // currIndex = $('ul#indices-ul > li > a.active').text().toLowerCase();
     currIndex = 'news';
 
@@ -21,6 +21,31 @@ app({
     articlesIndexName: indices[currIndex].name,
     settings: indices[currIndex].settings
 
+});
+
+
+
+$("#language-select").change(function (e) {
+    app({
+        appID,
+        apiKey,
+        lang: e.target.value,
+        articlesIndexName: indices[currIndex].name,
+        settings: indices[currIndex].settings
+    });
+});
+
+
+
+$("#language-select").change(function (e) {
+    console.log('its happening')
+    app({
+        appID,
+        apiKey,
+        lang: e.target.value,
+        articlesIndexName: indices[currIndex].name,
+        settings: indices[currIndex].settings
+    });
 });
 
 // $("ul#indices-ul > li > a").click(function (e) {
@@ -37,15 +62,7 @@ app({
 // })
 
 
-$("#language-select").change(function (e) {
-    app({
-        appID,
-        apiKey,
-        lang: e.target.value,
-        articlesIndexName: indices[currIndex].name,
-        settings: indices[currIndex].settings
-    });
-});
+
 
 function app(opts) {
     var search = instantsearch({

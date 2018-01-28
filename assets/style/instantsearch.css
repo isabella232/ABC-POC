@@ -286,6 +286,10 @@ li.active a{
     outline: 0;
 }
 
+li.hidden {
+    visibility: hidden;
+}
+
 #lang-selector {
     display: flex;
     padding: 0 25px !important;

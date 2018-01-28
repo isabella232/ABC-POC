@@ -1,7 +1,7 @@
 Vue.component('nav-item', {
     props: ['index'],
     template: '<li ><a>{{ index.text }}</a></li>'
-  })
+})
 
 var nav = new Vue({
     el: '#nav',
@@ -14,11 +14,18 @@ var nav = new Vue({
             { id: 3, text: 'television' },
         ]
     },
+    computed: {
+        // a computed getter
+        newsSelected: function () {
+            // `this` points to the vm instance
+            return this.currentIndex === 'news'
+        }
+    },
     methods: {
         selectIndex: function (event) {
             this.currentIndex = $(event.target).text()
             $(event.target).parent().toggleClass('active').siblings().removeClass('active');
-            if($(event.target).parent().hasClass("active")) this.currentIndex = $(event.target).text()
+            if ($(event.target).parent().hasClass("active")) this.currentIndex = $(event.target).text()
             else this.currentIndex = ''
             console.log('currentIndex', this.currentIndex);
         }
