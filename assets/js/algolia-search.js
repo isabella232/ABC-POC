@@ -24,7 +24,6 @@ app({
 });
 
 
-
 $("#language-select").change(function (e) {
     app({
         appID,
@@ -36,30 +35,15 @@ $("#language-select").change(function (e) {
 });
 
 
-
-$("#language-select").change(function (e) {
-    console.log('its happening')
+$("ul#indices-ul > li > a").click(function (e) {
     app({
         appID,
         apiKey,
-        lang: e.target.value,
+        lang,
         articlesIndexName: indices[currIndex].name,
         settings: indices[currIndex].settings
     });
-});
-
-// $("ul#indices-ul > li > a").click(function (e) {
-//     $("ul#indices-ul > li > a").removeClass("active");
-//     currIndex = e.target.text.toLowerCase();
-//     $(e.target).addClass("active");
-//     app({
-//         appID,
-//         apiKey,
-//         lang,
-//         articlesIndexName: indices[currIndex].name,
-//         settings: indices[currIndex].settings
-//     });
-// })
+})
 
 
 

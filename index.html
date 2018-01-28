@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" media="all" href="homepage/2013/styles/combined.min.css%3F20171228163719.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="assets/style/override.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="assets/style/autocomplete.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="assets/style/instantsearch.css" />
 
 
 
@@ -33,56 +34,67 @@
 
 <body id="home" class="platform-standard">
 	<!--<![endif]-->
-	<div id="nav" aria-label="Main Navigation">
-		<div id="logo-search">
-			<li>
-				<img id="nav-logo" src="homepage/2013/styles/img/logo-abc@2x.png" alt="ABC logo" />
-			</li>
-			<li>
-				<div class="aa-input-container" id="aa-input-container">
-					<input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search the ABC..." name="search" autocomplete="off"
-					/>
-				</div>
-			</li>
+	<div id="app">
+		<div id="nav" aria-label="Main Navigation">
+			<div id="logo-search">
+
+				<li id="nav-logo">
+					<a href="index.html"></a>
+					<img id="nav-logo" src="homepage/2013/styles/img/logo-abc@2x.png" alt="ABC logo" />
+					</a>
+				</li>
+
+				<li v-bind:class="{ hidden: indexSelected }">
+					<div class="aa-input-container" id="aa-input-container">
+						<input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search the ABC..." name="search" autocomplete="off"
+						/>
+					</div>
+				</li>
+				<li v-bind:class="{ hidden: !newsSelected }" id="lang-selector">
+					<span id="lang">lang:</span>
+					<span>
+						<div>
+							<div class="ais-root ais-sort-by-selector">
+								<div class="ais-body">
+									<select id="language-select" class="ais-sort-by-selector">
+										<option class="ais-sort-by-selector--item" selected value="en">en</option>
+										<option class="ais-sort-by-selector--item" value="in">in</option>
+										<option class="ais-sort-by-selector--item" value="zh">zh</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</span>
+				</li>
+			</div>
+			<ul @click="selectIndex($event)" id="indices-ul" role="presentation">
+				<nav-item v-for="item in indices" v-bind:index="item" v-bind:key="item.id">
+				</nav-item>
+			</ul>
 		</div>
-		<ul id="indices-ul" role="presentation">
-			<li class="news" @click="selectIndex($event)">
-				<a href="instantsearch.html">News</a>
-			</li>
-			<li class="iview" @click="selectIndex($event)">
-				<a href="#">iview</a>
-			</li>
-			<li class="tv" @click="selectIndex($event)">
-				<a href="#">TV</a>
-			</li>
-			<li class="radio" @click="selectIndex($event)">
-				<a href="#">Radio</a>
-			</li>
-		</ul>
-	</div>
 
-	<div id="main-content">
-		<div class="abcSiteHeader">
+		<div v-bind:class="{ hidden: indexSelected }" id="main-content">
+			<div class="abcSiteHeader">
 
-			<div id="header">
-				<h1>
-					<img src="homepage/2013/styles/img/abc.png" width="185" height="47" alt="ABC">
-				</h1>
+				<div id="header">
+					<h1>
+						<img src="homepage/2013/styles/img/abc.png" width="185" height="47" alt="ABC">
+					</h1>
 
-				<!-- include virtual="${path_siteComponents}/search.htm" -->
+					<!-- include virtual="${path_siteComponents}/search.htm" -->
 
-				<div id="edpols">
-					<a href="http://about.abc.net.au/how-the-abc-is-run/what-guides-us/abc-editorial-standards/" data-wt.z_ca="edpols" data-wt.z_dest="about.abc.net.au">
-						<img src="homepage/2013/styles/img/edpols2.png" width="66" height="26" alt="">
-						<br>Editorial
-						<br>Policies</a>
-					<p>
-						<a href="http://about.abc.net.au/how-the-abc-is-run/what-guides-us/abc-editorial-standards/" data-wt.z_ca="edpols" data-wt.z_dest="about.abc.net.au">About</a>
-						<a href="http://about.abc.net.au/blogs/" data-wt.z_ca="edpols" data-wt.z_dest="about.abc.net.au">Blog</a>
-					</p>
-				</div>
+					<div id="edpols">
+						<a href="http://about.abc.net.au/how-the-abc-is-run/what-guides-us/abc-editorial-standards/" data-wt.z_ca="edpols" data-wt.z_dest="about.abc.net.au">
+							<img src="homepage/2013/styles/img/edpols2.png" width="66" height="26" alt="">
+							<br>Editorial
+							<br>Policies</a>
+						<p>
+							<a href="http://about.abc.net.au/how-the-abc-is-run/what-guides-us/abc-editorial-standards/" data-wt.z_ca="edpols" data-wt.z_dest="about.abc.net.au">About</a>
+							<a href="http://about.abc.net.au/blogs/" data-wt.z_ca="edpols" data-wt.z_dest="about.abc.net.au">Blog</a>
+						</p>
+					</div>
 
-				<!-- <div id="weather" class="weather">
+					<!-- <div id="weather" class="weather">
 					<div id="weatherHasLocation" class="hasLocation" style="display: none;">
 						<div id="currentWeather" class="details">
 							<a href="#weatherForecast" class="openForecast" aria-controls="weatherForecast" title="" data-wt.z_ca="currentWeather" data-wt.z_dest="#weatherForecast">
@@ -145,904 +157,901 @@
 					</div>
 				</div> -->
 
-			</div>
-			<div id="subNav" aria-label="Secondary Navigation">
-				<ul role="presentation">
-					<li class="editable">
-						<a href="http://www.abc.net.au/local/">Local</a>
-					</li>
-					<li class="editable">
-						<a href="http://www.abc.net.au/news/science/">Science</a>
-					</li>
-					<li class="editable">
-						<a href="http://www.abc.net.au/news/health/">Health</a>
-					</li>
-					<li class="editable">
-						<a href="http://www.abc.net.au/triplej/">triple J</a>
-					</li>
-					<li class="editable">
-						<a href="http://www.abc.net.au/rn/">ABC RN</a>
-					</li>
-					<li class="editable">
-						<a href="http://www.abc.net.au/education/">Education</a>
-					</li>
-					<li id="editFavourites">
-						<a href="index.html#favourites" aria-controls="favourites">
-							<span>Edit </span>Favourite Topics</a>
-					</li>
-				</ul>
-			</div>
-			<div id="favourites" role="region" aria-hidden="true">
-				<div>
-
-					<p id="favouritesIntro">Choose your favourites
-						<span class="star"></span> from this selection to add to the menu bar above.
-						<span class="arrow"></span>
-					</p>
-					<div aria-label="Favourites">
-						<ul role="presentation">
-							<li class="arts" data-name="arts" data-href="http://www.abc.net.au/arts/">
-								<label>
-									<input type="checkbox" checked="checked" />Arts</label>
-							</li>
-							<li class="rampup" data-name="rampup" data-href="http://www.abc.net.au/rampup/">
-								<label>
-									<input type="checkbox" />Ramp Up</label>
-							</li>
-							<li class="splash" data-name="splash" data-href="http://www.abc.net.au/education/">
-								<label>
-									<input type="checkbox" />Education</label>
-							</li>
-							<li class="environment" data-name="environment" data-href="http://www.abc.net.au/environment/">
-								<label>
-									<input type="checkbox" />Environment</label>
-							</li>
-
-							<li class="health" data-name="health" data-href="http://www.abc.net.au/news/health/">
-								<label>
-									<input type="checkbox" />Health &amp; Wellbeing</label>
-							</li>
-							<li class="indigenous" data-name="indigenous" data-href="http://www.abc.net.au/indigenous/">
-								<label>
-									<input type="checkbox" />Indigenous</label>
-							</li>
-							<li class="religion" data-name="religion" data-href="http://www.abc.net.au/religion/">
-								<label>
-									<input type="checkbox" />Religion &amp; Ethics</label>
-							</li>
-							<li class="science" data-name="science" data-href="http://www.abc.net.au/news/science/">
-								<label>
-									<input type="checkbox" />Science</label>
-							</li>
-
-							<li class="sport" data-name="sport" data-href="http://www.abc.net.au/news/sport/">
-								<label>
-									<input type="checkbox" />Grandstand Sport</label>
-							</li>
-							<li class="technology" data-name="technology" data-href="http://www.abc.net.au/technology/">
-								<label>
-									<input type="checkbox" />Technology + Games</label>
-							</li>
-							<li class="open" data-name="open" data-href="https://open.abc.net.au/">
-								<label>
-									<input type="checkbox" />Open</label>
-							</li>
-							<li class="rural" data-name="rural" data-href="http://www.abc.net.au/rural/">
-								<label>
-									<input type="checkbox" />Rural</label>
-							</li>
-						</ul>
-
-						<h3>
-							<span>Radio Stations</span>
-							<span class="line">&nbsp;</span>
-						</h3>
-						<ul role="presentation">
-							<li class="triplej" data-name="triplej" data-href="http://www.abc.net.au/triplej/">
-								<label>
-									<input type="checkbox" />triple j</label>
-							</li>
-							<li class="radionational" data-name="radionational" data-href="http://www.abc.net.au/rn/">
-								<label>
-									<input type="checkbox" />ABC RN</label>
-							</li>
-							<li class="classic" data-name="classic" data-href="http://www.abc.net.au/classic/">
-								<label>
-									<input type="checkbox" />ABC Classic FM</label>
-							</li>
-							<li class="radioaustralia" data-name="radioaustralia" data-href="http://www.radioaustralia.net.au/">
-								<label>
-									<input type="checkbox" />Radio Australia</label>
-							</li>
-
-							<li class="triplejunearthed" data-name="triplejunearthed" data-href="http://www.triplejunearthed.com/">
-								<label>
-									<input type="checkbox" />triple j Unearthed</label>
-							</li>
-							<li class="abcdigmusic" data-name="abcdigmusic" data-href="http://doublej.net.au/">
-								<label>
-									<input type="checkbox" />Double J</label>
-							</li>
-							<li class="abccountry" data-name="abccountry" data-href="http://abccountry.net.au/">
-								<label>
-									<input type="checkbox" />ABC Country</label>
-							</li>
-							<li class="abcjazz" data-name="abcjazz" data-href="http://abcjazz.net.au/">
-								<label>
-									<input type="checkbox" />ABC Jazz</label>
-							</li>
-
-							<li class="newsradio" data-name="newsradio" data-href="http://www.abc.net.au/newsradio/">
-								<label>
-									<input type="checkbox" />NEWS on Radio</label>
-							</li>
-							<li class="localradio" data-name="localradio" data-href="http://www.abc.net.au/local/">
-								<label>
-									<input type="checkbox" />ABC Local Radio</label>
-							</li>
-							<li class="frequencyfinder" data-name="frequencyfinder" data-href="http://www.abc.net.au/radio/frequency-finder/">
-								<label>
-									<input type="checkbox" />Frequency Finder</label>
-							</li>
-							<li class="listenonline" data-name="listenonline" data-href="https://radio.abc.net.au/stations">
-								<label>
-									<input type="checkbox" />Listen Online</label>
-							</li>
-						</ul>
-
-						<h3>
-							<span>TV Channels</span>
-							<span class="line">&nbsp;</span>
-						</h3>
-						<ul role="presentation">
-							<li class="abc1" data-name="abc1" data-href="http://www.abc.net.au/tv/channels/abc.htm">
-								<label>
-									<input type="checkbox" />ABC TV</label>
-							</li>
-							<li class="abc2" data-name="abc2" data-href="http://www.abc.net.au/tv/channels/abc2.htm">
-								<label>
-									<input type="checkbox" />ABC Comedy</label>
-							</li>
-							<li class="abc3" data-name="abc3" data-href="http://www.abc.net.au/abc3/">
-								<label>
-									<input type="checkbox" />ABC3</label>
-							</li>
-							<li class="abc4kids" data-name="abc4kids" data-href="http://www.abc.net.au/abcforkids/">
-								<label>
-									<input type="checkbox" />ABC4Kids</label>
-							</li>
-
-							<li class="abcnews24" data-name="abcnews24" data-href="http://www.abc.net.au/news/abcnews24/">
-								<label>
-									<input type="checkbox" />NEWS Channel</label>
-							</li>
-							<li class="australianetwork" data-name="australiaplus" data-href="http://australiaplus.com/">
-								<label>
-									<input type="checkbox" />Australia Plus</label>
-							</li>
-							<li class="tvguide" data-name="tvguide" data-href="http://www.abc.net.au/tv/guide/">
-								<label>
-									<input type="checkbox" />TV Guide</label>
-							</li>
-							<li class="tvprograms" data-name="tvprograms" data-href="http://www.abc.net.au/tv/programs/">
-								<label>
-									<input type="checkbox" />TV Programs</label>
-							</li>
-						</ul>
-					</div>
-					<p id="favouritesButtons">
-						<a class="resetFavourites" href="index.html#favouritesButtons">Reset</a>
-						<a class="closeFavourites" href="index.html#favourites" aria-controls="favourites">Save &amp; close</a>
-					</p>
-
 				</div>
-			</div>
-
-		</div>
-
-		<div id="mainContent" class="abcContent">
-
-			<!-- no banner -->
-
-
-
-
-			<!--  #include virtual="${path_siteComponents}/hero.htm" -->
-			<div id="hero" class="abcRow section">
-				<div class="article" data-wallaceid="4793147" data-img-140="http://www.abc.net.au/news/image/5785172-3x2-140x93.jpg" data-img-220="http://www.abc.net.au/news/image/5785172-3x2-220x147.jpg"
-				 data-img-300="http://www.abc.net.au/news/image/5785172-3x2-300x200.jpg" data-img-460="http://www.abc.net.au/news/image/5785172-3x2-460x307.jpg">
-					<a href="http://www.abc.net.au/news/2018-01-23/centrelink-call-wait-times-balloon/9351450" data-itemposition="0" data-contentsource="news"
-					 data-contenttype="article" data-contentid="4793147">
-						<h3>Centrelink callers spending up to an hour on hold</h3>
-						<img class="img-460" src="homepage/images/5785172-3x2-460x307.jpg"
-						 alt="Centrelink sign (ABC News)">
-						<cite>AM</cite>
-						<p>Centrelink telephone wait times have ballooned, with people waiting more than an hour for help.</p>
-					</a>
-				</div>
-				<div class="article" data-wallaceid="4793149" data-img-140="http://www.abc.net.au/news/image/9351440-3x2-140x93.jpg" data-img-220="http://www.abc.net.au/news/image/9351440-3x2-220x147.jpg"
-				 data-img-300="http://www.abc.net.au/news/image/9351440-3x2-300x200.jpg">
-					<a href="http://www.abc.net.au/news/2018-01-23/us-senators-reach-deal-to-end-government-shutdown/9351438" data-itemposition="1"
-					 data-contentsource="news" data-contenttype="article" data-contentid="4793149">
-						<h3>US senators reach deal to end shutdown</h3>
-						<img class="img-300" src="homepage/images/9351440-3x2-300x200.jpg"
-						 alt="Senator Lindsey Graham speaks to the media ( AP: Pablo Martinez Monsivai)">
-						<cite>ABC News</cite>
-						<p>US senators have voted to move forward on legislation that would reopen the federal government.</p>
-					</a>
-				</div>
-				<div class="article" data-wallaceid="4793150" data-img-140="http://www.abc.net.au/news/image/9034628-3x2-140x93.jpg" data-img-220="http://www.abc.net.au/news/image/9034628-3x2-220x147.jpg"
-				 data-img-300="http://www.abc.net.au/news/image/9034628-3x2-300x200.jpg">
-					<a href="http://www.abc.net.au/news/2018-01-22/australian-housing-unaffordability-experts-disagree-on-extent/9349796"
-					 data-itemposition="2" data-contentsource="news" data-contenttype="article" data-contentid="4793150">
-						<h3>Australian property 'severely unaffordable'</h3>
-						<img class="img-300" src="homepage/images/9034628-3x2-300x200.jpg"
-						 alt="Property development in WA (Supplied: HHA Projections)">
-						<cite>ABC News</cite>
-						<p>Australian house prices are among the least affordable in the world, according to a new report.</p>
-					</a>
-				</div>
-
-
-			</div>
-
-			<div class="abcRow">
-				<div class="abcSpan6">
-					<div id="hero2" class="abcRow">
-						<div class="article abcSpan3" data-wallaceid="4793153" data-img-140="http://www.abc.net.au/news/image/9349632-3x2-140x93.jpg"
-						 data-img-220="http://www.abc.net.au/news/image/9349632-3x2-220x147.jpg">
-							<a href="http://www.abc.net.au/news/2018-01-22/killer-whales-live-up-to-name-in-bloodbath-off-wa-coast/9349544" data-itemposition="0"
-							 data-contentsource="news" data-contenttype="article" data-contentid="4793153">
-								<h3>Killer whales live up to name in bloodbath off WA</h3>
-								<img class="img-220" src="homepage/images/9349632-3x2-220x147.jpg" alt="Killer whales attack prey (Supplied: Kirsty Alexander)"
-								/>
-								<cite>ABC Great Southern</cite>
-								<p>What started as a tour like any other on WA's south coast quickly turned into a scene of slaughter.</p>
-							</a>
-						</div>
-						<div class="article abcSpan3" data-wallaceid="4792835" data-img-140="http://www.abc.net.au/news/image/9345920-3x2-140x93.jpg"
-						 data-img-220="http://www.abc.net.au/news/image/9345920-3x2-220x147.jpg">
-							<a href="http://www.abc.net.au/news/2018-01-21/lucy-barnard-one-year-30000km-attempt-world-record-walk-americas/9345860"
-							 data-itemposition="1" data-contentsource="news" data-contenttype="article" data-contentid="4792835">
-								<h3>Australian woman attempts to walk length of the world</h3>
-								<img class="img-220" src="homepage/images/9345920-3x2-220x147.jpg" alt="Lucy Barnard (Facebook)" />
-								<cite>ABC News</cite>
-								<p>Lucy Barnard is one year into her attempt to make a record-breaking walk from Argentina to Alaska.</p>
-							</a>
-						</div>
-						<div class="article abcSpan3" data-wallaceid="4792845" data-img-140="http://www.abc.net.au/news/image/9339386-3x2-140x93.jpg"
-						 data-img-220="http://www.abc.net.au/news/image/9339386-3x2-220x147.jpg">
-							<a href="http://www.abc.net.au/news/health/2018-01-21/set-aside-losing-weight-focus-on-healthy-behaviours/9345648" data-itemposition="2"
-							 data-contentsource="news" data-contenttype="article" data-contentid="4792845">
-								<h3>Forget losing weight and focus on healthy habits</h3>
-								<img class="img-220" src="homepage/images/9339386-3x2-220x147.jpg" alt="Feet on scales (Flickr: Alan Cleaver)"
-								/>
-								<cite>ABC Health</cite>
-								<p>Some experts say shifting the focus away from body size and onto behaviours would make us all healthier.</p>
-							</a>
-						</div>
-						<div class="article abcSpan3" data-wallaceid="4792851" data-img-140="http://www.abc.net.au/news/image/9344154-3x2-140x93.jpg"
-						 data-img-220="http://www.abc.net.au/news/image/9344154-3x2-220x147.jpg">
-							<a href="http://www.abc.net.au/news/2018-01-19/multigrain-wholegrain-wholemeal-which-bread-is-best/9343844" data-itemposition="3"
-							 data-contentsource="news" data-contenttype="article" data-contentid="4792851">
-								<h3>Which bread is best?</h3>
-								<img class="img-220" src="homepage/images/9344154-3x2-220x147.jpg" alt="Loaves of bread (Unsplash)" />
-								<cite>The Conversation</cite>
-								<p>With so many choices of bread available, how are we to know which is best for our health?</p>
-							</a>
-						</div>
-
-
-					</div>
-					<div class="abcRow justinRow">
-						<div class="abcSpan6 justinCol">
-
-							<div id="newsjustin" class="section justin layout-rows">
-								<h2>
-									<a href="http://www.abc.net.au/news/justin/">News Just In</a>
-								</h2>
-								<ul>
-									<li class="article" data-cmid="9351566" data-img-220="http://www.abc.net.au/news/image/9351582-4x3-220x165.jpg">
-										<a href="http://www.abc.net.au/news/2018-01-23/adelaide-strikers-jake-weatherald-ben-laughlin-incredible-catch/9351566">This Big Bash hanger is one of the best catches you'll ever see
-											<img class="img-140" src="homepage/images/9351582-3x2-140x93.jpg"
-											 alt="Jake Weatherald will get the credit, but his diving completion of the catch was only half the story.">
-											<span class="time">
-												<time class="updated" datetime="2018-01-23T08:40:25+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:40:25 +1100">Tue 23 Jan 2018, 8:40 am AEDT</time>
-											</span>
-											<p>Damien Fleming declared it "the greatest outfield catch ever taken" as a sprinting Ben Laughlin and a diving Jake&hellip;</p>
-										</a>
-									</li>
-									<li class="article" data-cmid="9351608" data-img-220="http://www.abc.net.au/news/image/9339070-4x3-220x165.jpg">
-										<a href="http://www.abc.net.au/news/2018-01-23/serbia-drug-accused-should-be-released2c-lawyer-says/9351608">Australia violated human rights of man held in Serbia over $500m drug haul, lawyer argues
-											<img class="img-140" src="homepage/images/9339070-3x2-140x93.jpg"
-											 alt="Police say Rohan Arnold and another Australian man were involved in a $500-million cocaine shipment.">
-											<span class="time">
-												<time class="updated" datetime="2018-01-23T08:35:54+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:35:54 +1100">Tue 23 Jan 2018, 8:35 am AEDT</time>
-											</span>
-											<p>One of the two Australian men detained in Serbia over alleged links to a major Sydney drug bust needs medical
-												care,&hellip;</p>
-										</a>
-									</li>
-									<li class="article noImage" data-cmid="9351506">
-										<a href="http://www.abc.net.au/news/2018-01-23/missing-girl-found-inside-school-bus/9351506">'Petrified' missing girl found trapped inside school bus, says mother
-											<span class="time">
-												<time class="updated" datetime="2018-01-23T08:26:02+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:26:02 +1100">Tue 23 Jan 2018, 8:26 am AEDT</time>
-											</span>
-											<p>A missing five-year-old Queensland child was found trapped and banging on the doors of a school bus, almost five
-												hours after she should have returned home from her first day back at school, her mother says.</p>
-										</a>
-									</li>
-									<li class="article noImage" data-cmid="9351552">
-										<a href="http://www.abc.net.au/news/2018-01-23/police-hunt-injured-men-after-carjackings-in-frankston/9351552">Woman dragged along road during 'reckless' carjackings
-											<span class="time">
-												<time class="updated" datetime="2018-01-23T08:16:49+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:16:49 +1100">Tue 23 Jan 2018, 8:16 am AEDT</time>
-											</span>
-											<p>Police search for "dangerous" injured men after an 18-year-old woman is dragged along the road during a series
-												of carjackings in south-east Melbourne.</p>
-										</a>
-									</li>
-
-
-								</ul>
-								<hr>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="abcSpan6">
-					<div class="abcRow">
-						<div id="abcPromo" class="abcSpan4">
-							<!-- Adspot: Homepage_main_300x250 -->
-							<noscript>
-
-								<a href="http://theoperahouseproject.com/">
-									<img src="homepage/images/operahouse_300x250.jpg" alt="The Opera House Project - What are the challenges of building an Australian icon?"
-									 width="300" height="250">
-								</a>
-
-							</noscript>
-						</div>
-						<div id="shopPromo" class="abcSpan2">
-						</div>
-					</div>
-					<div class="abcRow whatspopularRow">
-						<div class="abcSpan6">
-
-							<div id="whatspopular" class="whatspopular section">
-								<h2>What’s Popular</h2>
-								<div class="abcRow">
-									<div class="abcSpan3 mostwatched layout-blocklist">
-										<h3>Watched</h3>
-
-
-										<ol>
-
-											<li>
-												<a href="http://iview.abc.net.au/programs/back-roads/FA1627V007S00">
-													<strong>Watch</strong>
-													Back Roads
-													<cite>Pine Creek</cite>
-												</a>
-											</li>
-
-											<li>
-												<a href="http://iview.abc.net.au/programs/maigret/ZW0911A001S00">
-													<strong>Watch</strong>
-													Maigret
-													<cite>Series 1</cite>
-												</a>
-											</li>
-
-											<li>
-												<a href="http://iview.abc.net.au/programs/foreign-correspondent/NC1702H027S00">
-													<strong>Watch</strong>
-													Foreign Correspondent
-													<cite>Redneck Revolt</cite>
-												</a>
-											</li>
-
-										</ol>
-
-
-									</div>
-									<div class="abcSpan3 mostlistened layout-blocklist">
-										<h3>Listened to</h3>
-
-
-										<ol>
-
-											<li>
-												<a href="http://www.abc.net.au/triplej/programs/hack/aziz-yes-consent/9343004">
-													<strong>Listen</strong>
-													The movement towards yes means yes
-													<cite>triple j</cite>
-												</a>
-											</li>
-
-											<li>
-												<a href="http://www.abc.net.au/news/2018-01-18/the-first-vending-machine-dispensed-holy-water-not-coke/9323380">
-													<strong>Listen</strong>
-													The first vending machine dispensed holy water
-													<cite>RN</cite>
-												</a>
-											</li>
-
-											<li>
-												<a href="http://doublej.net.au/news/features/foo-fighters-do-the-damndest-things">
-													<strong>Listen</strong>
-													The Foo Fighters do the darndest things
-													<cite>Double J</cite>
-												</a>
-											</li>
-
-										</ol>
-
-
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<div class="abcSpan6">
-
-							<div id="dontmiss" class="section dontmiss layout-cards">
-								<h2>Don’t Miss</h2>
-								<div class="abcRow">
-									<!-- 2 x abcSpan3 article -->
-
-
-									<div class="article abcSpan3" data-wallaceid="3914015">
-										<a href="http://www.abc.net.au/tv/programs/australian-of-the-year-2018/">
-											<h3>Australian Of The Year 2018</h3>
-											<div>
-												<img src="homepage/images/dontmiss_2018_aoty.jpg" alt="Don't Miss" />
-												<cite>ABC</cite>
-												<span class="time">Thursday
-													<br>7.30pm</span>
-											</div>
-											<p>The awards celebrate Australians making significant contributions to their communities and the Nation.</p>
-										</a>
-									</div>
-
-
-
-
-									<div class="article abcSpan3" data-wallaceid="4158704">
-										<a href="http://www.abc.net.au/radio/programs/howzat/episodes/">
-											<h3>Howzat</h3>
-											<div>
-												<img src="homepage/images/howzat_m2336867.jpg" alt="Howzat" />
-												<cite>ABC Radio</cite>
-												<span class="time">SUBSCRIBE
-													<br>NOW</span>
-											</div>
-											<p>Digging deeper into sporting vernacular, to discover the stories behind sporting jargon.</p>
-										</a>
-									</div>
-
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="abcRow">
-						<div class="abcSpan6 smallFollowButtons">
-							<div id="follow" class="follow section">
-								<h2>Follow the ABC</h2>
-								<ul class="abcRow">
-
-									<li class="abcSpan3">
-										<a class="facebook" href="https://www.facebook.com/abc">Follow us on Facebook</a>
-									</li>
-
-									<li class="abcSpan3">
-										<a class="twitter" href="https://twitter.com/abcaustralia/">Follow us on Twitter</a>
-									</li>
-
-									<li class="abcSpan3">
-										<a class="googleplus" href="https://plus.google.com/+ABC/posts">Follow us on Google+</a>
-									</li>
-
-									<li class="abcSpan3">
-										<a class="youtube" href="https://www.youtube.com/user/abcaustralia">Follow us on YouTube</a>
-									</li>
-
-								</ul>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div id="local" class="section local">
-				<h2>Local News</h2>
-				<div class="hasLocation">
-					<ul>
-						<li class="yourLocation">Your Location:
-							<strong></strong>
-							<a href="#setLocation" class="change">Change</a>
+				<div id="subNav" aria-label="Secondary Navigation">
+					<ul role="presentation">
+						<li class="editable">
+							<a href="http://www.abc.net.au/local/">Local</a>
 						</li>
-						<li class="localRadio">Local Radio:
-							<a href="/local/"></a>
+						<li class="editable">
+							<a href="http://www.abc.net.au/news/science/">Science</a>
 						</li>
-						<li class="localMore"></li>
-						<li class="localOpen">
-							<a href="https://open.abc.net.au/openregions">
-								<b>ABC Open</b> - Stories from your Area</a>
+						<li class="editable">
+							<a href="http://www.abc.net.au/news/health/">Health</a>
+						</li>
+						<li class="editable">
+							<a href="http://www.abc.net.au/triplej/">triple J</a>
+						</li>
+						<li class="editable">
+							<a href="http://www.abc.net.au/rn/">ABC RN</a>
+						</li>
+						<li class="editable">
+							<a href="http://www.abc.net.au/education/">Education</a>
+						</li>
+						<li id="editFavourites">
+							<a href="index.html#favourites" aria-controls="favourites">
+								<span>Edit </span>Favourite Topics</a>
 						</li>
 					</ul>
-					<div class="article"></div>
+				</div>
+				<div id="favourites" role="region" aria-hidden="true">
+					<div>
+
+						<p id="favouritesIntro">Choose your favourites
+							<span class="star"></span> from this selection to add to the menu bar above.
+							<span class="arrow"></span>
+						</p>
+						<div aria-label="Favourites">
+							<ul role="presentation">
+								<li class="arts" data-name="arts" data-href="http://www.abc.net.au/arts/">
+									<label>
+										<input type="checkbox" checked="checked" />Arts</label>
+								</li>
+								<li class="rampup" data-name="rampup" data-href="http://www.abc.net.au/rampup/">
+									<label>
+										<input type="checkbox" />Ramp Up</label>
+								</li>
+								<li class="splash" data-name="splash" data-href="http://www.abc.net.au/education/">
+									<label>
+										<input type="checkbox" />Education</label>
+								</li>
+								<li class="environment" data-name="environment" data-href="http://www.abc.net.au/environment/">
+									<label>
+										<input type="checkbox" />Environment</label>
+								</li>
+
+								<li class="health" data-name="health" data-href="http://www.abc.net.au/news/health/">
+									<label>
+										<input type="checkbox" />Health &amp; Wellbeing</label>
+								</li>
+								<li class="indigenous" data-name="indigenous" data-href="http://www.abc.net.au/indigenous/">
+									<label>
+										<input type="checkbox" />Indigenous</label>
+								</li>
+								<li class="religion" data-name="religion" data-href="http://www.abc.net.au/religion/">
+									<label>
+										<input type="checkbox" />Religion &amp; Ethics</label>
+								</li>
+								<li class="science" data-name="science" data-href="http://www.abc.net.au/news/science/">
+									<label>
+										<input type="checkbox" />Science</label>
+								</li>
+
+								<li class="sport" data-name="sport" data-href="http://www.abc.net.au/news/sport/">
+									<label>
+										<input type="checkbox" />Grandstand Sport</label>
+								</li>
+								<li class="technology" data-name="technology" data-href="http://www.abc.net.au/technology/">
+									<label>
+										<input type="checkbox" />Technology + Games</label>
+								</li>
+								<li class="open" data-name="open" data-href="https://open.abc.net.au/">
+									<label>
+										<input type="checkbox" />Open</label>
+								</li>
+								<li class="rural" data-name="rural" data-href="http://www.abc.net.au/rural/">
+									<label>
+										<input type="checkbox" />Rural</label>
+								</li>
+							</ul>
+
+							<h3>
+								<span>Radio Stations</span>
+								<span class="line">&nbsp;</span>
+							</h3>
+							<ul role="presentation">
+								<li class="triplej" data-name="triplej" data-href="http://www.abc.net.au/triplej/">
+									<label>
+										<input type="checkbox" />triple j</label>
+								</li>
+								<li class="radionational" data-name="radionational" data-href="http://www.abc.net.au/rn/">
+									<label>
+										<input type="checkbox" />ABC RN</label>
+								</li>
+								<li class="classic" data-name="classic" data-href="http://www.abc.net.au/classic/">
+									<label>
+										<input type="checkbox" />ABC Classic FM</label>
+								</li>
+								<li class="radioaustralia" data-name="radioaustralia" data-href="http://www.radioaustralia.net.au/">
+									<label>
+										<input type="checkbox" />Radio Australia</label>
+								</li>
+
+								<li class="triplejunearthed" data-name="triplejunearthed" data-href="http://www.triplejunearthed.com/">
+									<label>
+										<input type="checkbox" />triple j Unearthed</label>
+								</li>
+								<li class="abcdigmusic" data-name="abcdigmusic" data-href="http://doublej.net.au/">
+									<label>
+										<input type="checkbox" />Double J</label>
+								</li>
+								<li class="abccountry" data-name="abccountry" data-href="http://abccountry.net.au/">
+									<label>
+										<input type="checkbox" />ABC Country</label>
+								</li>
+								<li class="abcjazz" data-name="abcjazz" data-href="http://abcjazz.net.au/">
+									<label>
+										<input type="checkbox" />ABC Jazz</label>
+								</li>
+
+								<li class="newsradio" data-name="newsradio" data-href="http://www.abc.net.au/newsradio/">
+									<label>
+										<input type="checkbox" />NEWS on Radio</label>
+								</li>
+								<li class="localradio" data-name="localradio" data-href="http://www.abc.net.au/local/">
+									<label>
+										<input type="checkbox" />ABC Local Radio</label>
+								</li>
+								<li class="frequencyfinder" data-name="frequencyfinder" data-href="http://www.abc.net.au/radio/frequency-finder/">
+									<label>
+										<input type="checkbox" />Frequency Finder</label>
+								</li>
+								<li class="listenonline" data-name="listenonline" data-href="https://radio.abc.net.au/stations">
+									<label>
+										<input type="checkbox" />Listen Online</label>
+								</li>
+							</ul>
+
+							<h3>
+								<span>TV Channels</span>
+								<span class="line">&nbsp;</span>
+							</h3>
+							<ul role="presentation">
+								<li class="abc1" data-name="abc1" data-href="http://www.abc.net.au/tv/channels/abc.htm">
+									<label>
+										<input type="checkbox" />ABC TV</label>
+								</li>
+								<li class="abc2" data-name="abc2" data-href="http://www.abc.net.au/tv/channels/abc2.htm">
+									<label>
+										<input type="checkbox" />ABC Comedy</label>
+								</li>
+								<li class="abc3" data-name="abc3" data-href="http://www.abc.net.au/abc3/">
+									<label>
+										<input type="checkbox" />ABC3</label>
+								</li>
+								<li class="abc4kids" data-name="abc4kids" data-href="http://www.abc.net.au/abcforkids/">
+									<label>
+										<input type="checkbox" />ABC4Kids</label>
+								</li>
+
+								<li class="abcnews24" data-name="abcnews24" data-href="http://www.abc.net.au/news/abcnews24/">
+									<label>
+										<input type="checkbox" />NEWS Channel</label>
+								</li>
+								<li class="australianetwork" data-name="australiaplus" data-href="http://australiaplus.com/">
+									<label>
+										<input type="checkbox" />Australia Plus</label>
+								</li>
+								<li class="tvguide" data-name="tvguide" data-href="http://www.abc.net.au/tv/guide/">
+									<label>
+										<input type="checkbox" />TV Guide</label>
+								</li>
+								<li class="tvprograms" data-name="tvprograms" data-href="http://www.abc.net.au/tv/programs/">
+									<label>
+										<input type="checkbox" />TV Programs</label>
+								</li>
+							</ul>
+						</div>
+						<p id="favouritesButtons">
+							<a class="resetFavourites" href="index.html#favouritesButtons">Reset</a>
+							<a class="closeFavourites" href="index.html#favourites" aria-controls="favourites">Save &amp; close</a>
+						</p>
+
+					</div>
 				</div>
 
-				<div class="noLocation">
-					<a href="#setLocation" class="js">
-						<!-- h3>Your Location</h3 -->
-						<p>See your local news here</p>
-					</a>
-					<a href="/local/" class="noJS">
-						<!-- h3>Your Location</h3 -->
-						<p>Local News</p>
-					</a>
+			</div>
+
+			<div id="mainContent" class="abcContent">
+
+				<!-- no banner -->
+
+
+
+
+				<!--  #include virtual="${path_siteComponents}/hero.htm" -->
+				<div id="hero" class="abcRow section">
+					<div class="article" data-wallaceid="4793147" data-img-140="http://www.abc.net.au/news/image/5785172-3x2-140x93.jpg" data-img-220="http://www.abc.net.au/news/image/5785172-3x2-220x147.jpg"
+					 data-img-300="http://www.abc.net.au/news/image/5785172-3x2-300x200.jpg" data-img-460="http://www.abc.net.au/news/image/5785172-3x2-460x307.jpg">
+						<a href="http://www.abc.net.au/news/2018-01-23/centrelink-call-wait-times-balloon/9351450" data-itemposition="0" data-contentsource="news"
+						 data-contenttype="article" data-contentid="4793147">
+							<h3>Centrelink callers spending up to an hour on hold</h3>
+							<img class="img-460" src="homepage/images/5785172-3x2-460x307.jpg" alt="Centrelink sign (ABC News)">
+							<cite>AM</cite>
+							<p>Centrelink telephone wait times have ballooned, with people waiting more than an hour for help.</p>
+						</a>
+					</div>
+					<div class="article" data-wallaceid="4793149" data-img-140="http://www.abc.net.au/news/image/9351440-3x2-140x93.jpg" data-img-220="http://www.abc.net.au/news/image/9351440-3x2-220x147.jpg"
+					 data-img-300="http://www.abc.net.au/news/image/9351440-3x2-300x200.jpg">
+						<a href="http://www.abc.net.au/news/2018-01-23/us-senators-reach-deal-to-end-government-shutdown/9351438" data-itemposition="1"
+						 data-contentsource="news" data-contenttype="article" data-contentid="4793149">
+							<h3>US senators reach deal to end shutdown</h3>
+							<img class="img-300" src="homepage/images/9351440-3x2-300x200.jpg" alt="Senator Lindsey Graham speaks to the media ( AP: Pablo Martinez Monsivai)">
+							<cite>ABC News</cite>
+							<p>US senators have voted to move forward on legislation that would reopen the federal government.</p>
+						</a>
+					</div>
+					<div class="article" data-wallaceid="4793150" data-img-140="http://www.abc.net.au/news/image/9034628-3x2-140x93.jpg" data-img-220="http://www.abc.net.au/news/image/9034628-3x2-220x147.jpg"
+					 data-img-300="http://www.abc.net.au/news/image/9034628-3x2-300x200.jpg">
+						<a href="http://www.abc.net.au/news/2018-01-22/australian-housing-unaffordability-experts-disagree-on-extent/9349796" data-itemposition="2"
+						 data-contentsource="news" data-contenttype="article" data-contentid="4793150">
+							<h3>Australian property 'severely unaffordable'</h3>
+							<img class="img-300" src="homepage/images/9034628-3x2-300x200.jpg" alt="Property development in WA (Supplied: HHA Projections)">
+							<cite>ABC News</cite>
+							<p>Australian house prices are among the least affordable in the world, according to a new report.</p>
+						</a>
+					</div>
+
+
 				</div>
 
-				<div class="locationError">
-					<a href="#setLocation">
-						<!-- h3>Your Location</h3 -->
-						<p class="error">There was an error getting your local news data.</p>
-					</a>
+				<div class="abcRow">
+					<div class="abcSpan6">
+						<div id="hero2" class="abcRow">
+							<div class="article abcSpan3" data-wallaceid="4793153" data-img-140="http://www.abc.net.au/news/image/9349632-3x2-140x93.jpg"
+							 data-img-220="http://www.abc.net.au/news/image/9349632-3x2-220x147.jpg">
+								<a href="http://www.abc.net.au/news/2018-01-22/killer-whales-live-up-to-name-in-bloodbath-off-wa-coast/9349544" data-itemposition="0"
+								 data-contentsource="news" data-contenttype="article" data-contentid="4793153">
+									<h3>Killer whales live up to name in bloodbath off WA</h3>
+									<img class="img-220" src="homepage/images/9349632-3x2-220x147.jpg" alt="Killer whales attack prey (Supplied: Kirsty Alexander)"
+									/>
+									<cite>ABC Great Southern</cite>
+									<p>What started as a tour like any other on WA's south coast quickly turned into a scene of slaughter.</p>
+								</a>
+							</div>
+							<div class="article abcSpan3" data-wallaceid="4792835" data-img-140="http://www.abc.net.au/news/image/9345920-3x2-140x93.jpg"
+							 data-img-220="http://www.abc.net.au/news/image/9345920-3x2-220x147.jpg">
+								<a href="http://www.abc.net.au/news/2018-01-21/lucy-barnard-one-year-30000km-attempt-world-record-walk-americas/9345860"
+								 data-itemposition="1" data-contentsource="news" data-contenttype="article" data-contentid="4792835">
+									<h3>Australian woman attempts to walk length of the world</h3>
+									<img class="img-220" src="homepage/images/9345920-3x2-220x147.jpg" alt="Lucy Barnard (Facebook)" />
+									<cite>ABC News</cite>
+									<p>Lucy Barnard is one year into her attempt to make a record-breaking walk from Argentina to Alaska.</p>
+								</a>
+							</div>
+							<div class="article abcSpan3" data-wallaceid="4792845" data-img-140="http://www.abc.net.au/news/image/9339386-3x2-140x93.jpg"
+							 data-img-220="http://www.abc.net.au/news/image/9339386-3x2-220x147.jpg">
+								<a href="http://www.abc.net.au/news/health/2018-01-21/set-aside-losing-weight-focus-on-healthy-behaviours/9345648" data-itemposition="2"
+								 data-contentsource="news" data-contenttype="article" data-contentid="4792845">
+									<h3>Forget losing weight and focus on healthy habits</h3>
+									<img class="img-220" src="homepage/images/9339386-3x2-220x147.jpg" alt="Feet on scales (Flickr: Alan Cleaver)" />
+									<cite>ABC Health</cite>
+									<p>Some experts say shifting the focus away from body size and onto behaviours would make us all healthier.</p>
+								</a>
+							</div>
+							<div class="article abcSpan3" data-wallaceid="4792851" data-img-140="http://www.abc.net.au/news/image/9344154-3x2-140x93.jpg"
+							 data-img-220="http://www.abc.net.au/news/image/9344154-3x2-220x147.jpg">
+								<a href="http://www.abc.net.au/news/2018-01-19/multigrain-wholegrain-wholemeal-which-bread-is-best/9343844" data-itemposition="3"
+								 data-contentsource="news" data-contenttype="article" data-contentid="4792851">
+									<h3>Which bread is best?</h3>
+									<img class="img-220" src="homepage/images/9344154-3x2-220x147.jpg" alt="Loaves of bread (Unsplash)" />
+									<cite>The Conversation</cite>
+									<p>With so many choices of bread available, how are we to know which is best for our health?</p>
+								</a>
+							</div>
+
+
+						</div>
+						<div class="abcRow justinRow">
+							<div class="abcSpan6 justinCol">
+
+								<div id="newsjustin" class="section justin layout-rows">
+									<h2>
+										<a href="http://www.abc.net.au/news/justin/">News Just In</a>
+									</h2>
+									<ul>
+										<li class="article" data-cmid="9351566" data-img-220="http://www.abc.net.au/news/image/9351582-4x3-220x165.jpg">
+											<a href="http://www.abc.net.au/news/2018-01-23/adelaide-strikers-jake-weatherald-ben-laughlin-incredible-catch/9351566">This Big Bash hanger is one of the best catches you'll ever see
+												<img class="img-140" src="homepage/images/9351582-3x2-140x93.jpg" alt="Jake Weatherald will get the credit, but his diving completion of the catch was only half the story.">
+												<span class="time">
+													<time class="updated" datetime="2018-01-23T08:40:25+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:40:25 +1100">Tue 23 Jan 2018, 8:40 am AEDT</time>
+												</span>
+												<p>Damien Fleming declared it "the greatest outfield catch ever taken" as a sprinting Ben Laughlin and a diving
+													Jake&hellip;
+												</p>
+											</a>
+										</li>
+										<li class="article" data-cmid="9351608" data-img-220="http://www.abc.net.au/news/image/9339070-4x3-220x165.jpg">
+											<a href="http://www.abc.net.au/news/2018-01-23/serbia-drug-accused-should-be-released2c-lawyer-says/9351608">Australia violated human rights of man held in Serbia over $500m drug haul, lawyer argues
+												<img class="img-140" src="homepage/images/9339070-3x2-140x93.jpg" alt="Police say Rohan Arnold and another Australian man were involved in a $500-million cocaine shipment.">
+												<span class="time">
+													<time class="updated" datetime="2018-01-23T08:35:54+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:35:54 +1100">Tue 23 Jan 2018, 8:35 am AEDT</time>
+												</span>
+												<p>One of the two Australian men detained in Serbia over alleged links to a major Sydney drug bust needs medical
+													care,&hellip;
+												</p>
+											</a>
+										</li>
+										<li class="article noImage" data-cmid="9351506">
+											<a href="http://www.abc.net.au/news/2018-01-23/missing-girl-found-inside-school-bus/9351506">'Petrified' missing girl found trapped inside school bus, says mother
+												<span class="time">
+													<time class="updated" datetime="2018-01-23T08:26:02+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:26:02 +1100">Tue 23 Jan 2018, 8:26 am AEDT</time>
+												</span>
+												<p>A missing five-year-old Queensland child was found trapped and banging on the doors of a school bus, almost five
+													hours after she should have returned home from her first day back at school, her mother says.</p>
+											</a>
+										</li>
+										<li class="article noImage" data-cmid="9351552">
+											<a href="http://www.abc.net.au/news/2018-01-23/police-hunt-injured-men-after-carjackings-in-frankston/9351552">Woman dragged along road during 'reckless' carjackings
+												<span class="time">
+													<time class="updated" datetime="2018-01-23T08:16:49+11:00" data-datetimeRFC2822="Tue, 23 Jan 2018 08:16:49 +1100">Tue 23 Jan 2018, 8:16 am AEDT</time>
+												</span>
+												<p>Police search for "dangerous" injured men after an 18-year-old woman is dragged along the road during a series
+													of carjackings in south-east Melbourne.</p>
+											</a>
+										</li>
+
+
+									</ul>
+									<hr>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="abcSpan6">
+						<div class="abcRow">
+							<div id="abcPromo" class="abcSpan4">
+								<!-- Adspot: Homepage_main_300x250 -->
+								<noscript>
+
+									<a href="http://theoperahouseproject.com/">
+										<img src="homepage/images/operahouse_300x250.jpg" alt="The Opera House Project - What are the challenges of building an Australian icon?"
+										 width="300" height="250">
+									</a>
+
+								</noscript>
+							</div>
+							<div id="shopPromo" class="abcSpan2">
+							</div>
+						</div>
+						<div class="abcRow whatspopularRow">
+							<div class="abcSpan6">
+
+								<div id="whatspopular" class="whatspopular section">
+									<h2>What’s Popular</h2>
+									<div class="abcRow">
+										<div class="abcSpan3 mostwatched layout-blocklist">
+											<h3>Watched</h3>
+
+
+											<ol>
+
+												<li>
+													<a href="http://iview.abc.net.au/programs/back-roads/FA1627V007S00">
+														<strong>Watch</strong>
+														Back Roads
+														<cite>Pine Creek</cite>
+													</a>
+												</li>
+
+												<li>
+													<a href="http://iview.abc.net.au/programs/maigret/ZW0911A001S00">
+														<strong>Watch</strong>
+														Maigret
+														<cite>Series 1</cite>
+													</a>
+												</li>
+
+												<li>
+													<a href="http://iview.abc.net.au/programs/foreign-correspondent/NC1702H027S00">
+														<strong>Watch</strong>
+														Foreign Correspondent
+														<cite>Redneck Revolt</cite>
+													</a>
+												</li>
+
+											</ol>
+
+
+										</div>
+										<div class="abcSpan3 mostlistened layout-blocklist">
+											<h3>Listened to</h3>
+
+
+											<ol>
+
+												<li>
+													<a href="http://www.abc.net.au/triplej/programs/hack/aziz-yes-consent/9343004">
+														<strong>Listen</strong>
+														The movement towards yes means yes
+														<cite>triple j</cite>
+													</a>
+												</li>
+
+												<li>
+													<a href="http://www.abc.net.au/news/2018-01-18/the-first-vending-machine-dispensed-holy-water-not-coke/9323380">
+														<strong>Listen</strong>
+														The first vending machine dispensed holy water
+														<cite>RN</cite>
+													</a>
+												</li>
+
+												<li>
+													<a href="http://doublej.net.au/news/features/foo-fighters-do-the-damndest-things">
+														<strong>Listen</strong>
+														The Foo Fighters do the darndest things
+														<cite>Double J</cite>
+													</a>
+												</li>
+
+											</ol>
+
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="abcSpan6">
+
+								<div id="dontmiss" class="section dontmiss layout-cards">
+									<h2>Don’t Miss</h2>
+									<div class="abcRow">
+										<!-- 2 x abcSpan3 article -->
+
+
+										<div class="article abcSpan3" data-wallaceid="3914015">
+											<a href="http://www.abc.net.au/tv/programs/australian-of-the-year-2018/">
+												<h3>Australian Of The Year 2018</h3>
+												<div>
+													<img src="homepage/images/dontmiss_2018_aoty.jpg" alt="Don't Miss" />
+													<cite>ABC</cite>
+													<span class="time">Thursday
+														<br>7.30pm</span>
+												</div>
+												<p>The awards celebrate Australians making significant contributions to their communities and the Nation.</p>
+											</a>
+										</div>
+
+
+
+
+										<div class="article abcSpan3" data-wallaceid="4158704">
+											<a href="http://www.abc.net.au/radio/programs/howzat/episodes/">
+												<h3>Howzat</h3>
+												<div>
+													<img src="homepage/images/howzat_m2336867.jpg" alt="Howzat" />
+													<cite>ABC Radio</cite>
+													<span class="time">SUBSCRIBE
+														<br>NOW</span>
+												</div>
+												<p>Digging deeper into sporting vernacular, to discover the stories behind sporting jargon.</p>
+											</a>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="abcRow">
+							<div class="abcSpan6 smallFollowButtons">
+								<div id="follow" class="follow section">
+									<h2>Follow the ABC</h2>
+									<ul class="abcRow">
+
+										<li class="abcSpan3">
+											<a class="facebook" href="https://www.facebook.com/abc">Follow us on Facebook</a>
+										</li>
+
+										<li class="abcSpan3">
+											<a class="twitter" href="https://twitter.com/abcaustralia/">Follow us on Twitter</a>
+										</li>
+
+										<li class="abcSpan3">
+											<a class="googleplus" href="https://plus.google.com/+ABC/posts">Follow us on Google+</a>
+										</li>
+
+										<li class="abcSpan3">
+											<a class="youtube" href="https://www.youtube.com/user/abcaustralia">Follow us on YouTube</a>
+										</li>
+
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="local" class="section local">
+					<h2>Local News</h2>
+					<div class="hasLocation">
+						<ul>
+							<li class="yourLocation">Your Location:
+								<strong></strong>
+								<a href="#setLocation" class="change">Change</a>
+							</li>
+							<li class="localRadio">Local Radio:
+								<a href="/local/"></a>
+							</li>
+							<li class="localMore"></li>
+							<li class="localOpen">
+								<a href="https://open.abc.net.au/openregions">
+									<b>ABC Open</b> - Stories from your Area</a>
+							</li>
+						</ul>
+						<div class="article"></div>
+					</div>
+
+					<div class="noLocation">
+						<a href="#setLocation" class="js">
+							<!-- h3>Your Location</h3 -->
+							<p>See your local news here</p>
+						</a>
+						<a href="/local/" class="noJS">
+							<!-- h3>Your Location</h3 -->
+							<p>Local News</p>
+						</a>
+					</div>
+
+					<div class="locationError">
+						<a href="#setLocation">
+							<!-- h3>Your Location</h3 -->
+							<p class="error">There was an error getting your local news data.</p>
+						</a>
+					</div>
+				</div>
+
+				<div id="ourpicks" class="ourpicks section layout-tiles">
+					<p id="announcement" class="announcement">
+						<a href="http://www.abc.net.au/triplej/programs/hack/">
+							<b>triple j Hack</b>: The stuff that matters to young Australians &gt; </a>
+					</p>
+
+
+					<h2>Our Picks</h2>
+					<div class="abcRow">
+						<!-- 3 x abcSpan4 articles -->
+						<div class="article abcSpan4" data-wallaceid="4792831" data-img-140="http://www.abc.net.au/radionational/image/9345658-3x2-140x93.jpg"
+						 data-img-220="http://www.abc.net.au/radionational/image/9345658-3x2-220x147.jpg" data-img-300="http://www.abc.net.au/radionational/image/9345658-3x2-300x200.jpg">
+							<a href="http://www.abc.net.au/news/2018-01-20/esperance-instagram-tourism-boom/9345614" data-itemposition="0" data-contentsource="news"
+							 data-contenttype="article" data-contentid="4792831">
+								<h3>Instagram discovers the remote town with the 'world's best beaches'</h3>
+								<img class="img-300" src="homepage/images/9345658-3x2-300x200.jpg" alt="Esperance is Instagram famous (Instagram: Salty Wings)"
+								/>
+								<cite>ABC News</cite>
+								<p>Thanks to the quest for the perfect social media photograph, the world has uncovered Australia's best kept secret.</p>
+							</a>
+						</div>
+						<div class="article abcSpan4" data-wallaceid="4792816" data-img-140="http://www.abc.net.au/radionational/image/6029518-3x2-140x93.jpg"
+						 data-img-220="http://www.abc.net.au/radionational/image/6029518-3x2-220x147.jpg" data-img-300="http://www.abc.net.au/radionational/image/6029518-3x2-300x200.jpg">
+							<a href="http://www.abc.net.au/news/2018-01-22/the-belief-behind-a-rising-number-of-murders-in-png/9347018" data-itemposition="1"
+							 data-contentsource="news" data-contenttype="article" data-contentid="4792816">
+								<h3>The 'black magic' belief behind a rising number of murders in PNG</h3>
+								<img class="img-300" src="homepage/images/6029518-3x2-300x200.jpg" alt="Community groups have been trying to combat belief in sanguma for years (Supplied: Seeds Theatre Group (file photo))"
+								/>
+								<cite>Pacific Beat</cite>
+								<p>A growing number of Papua New Guineans are being murdered or tortured after being accused of black magic or sorcery.</p>
+							</a>
+						</div>
+						<div class="article abcSpan4" data-wallaceid="4792812" data-img-140="http://www.abc.net.au/radionational/image/9338818-3x2-140x93.jpg"
+						 data-img-220="http://www.abc.net.au/radionational/image/9338818-3x2-220x147.jpg" data-img-300="http://www.abc.net.au/radionational/image/9338818-3x2-300x200.jpg">
+							<a href="http://www.abc.net.au/news/2018-01-20/centenary-1918-cyclone-100-year-mackay-30-people-dead-category-4/9313774"
+							 data-itemposition="2" data-contentsource="news" data-contenttype="article" data-contentid="4792812">
+								<h3>The cyclone without a name that killed 30 people a century ago</h3>
+								<img class="img-300" src="homepage/images/9338818-3x2-300x200.jpg" alt="The cyclone hit on the evening of Sunday, January 20 (Supplied: Mackay Regional Council)"
+								/>
+								<cite>ABC Tropical North</cite>
+								<p>Mackay marks the centenary of a destructive, unnamed cyclone, which all but flattened the Queensland town.</p>
+							</a>
+						</div>
+
+
+					</div>
+					<div class="abcRow">
+						<!-- 4 x abcSpan3 articles -->
+						<div class="article abcSpan3" data-wallaceid="4792837" data-img-140="http://www.abc.net.au/radionational/image/9335476-3x2-140x93.jpg"
+						 data-img-220="http://www.abc.net.au/radionational/image/9335476-3x2-220x147.jpg">
+							<a href="http://www.abc.net.au/news/2018-01-21/native-honeybees-provide-popular-bush-tucker/9333278" data-itemposition="0"
+							 data-contentsource="news" data-contenttype="article" data-contentid="4792837">
+								<h3>On the hunt for sugarbag bee honey in outback QLD</h3>
+								<img class="img-220" src="homepage/images/9335476-3x2-220x147.jpg" alt="Indigenous Australians have been harvesting food from the bush for thousands of years (ABC News)"
+								/>
+								<cite>ABC North West QLD</cite>
+								<p>Sugarbag honey comes from native Australian bees, and is a popular form of bush tucker.</p>
+							</a>
+						</div>
+						<div class="article abcSpan3" data-wallaceid="4792820" data-img-140="http://www.abc.net.au/radionational/image/9324436-3x2-140x93.jpg"
+						 data-img-220="http://www.abc.net.au/radionational/image/9324436-3x2-220x147.jpg">
+							<a href="http://www.abc.net.au/news/2018-01-22/girl-power-empowering-women-pilbara-back-roads/9311000" data-itemposition="1"
+							 data-contentsource="news" data-contenttype="article" data-contentid="4792820">
+								<h3>Girl power a driving force in the Pilbara</h3>
+								<img class="img-220" src="homepage/images/9324436-3x2-220x147.jpg" alt="Women make their mark in the Pilbara, driving pink trucks (Trasko Industrial Photographics)"
+								/>
+								<cite>Back Roads</cite>
+								<p>Women in remote parts of Australia are leading the way in transforming industries post-mining boom.</p>
+							</a>
+						</div>
+						<div class="article abcSpan3" data-wallaceid="4792813" data-img-140="http://www.abc.net.au/radionational/image/9157296-3x2-140x93.jpg"
+						 data-img-220="http://www.abc.net.au/radionational/image/9157296-3x2-220x147.jpg">
+							<a href="http://www.abc.net.au/radionational/programs/blueprintforliving/iconic-designs:-the-band-aid/9224524" data-itemposition="2"
+							 data-contentsource="wallace" data-contenttype="article" data-contentid="4792813">
+								<h3>Iconic designs: The Band-Aid</h3>
+								<img class="img-220" src="homepage/images/9157296-3x2-220x147.jpg" alt="Iconic designs: The Band-Aid (Flickr/Link to larger image./CC BY-NC 2.0)"
+								/>
+								<cite>Blueprint for Living</cite>
+								<p>Discover how a temporary solution to domestic clumsiness became an enduring palliative.</p>
+							</a>
+						</div>
+						<div class="article abcSpan3" data-wallaceid="4792803" data-img-140="http://www.abc.net.au/radionational/image/9345944-3x2-140x93.jpg"
+						 data-img-220="http://www.abc.net.au/radionational/image/9345944-3x2-220x147.jpg">
+							<a href="http://www.abc.net.au/news/2018-01-21/spending-a-38c-day-in-an-ice-cream-truck/9345870" data-itemposition="3" data-contentsource="news"
+							 data-contenttype="article" data-contentid="4792803">
+								<h3>Melting inside an ice-cream van on a 38C day</h3>
+								<img class="img-220" src="homepage/images/9345944-3x2-220x147.jpg" alt="Sarah Wicken endures the heat because she likes making children smile(ABC News: Clare Sibthorpe)"
+								/>
+								<cite>ABC News</cite>
+								<p>This couple are determined to keep the ice-cream van tradition alive, even with the heat and same jingle on repeat.</p>
+							</a>
+						</div>
+
+
+					</div>
+				</div>
+
+
+
+
+				<div id="opinion" class="opinion section layout-tiles">
+					<h2>Analysis &amp; Opinion
+						<small>: Views on the issues of the day</small>
+					</h2>
+					<div class="abcRow">
+
+
+					</div>
+				</div>
+
+				<div id="highlights" class="highlights section">
+					<div id="tvHighlights"></div>
+					<div id="iviewHighlights"></div>
+					<div id="radioHighlights"></div>
+					<div id="tvTonight"></div>
+				</div>
+
+				<div id="explore" class="section">
+					<h2>More</h2>
+					<div class="abcRow">
+						<div class="abcSpan12 more">
+							<ul>
+								<li>
+									<a href="http://www.abc.net.au/news/australia/">Australia</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/world/">World</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/">News &amp; Current Affairs</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/business/">Business</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/sport/">Sport</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/analysis-and-opinion/">Analysis &amp; Opinion</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/factcheck/">Fact Check</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/education/">Education</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/environment/">Environment</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/health/">Health &amp; Wellbeing</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/heywire/">Heywire</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/indigenous/">Indigenous</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/international/">International</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/children/">Kids</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/parenting/">Parenting</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/local/">Local</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/religion/">Religion &amp; Ethics</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/rural/">Rural</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/science/">Science</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/news/technology/">Technology &amp; Games</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="abcRow">
+						<div class="abcSpan6 tv">
+							<h3>
+								<a href="http://www.abc.net.au/tv/">TV</a>
+							</h3>
+							<ul>
+								<li>
+									<a href="http://www.abc.net.au/tv/">TV</a>
+								</li>
+								<li>
+									<a href="http://iview.abc.net.au/">iview</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/tv/epg/">TV Guide</a>
+								</li>
+								<li>
+									<a href="http://search.abc.net.au/search/search.cgi?collection=ABC_TV&form=programs_redesign2014">Programs</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/tv/channels/abc.htm">ABC</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/tv/channels/abc2.htm">ABC COMEDY</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/abc3/">ABC ME</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/abcforkids/">ABC Kids</a>
+								</li>
+							</ul>
+						</div>
+						<div class="abcSpan6 radio">
+							<h3>
+								<a href="http://www.abc.net.au/radio/">Radio</a>
+							</h3>
+							<ul>
+								<li>
+									<a href="http://www.abc.net.au/radio/">Radio</a>
+								</li>
+								<li>
+									<a href="https://radio.abc.net.au/categories">Categories</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/classic/">ABC Classic FM</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/rn/">ABC RN</a>
+								</li>
+								<li>
+									<a href="http://www.abc.net.au/triplej/">triple j</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
 				</div>
 			</div>
 
-			<div id="ourpicks" class="ourpicks section layout-tiles">
-				<p id="announcement" class="announcement">
-					<a href="http://www.abc.net.au/triplej/programs/hack/">
-						<b>triple j Hack</b>: The stuff that matters to young Australians &gt; </a>
+			<div id="footer" class="abcSiteFooter">
+
+				<!--noindex-->
+				<div id="subFooter">
+					<div class="abcRow">
+						<p class="platform-switch abcSpan6">
+							<a href="http://mobile.abc.net.au/?pfm=sm">Change to mobile view</a>
+						</p>
+					</div>
+				</div>
+				<div class="abcRow">
+					<div class="abcSpan12">
+						<h3>ABC Services</h3>
+						<ul>
+							<li>
+								<a href="http://www.abc.net.au/archives/">Archives</a>
+							</li>
+							<li>
+								<a href="http://about.abc.net.au/blogs/">Blogs</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/news/emergency/">Emergencies</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/app/">Mobile</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/corp/email_newsletter/multi-subscribe.htm">Newsletters</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/radio/podcasts/">Podcasts</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/news/feeds/rss/">RSS Feeds</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/tours/">Tours</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/transcripts/">Transcripts</a>
+							</li>
+						</ul>
+
+						<h3>
+							<a href="http://about.abc.net.au/">About The ABC</a>
+						</h3>
+						<ul>
+							<li>
+								<a href="http://www.abc.net.au/careers/">ABC Careers</a>
+							</li>
+							<li>
+								<a href="http://www.abccommercial.com/">ABC Commercial</a>
+							</li>
+							<li>
+								<a href="http://about.abc.net.au/talk-to-the-abc/">ABC Contacts</a>
+							</li>
+							<li>
+								<a href="http://www.abc.net.au/corrections/">Corrections &amp; Clarifications</a>
+							</li>
+							<li>
+								<a href="http://about.abc.net.au/reports-publications/abc-editorial-policies/">Editorial Policies</a>
+							</li>
+							<li>
+								<a href="http://about.abc.net.au/talk-to-the-abc/forums-and-help-pages/">Help</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--endnoindex-->
+				<div class="abcRow">
+					<p class="abcSpan12 disclaimer">This service may include material from Getty.</p>
+				</div>
+			</div>
+
+
+			<div id="setLocation" class="setLocation" role="dialog" aria-hidden="true" aria-labelledby="dialog-title" tabindex="-1">
+				<h3 id="dialog-title">Set Location</h3>
+
+				<form class="autocomplete">
+					<label for="suburb">Enter an Australian postcode or suburb</label>
+					<input id="suburb" name="suburb" type="text">
+				</form>
+
+				<!-- p>or</p -->
+				<!-- h4><a href="javascript:void(0)" class="detectCurrent">detect current location</a></h4 -->
+
+				<div class="recentLocations">
+					<h3>Recent Locations</h3>
+					<ul></ul>
+				</div>
+
+				<p class="links">
+					<a href="index.html#" class="remove-location">Delete your location</a>
+					<a href="http://www.abc.net.au/privacy.htm" class="privacy">Privacy Policy</a>
 				</p>
 
-
-				<h2>Our Picks</h2>
-				<div class="abcRow">
-					<!-- 3 x abcSpan4 articles -->
-					<div class="article abcSpan4" data-wallaceid="4792831" data-img-140="http://www.abc.net.au/radionational/image/9345658-3x2-140x93.jpg"
-					 data-img-220="http://www.abc.net.au/radionational/image/9345658-3x2-220x147.jpg" data-img-300="http://www.abc.net.au/radionational/image/9345658-3x2-300x200.jpg">
-						<a href="http://www.abc.net.au/news/2018-01-20/esperance-instagram-tourism-boom/9345614" data-itemposition="0" data-contentsource="news"
-						 data-contenttype="article" data-contentid="4792831">
-							<h3>Instagram discovers the remote town with the 'world's best beaches'</h3>
-							<img class="img-300" src="homepage/images/9345658-3x2-300x200.jpg" alt="Esperance is Instagram famous (Instagram: Salty Wings)"
-							/>
-							<cite>ABC News</cite>
-							<p>Thanks to the quest for the perfect social media photograph, the world has uncovered Australia's best kept secret.</p>
-						</a>
-					</div>
-					<div class="article abcSpan4" data-wallaceid="4792816" data-img-140="http://www.abc.net.au/radionational/image/6029518-3x2-140x93.jpg"
-					 data-img-220="http://www.abc.net.au/radionational/image/6029518-3x2-220x147.jpg" data-img-300="http://www.abc.net.au/radionational/image/6029518-3x2-300x200.jpg">
-						<a href="http://www.abc.net.au/news/2018-01-22/the-belief-behind-a-rising-number-of-murders-in-png/9347018" data-itemposition="1"
-						 data-contentsource="news" data-contenttype="article" data-contentid="4792816">
-							<h3>The 'black magic' belief behind a rising number of murders in PNG</h3>
-							<img class="img-300" src="homepage/images/6029518-3x2-300x200.jpg" alt="Community groups have been trying to combat belief in sanguma for years (Supplied: Seeds Theatre Group (file photo))"
-							/>
-							<cite>Pacific Beat</cite>
-							<p>A growing number of Papua New Guineans are being murdered or tortured after being accused of black magic or sorcery.</p>
-						</a>
-					</div>
-					<div class="article abcSpan4" data-wallaceid="4792812" data-img-140="http://www.abc.net.au/radionational/image/9338818-3x2-140x93.jpg"
-					 data-img-220="http://www.abc.net.au/radionational/image/9338818-3x2-220x147.jpg" data-img-300="http://www.abc.net.au/radionational/image/9338818-3x2-300x200.jpg">
-						<a href="http://www.abc.net.au/news/2018-01-20/centenary-1918-cyclone-100-year-mackay-30-people-dead-category-4/9313774"
-						 data-itemposition="2" data-contentsource="news" data-contenttype="article" data-contentid="4792812">
-							<h3>The cyclone without a name that killed 30 people a century ago</h3>
-							<img class="img-300" src="homepage/images/9338818-3x2-300x200.jpg" alt="The cyclone hit on the evening of Sunday, January 20 (Supplied: Mackay Regional Council)"
-							/>
-							<cite>ABC Tropical North</cite>
-							<p>Mackay marks the centenary of a destructive, unnamed cyclone, which all but flattened the Queensland town.</p>
-						</a>
-					</div>
-
-
-				</div>
-				<div class="abcRow">
-					<!-- 4 x abcSpan3 articles -->
-					<div class="article abcSpan3" data-wallaceid="4792837" data-img-140="http://www.abc.net.au/radionational/image/9335476-3x2-140x93.jpg"
-					 data-img-220="http://www.abc.net.au/radionational/image/9335476-3x2-220x147.jpg">
-						<a href="http://www.abc.net.au/news/2018-01-21/native-honeybees-provide-popular-bush-tucker/9333278" data-itemposition="0"
-						 data-contentsource="news" data-contenttype="article" data-contentid="4792837">
-							<h3>On the hunt for sugarbag bee honey in outback QLD</h3>
-							<img class="img-220" src="homepage/images/9335476-3x2-220x147.jpg" alt="Indigenous Australians have been harvesting food from the bush for thousands of years (ABC News)"
-							/>
-							<cite>ABC North West QLD</cite>
-							<p>Sugarbag honey comes from native Australian bees, and is a popular form of bush tucker.</p>
-						</a>
-					</div>
-					<div class="article abcSpan3" data-wallaceid="4792820" data-img-140="http://www.abc.net.au/radionational/image/9324436-3x2-140x93.jpg"
-					 data-img-220="http://www.abc.net.au/radionational/image/9324436-3x2-220x147.jpg">
-						<a href="http://www.abc.net.au/news/2018-01-22/girl-power-empowering-women-pilbara-back-roads/9311000" data-itemposition="1"
-						 data-contentsource="news" data-contenttype="article" data-contentid="4792820">
-							<h3>Girl power a driving force in the Pilbara</h3>
-							<img class="img-220" src="homepage/images/9324436-3x2-220x147.jpg" alt="Women make their mark in the Pilbara, driving pink trucks (Trasko Industrial Photographics)"
-							/>
-							<cite>Back Roads</cite>
-							<p>Women in remote parts of Australia are leading the way in transforming industries post-mining boom.</p>
-						</a>
-					</div>
-					<div class="article abcSpan3" data-wallaceid="4792813" data-img-140="http://www.abc.net.au/radionational/image/9157296-3x2-140x93.jpg"
-					 data-img-220="http://www.abc.net.au/radionational/image/9157296-3x2-220x147.jpg">
-						<a href="http://www.abc.net.au/radionational/programs/blueprintforliving/iconic-designs:-the-band-aid/9224524" data-itemposition="2"
-						 data-contentsource="wallace" data-contenttype="article" data-contentid="4792813">
-							<h3>Iconic designs: The Band-Aid</h3>
-							<img class="img-220" src="homepage/images/9157296-3x2-220x147.jpg" alt="Iconic designs: The Band-Aid (Flickr/Link to larger image./CC BY-NC 2.0)"
-							/>
-							<cite>Blueprint for Living</cite>
-							<p>Discover how a temporary solution to domestic clumsiness became an enduring palliative.</p>
-						</a>
-					</div>
-					<div class="article abcSpan3" data-wallaceid="4792803" data-img-140="http://www.abc.net.au/radionational/image/9345944-3x2-140x93.jpg"
-					 data-img-220="http://www.abc.net.au/radionational/image/9345944-3x2-220x147.jpg">
-						<a href="http://www.abc.net.au/news/2018-01-21/spending-a-38c-day-in-an-ice-cream-truck/9345870" data-itemposition="3" data-contentsource="news"
-						 data-contenttype="article" data-contentid="4792803">
-							<h3>Melting inside an ice-cream van on a 38C day</h3>
-							<img class="img-220" src="homepage/images/9345944-3x2-220x147.jpg" alt="Sarah Wicken endures the heat because she likes making children smile(ABC News: Clare Sibthorpe)"
-							/>
-							<cite>ABC News</cite>
-							<p>This couple are determined to keep the ice-cream van tradition alive, even with the heat and same jingle on repeat.</p>
-						</a>
-					</div>
-
-
-				</div>
+				<a href="index.html#close" class="closeBtn">
+					<span>Close</span>
+				</a>
 			</div>
-
-
-
-
-			<div id="opinion" class="opinion section layout-tiles">
-				<h2>Analysis &amp; Opinion
-					<small>: Views on the issues of the day</small>
-				</h2>
-				<div class="abcRow">
-
-
-				</div>
-			</div>
-
-			<div id="highlights" class="highlights section">
-				<div id="tvHighlights"></div>
-				<div id="iviewHighlights"></div>
-				<div id="radioHighlights"></div>
-				<div id="tvTonight"></div>
-			</div>
-
-			<div id="explore" class="section">
-				<h2>More</h2>
-				<div class="abcRow">
-					<div class="abcSpan12 more">
-						<ul>
-							<li>
-								<a href="http://www.abc.net.au/news/australia/">Australia</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/world/">World</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/">News &amp; Current Affairs</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/business/">Business</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/sport/">Sport</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/analysis-and-opinion/">Analysis &amp; Opinion</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/factcheck/">Fact Check</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/education/">Education</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/environment/">Environment</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/health/">Health &amp; Wellbeing</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/heywire/">Heywire</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/indigenous/">Indigenous</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/international/">International</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/children/">Kids</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/parenting/">Parenting</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/local/">Local</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/religion/">Religion &amp; Ethics</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/rural/">Rural</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/science/">Science</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/news/technology/">Technology &amp; Games</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="abcRow">
-					<div class="abcSpan6 tv">
-						<h3>
-							<a href="http://www.abc.net.au/tv/">TV</a>
-						</h3>
-						<ul>
-							<li>
-								<a href="http://www.abc.net.au/tv/">TV</a>
-							</li>
-							<li>
-								<a href="http://iview.abc.net.au/">iview</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/tv/epg/">TV Guide</a>
-							</li>
-							<li>
-								<a href="http://search.abc.net.au/search/search.cgi?collection=ABC_TV&form=programs_redesign2014">Programs</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/tv/channels/abc.htm">ABC</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/tv/channels/abc2.htm">ABC COMEDY</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/abc3/">ABC ME</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/abcforkids/">ABC Kids</a>
-							</li>
-						</ul>
-					</div>
-					<div class="abcSpan6 radio">
-						<h3>
-							<a href="http://www.abc.net.au/radio/">Radio</a>
-						</h3>
-						<ul>
-							<li>
-								<a href="http://www.abc.net.au/radio/">Radio</a>
-							</li>
-							<li>
-								<a href="https://radio.abc.net.au/categories">Categories</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/classic/">ABC Classic FM</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/rn/">ABC RN</a>
-							</li>
-							<li>
-								<a href="http://www.abc.net.au/triplej/">triple j</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<div id="footer" class="abcSiteFooter">
-
-			<!--noindex-->
-			<div id="subFooter">
-				<div class="abcRow">
-					<p class="platform-switch abcSpan6">
-						<a href="http://mobile.abc.net.au/?pfm=sm">Change to mobile view</a>
-					</p>
-				</div>
-			</div>
-			<div class="abcRow">
-				<div class="abcSpan12">
-					<h3>ABC Services</h3>
-					<ul>
-						<li>
-							<a href="http://www.abc.net.au/archives/">Archives</a>
-						</li>
-						<li>
-							<a href="http://about.abc.net.au/blogs/">Blogs</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/news/emergency/">Emergencies</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/app/">Mobile</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/corp/email_newsletter/multi-subscribe.htm">Newsletters</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/radio/podcasts/">Podcasts</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/news/feeds/rss/">RSS Feeds</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/tours/">Tours</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/transcripts/">Transcripts</a>
-						</li>
-					</ul>
-
-					<h3>
-						<a href="http://about.abc.net.au/">About The ABC</a>
-					</h3>
-					<ul>
-						<li>
-							<a href="http://www.abc.net.au/careers/">ABC Careers</a>
-						</li>
-						<li>
-							<a href="http://www.abccommercial.com/">ABC Commercial</a>
-						</li>
-						<li>
-							<a href="http://about.abc.net.au/talk-to-the-abc/">ABC Contacts</a>
-						</li>
-						<li>
-							<a href="http://www.abc.net.au/corrections/">Corrections &amp; Clarifications</a>
-						</li>
-						<li>
-							<a href="http://about.abc.net.au/reports-publications/abc-editorial-policies/">Editorial Policies</a>
-						</li>
-						<li>
-							<a href="http://about.abc.net.au/talk-to-the-abc/forums-and-help-pages/">Help</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!--endnoindex-->
-			<div class="abcRow">
-				<p class="abcSpan12 disclaimer">This service may include material from Getty.</p>
-			</div>
-		</div>
-
-
-		<div id="setLocation" class="setLocation" role="dialog" aria-hidden="true" aria-labelledby="dialog-title" tabindex="-1">
-			<h3 id="dialog-title">Set Location</h3>
-
-			<form class="autocomplete">
-				<label for="suburb">Enter an Australian postcode or suburb</label>
-				<input id="suburb" name="suburb" type="text">
-			</form>
-
-			<!-- p>or</p -->
-			<!-- h4><a href="javascript:void(0)" class="detectCurrent">detect current location</a></h4 -->
-
-			<div class="recentLocations">
-				<h3>Recent Locations</h3>
-				<ul></ul>
-			</div>
-
-			<p class="links">
-				<a href="index.html#" class="remove-location">Delete your location</a>
-				<a href="http://www.abc.net.au/privacy.htm" class="privacy">Privacy Policy</a>
-			</p>
-
-			<a href="index.html#close" class="closeBtn">
-				<span>Close</span>
-			</a>
 		</div>
 	</div>
-	<div id="modalOverlay" tabindex="-1"></div>
 
 	<!-- TEMPLATES -->
 	<script type="text/html" id="article-template">
@@ -1074,7 +1083,7 @@
 	<!-- SCRIPTS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	 crossorigin="anonymous"></script>
-	 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.2.0/dist/instantsearch.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>

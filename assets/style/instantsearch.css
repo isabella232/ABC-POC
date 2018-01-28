@@ -286,9 +286,10 @@ li.active a{
     outline: 0;
 }
 
-li.hidden {
+.hidden {
     visibility: hidden;
 }
+
 
 #lang-selector {
     display: flex;

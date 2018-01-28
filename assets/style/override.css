@@ -17,10 +17,12 @@
     margin-left: 200px;
 
 }
-#nav-logo {
-    padding-top: 8px;
-    height: 32px;
+li#nav-logo {
+    position: relative;
+    top: -22px;
+    left: -15px;
 }
+
 #nav ul {
     width: 35%;
     margin-left: 770px

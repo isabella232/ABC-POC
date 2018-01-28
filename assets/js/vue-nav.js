@@ -3,8 +3,13 @@ Vue.component('nav-item', {
     template: '<li ><a>{{ index.text }}</a></li>'
 })
 
-var nav = new Vue({
-    el: '#nav',
+// var navItem = {
+//         props: ['index'],
+//         template: '<li ><a>{{ index.text }}</a></li>'
+//     }
+
+new Vue({
+    el: '#app',
     data: {
         currentIndex: '',
         indices: [
@@ -15,11 +20,12 @@ var nav = new Vue({
         ]
     },
     computed: {
-        // a computed getter
+        indexSelected: function () {
+            return this.currentIndex !== ''
+        },
         newsSelected: function () {
-            // `this` points to the vm instance
             return this.currentIndex === 'news'
-        }
+        },
     },
     methods: {
         selectIndex: function (event) {
@@ -29,22 +35,5 @@ var nav = new Vue({
             else this.currentIndex = ''
             console.log('currentIndex', this.currentIndex);
         }
-    }
+    },
 })
-
-
-
-
-
-
-
-// var navItem = new Vue({
-//     el: '.nav-item',
-//     data: {
-//         isActive: false
-//     },
-//     methods: {
-//     }
-
-// })
-
