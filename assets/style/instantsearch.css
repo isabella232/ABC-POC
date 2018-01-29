@@ -322,3 +322,27 @@ li.hidden {
 span#lang {
     padding: 7px;
 }
+.ais-hits__empty {
+    font-size: 19px;
+}
+
+#popular-queries {
+    margin-top: 35px;
+}
+
+.no-hit-keywords-wrapper {
+    display: flex;
+    width: 100%;
+    float: left;
+}
+
+.keyword-text-wrapper {
+    border: 1px solid lightgray;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+a:hover {
+    color:#5fb3f1 !important; 
+}
+

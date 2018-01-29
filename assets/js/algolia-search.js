@@ -89,7 +89,8 @@ function app(opts) {
         instantsearch.widgets.hits({
             container: '#hits',
             templates: {
-                item: getTemplate(opts.settings.templateName)
+                item: getTemplate(opts.settings.templateName),
+                empty: getTemplate('empty')
             }
         })
     );
