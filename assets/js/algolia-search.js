@@ -11,15 +11,6 @@ var appID = 'Y63Q32NVDL',
     lang = 'en',
     currIndex = 'news';
 
-app({
-    appID,
-    apiKey,
-    lang,
-    articlesIndexName: indices[currIndex].name,
-    settings: indices[currIndex].settings
-
-});
-
 $("#language-select").change(function (e) {
     app({
         appID,
@@ -46,13 +37,16 @@ function app(opts) {
         appId: opts.appID,
         apiKey: opts.apiKey,
         indexName: opts.articlesIndexName,
-        urlSync: true,
-        searchFunction: function (helper) {
-            if(helper.getIndex() !== opts.articlesIndexName){
-                helper.clearRefinements().setIndex(opts.articlesIndexName);
-            }
-            helper.search();
-        }
+        urlSync: false,
+        // searchFunction: function (helper) {
+        //     if (helper.getIndex() !== opts.articlesIndexName) {
+
+        //         if (helper.getIndex().slice(0, 6) !== 'newest' && helper.getIndex().slice(0, 6) !== 'oldest')
+        //             helper.clearRefinements().setIndex(opts.articlesIndexName);
+        //     }
+        //     console.log('Current index:', helper.getIndex())
+        //     helper.search();
+        // }
     }
 
     if (opts.articlesIndexName === 'ABC_TEST_coremedia_article') {
@@ -86,13 +80,6 @@ function app(opts) {
             container: '#search-stats',
         })
     );
-
-    // search.addWidget(
-    //     instantsearch.widgets.sortBySelector({
-    //         container: '#sort-by-container',
-    //         indices: opts.settings.sortByIndices
-    //     })
-    // );
 
     search.addWidget(
         instantsearch.widgets.currentRefinedValues({
@@ -130,6 +117,15 @@ function app(opts) {
     );
 
     search.addWidget(bestBetWidget);
+
+    search.addWidget(
+        instantsearch.widgets.sortBySelector({
+            container: '#sort-by-container',
+            indices: opts.settings.sortByIndices
+        })
+    );
+
+
     search.start();
 }
 
