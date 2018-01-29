@@ -31,6 +31,7 @@ $("#language-select").change(function (e) {
 });
 
 $("ul#indices-ul > li > a").click(function (e) {
+    console.log('switching indices')
     app({
         appID,
         apiKey,
@@ -42,22 +43,28 @@ $("ul#indices-ul > li > a").click(function (e) {
 
 function app(opts) {
     var search;
-    if (opts.articlesIndexName === 'ABC_TEST_coremedia_article')
-        search = instantsearch({
-            appId: opts.appID,
-            apiKey: opts.apiKey,
-            indexName: opts.articlesIndexName,
-            urlSync: true,
-            searchParameters: {
-                filters: `lang:${opts.lang}`
-            }
-        });
-    else search = instantsearch({
+    var searchOptions = {
         appId: opts.appID,
         apiKey: opts.apiKey,
         indexName: opts.articlesIndexName,
-        urlSync: true
-    });
+        urlSync: true,
+        searchFunction: function (helper) {
+            // console.log(helper.getState(['query', 'attribute:genre']));
+            helper.search();
+        }
+    }
+
+    if (opts.articlesIndexName === 'ABC_TEST_coremedia_article') {
+        search = instantsearch(Object.assign(searchOptions, {
+            searchParameters: {
+                filters: `lang:${opts.lang}`
+            }
+        })
+        )
+    }
+
+
+    else search = instantsearch(searchOptions);
 
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();
@@ -66,7 +73,6 @@ function app(opts) {
     $('#genre-facet').empty();
     $('#keyword-facet').empty();
     $('#author-facet').empty();
-
 
     search.addWidget(
         instantsearch.widgets.searchBox({
@@ -81,22 +87,24 @@ function app(opts) {
         })
     );
 
-    search.addWidget(
-        instantsearch.widgets.sortBySelector({
-            container: '#sort-by-container',
-            indices: opts.settings.sortByIndices
-        })
-    );
+    // $('#sort-by-container').empty();
+    // console.log('search', search)
+    // search.addWidget(
+    //     instantsearch.widgets.sortBySelector({
+    //         container: '#sort-by-container',
+    //         indices: opts.settings.sortByIndices
+    //     })
+    // );
 
     search.addWidget(
         instantsearch.widgets.currentRefinedValues({
-          container: '#current-refined-values',
-          clearAll: 'after',
-          clearsQuery: true,
-          attributes: opts.settings.clearRefinedAttributes,
-          onlyListedAttributes: true,
+            container: '#current-refined-values',
+            clearAll: 'after',
+            clearsQuery: true,
+            attributes: opts.settings.clearRefinedAttributes,
+            onlyListedAttributes: true,
         })
-      );
+    );
 
     search.addWidget(
         instantsearch.widgets.hits({
