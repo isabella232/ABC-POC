@@ -49,7 +49,6 @@ function app(opts) {
         indexName: opts.articlesIndexName,
         urlSync: true,
         searchFunction: function (helper) {
-            // console.log(helper.getState(['query', 'attribute:genre']));
             helper.search();
         }
     }
@@ -87,14 +86,19 @@ function app(opts) {
         })
     );
 
-    $('#sort-by-container').empty();
-    console.log('search', search)
-    search.addWidget(
-        instantsearch.widgets.sortBySelector({
-            container: '#sort-by-container',
-            indices: opts.settings.sortByIndices
-        })
-    );
+    try{
+        console.log('search', search)
+        search.addWidget(
+            instantsearch.widgets.sortBySelector({
+                container: '#sort-by-container',
+                indices: opts.settings.sortByIndices
+            })
+        );
+    }
+    catch (err) {
+        console.log(err);
+    }
+
 
     search.addWidget(
         instantsearch.widgets.currentRefinedValues({
