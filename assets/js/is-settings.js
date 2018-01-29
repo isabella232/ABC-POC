@@ -62,10 +62,10 @@ var newsSettings = {
             }
         ],
         clearRefinedAttributes: [
-            {name: 'genre', label: 'Genre'},
-            {name: 'keywords', label: 'Keyword'},
-            {name: 'attribution', label: 'Author'},
-          ]
+            { name: 'genre', label: 'Genre' },
+            { name: 'keywords', label: 'Keyword' },
+            { name: 'attribution', label: 'Author' },
+        ]
     }
 }
 
@@ -79,7 +79,64 @@ var iviewSettings = {
             { name: 'oldest-iview', label: 'Oldest' }
         ],
         templateName: 'iview',
-        refinementLists: []
+        refinementLists: [
+            {
+                container: '#genre-facet',
+                attributeName: 'classification',
+                operator: 'or',
+                limit: 5,
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Rating'
+                }
+            },
+            {
+                container: '#keyword-facet',
+                attributeName: 'channel.title',
+                operator: 'or',
+                limit: 5,
+                searchForFacetValues: {
+                    placeholder: 'Search for channels'
+                },
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Channel'
+                }
+            },
+            {
+                container: '#author-facet',
+                attributeName: 'series.title',
+                operator: 'or',
+                limit: 5,
+                searchForFacetValues: {
+                    placeholder: 'Search for series'
+                },
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Series'
+                }
+            }
+        ],
+        clearRefinedAttributes: [
+            { name: 'classification', label: 'Rating' },
+            { name: 'channel.title', label: 'Channel' },
+            { name: 'series.title', label: 'Series' },
+        ]
     }
 }
 
@@ -93,7 +150,64 @@ var radioSettings = {
             { name: 'oldest-radio', label: 'Oldest' }
         ],
         templateName: 'radio',
-        refinementLists: []
+        refinementLists: [
+            {
+                container: '#genre-facet',
+                attributeName: 'genre',
+                operator: 'or',
+                limit: 5,
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Genre'
+                }
+            },
+            {
+                container: '#keyword-facet',
+                attributeName: 'keywords',
+                operator: 'or',
+                limit: 5,
+                searchForFacetValues: {
+                    placeholder: 'Search for keywords'
+                },
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Keywords'
+                }
+            },
+            {
+                container: '#author-facet',
+                attributeName: 'source',
+                operator: 'or',
+                limit: 5,
+                searchForFacetValues: {
+                    placeholder: 'Search for sources'
+                },
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Source'
+                }
+            }
+        ],
+        clearRefinedAttributes: [
+            { name: 'genre', label: 'Genre' },
+            { name: 'keywords', label: 'Keyword' },
+            { name: 'source', label: 'Source' },
+        ]
     }
 }
 
@@ -107,7 +221,64 @@ var tvSettings = {
             { name: 'oldest-tv', label: 'Oldest' }
         ],
         templateName: 'tv',
-        refinementLists: []
+        refinementLists: [
+            {
+                container: '#genre-facet',
+                attributeName: 'genre',
+                operator: 'or',
+                limit: 5,
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Genre'
+                }
+            },
+            {
+                container: '#keyword-facet',
+                attributeName: 'keywords',
+                operator: 'or',
+                limit: 5,
+                searchForFacetValues: {
+                    placeholder: 'Search for keywords'
+                },
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Keywords'
+                }
+            },
+            {
+                container: '#author-facet',
+                attributeName: 'attribution',
+                operator: 'or',
+                limit: 5,
+                searchForFacetValues: {
+                    placeholder: 'Search for authors'
+                },
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Author'
+                }
+            }
+        ],
+        clearRefinedAttributes: [
+            { name: 'genre', label: 'Genre' },
+            { name: 'keywords', label: 'Keyword' },
+            { name: 'attribution', label: 'Author' },
+        ]
     }
 }
 

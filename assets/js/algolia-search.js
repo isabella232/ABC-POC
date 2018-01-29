@@ -63,6 +63,10 @@ function app(opts) {
         $('.ais-search-box').remove();
     }
 
+    $('#genre-facet').empty();
+    $('#keyword-facet').empty();
+    $('#author-facet').empty();
+
 
     search.addWidget(
         instantsearch.widgets.searchBox({
