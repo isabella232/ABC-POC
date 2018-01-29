@@ -66,11 +66,20 @@ autocomplete('#aa-search-input', {
         //'suggestion' templating function used to render a single suggestion
         header: '<div class="aa-suggestions-category"><img img src="homepage/2013/styles/img/iview-logo.png"></div>',
         suggestion: function (suggestion) {
+            try {
             return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
-                '<img class="video-thumbnail" src="' + suggestion.media.image.thumbnail.images['16x9'] + '">' +
+                '<img class="video-thumbnail" src="https://res.cloudinary.com/algolia-maria/image/fetch/' + suggestion.media.image.thumbnail.images['16x9'] + '">' +
                 '</a></div>' +
                 '<div class="video-text-wrapper"><div class="video-title iview-title">' + suggestion._highlightResult.series.title.value +
-                ':</div><div class="video-title">' + suggestion._highlightResult.title.value + '</div></div>'
+                ':</div><div class="video-title">' + suggestion._highlightResult.title.value || '' + '</div></div>'
+            } catch(e) {
+                console.log('Images missing from record');
+                return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
+                '<img class="video-thumbnail" src="homepage/2013/styles/img/abc-default.png"">' +
+                '</a></div>' +
+                '<div class="video-text-wrapper"><div class="video-title iview-title">' + suggestion._highlightResult.series.title.value +
+                ':</div><div class="video-title">' + '' + '</div></div>'
+            }
         },
         empty: '<div class="aa-empty">No matching iView media.</div>'
     }
@@ -87,7 +96,7 @@ autocomplete('#aa-search-input', {
         suggestion: function (suggestion) {
             try {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
-                    '<img class="video-thumbnail" src="' + suggestion.media.image.poster.images['16x9']  + '">' +
+                    '<img class="video-thumbnail" src="https://res.cloudinary.com/algolia-maria/image/fetch/' + suggestion.media.image.poster.images['16x9']  + '">' +
                     '</a></div>' +
                     '<div class="video-title">' + suggestion._highlightResult.title.value +
                     '</div></div>'
