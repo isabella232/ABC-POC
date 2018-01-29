@@ -13,11 +13,11 @@
     background-color: rgba(241, 241, 241, 0.35);
   }
 
-  .aa-suggestion em {
+  /* .aa-suggestion em {
     font-weight: 1000;
     text-decoration: underline;
     color: #00C3C1;
-  }
+  } */
 
   .aa-input-container {
     display: inline-block;

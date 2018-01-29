@@ -135,7 +135,17 @@ select.ais-sort-by-selector {
 .ais-refinement-list--item:hover {
     background-color: rgba(241, 241, 241, 0.35);
     color: #141618 !important;
-    font-weight: 1000;
+    font-weight: 600;
+}
+
+.ais-refinement-list--item__active {
+    background-color: rgba(241, 241, 241, 0.35);
+    color: #141618 !important;
+    font-weight: 600;   
+}
+
+.ais-refinement-list--item__active label {
+    color: #00C3C1 !important;
 }
 
 .ais-refinement-list--label:hover {
@@ -287,7 +297,8 @@ select.ais-sort-by-selector {
 
 em {
     text-decoration: underline !important;
-    background-color: #F8F8F8;
+    font-weight: 600;
+    color: #00C3C1;
 }
 
 
