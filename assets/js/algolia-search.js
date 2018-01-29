@@ -47,11 +47,10 @@ function app(opts) {
         apiKey: opts.apiKey,
         indexName: opts.articlesIndexName,
         urlSync: true,
-        // searchParameters: {
-        //     index: opts.articlesIndexName
-        // },
         searchFunction: function (helper) {
-            helper.setIndex(opts.articlesIndexName);
+            if(helper.getIndex() !== opts.articlesIndexName){
+                helper.clearRefinements().setIndex(opts.articlesIndexName);
+            }
             helper.search();
         }
     }
@@ -62,11 +61,9 @@ function app(opts) {
                 filters: `lang:${opts.lang}`
             }
         })
-        )
-        console.log('new search started in articles', search);
+        );
     } else {
         search = instantsearch(searchOptions);
-        console.log('new search started in other index', search);
     }
 
     if ($('.ais-search-box').length) {
@@ -90,19 +87,12 @@ function app(opts) {
         })
     );
 
-    // try{
-    //     console.log('search', search)
-    //     search.addWidget(
-    //         instantsearch.widgets.sortBySelector({
-    //             container: '#sort-by-container',
-    //             indices: opts.settings.sortByIndices
-    //         })
-    //     );
-    // }
-    // catch (err) {
-    //     console.log(err);
-    // }
-
+    // search.addWidget(
+    //     instantsearch.widgets.sortBySelector({
+    //         container: '#sort-by-container',
+    //         indices: opts.settings.sortByIndices
+    //     })
+    // );
 
     search.addWidget(
         instantsearch.widgets.currentRefinedValues({
@@ -138,8 +128,6 @@ function app(opts) {
             showFirstLast: false,
         })
     );
-
-
 
     search.addWidget(bestBetWidget);
     search.start();
