@@ -1059,7 +1059,9 @@
 				<a href={{canonicalURL}}>
 					<div class ="hit-card-content">
 						<div class="article-image-container">
-							<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/news-default.png') this.src = 'homepage/2013/styles/img/news-default.png';">
+							<!-- <p>{{{_embedded.mediaThumbnail.images.4x3}}}</p>
+							<p>{{{_embedded.mediaRelated.0.media.image.primary.images.4x3}}}</p> -->
+							<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{_embedded.mediaRelated.0.media.image.primary.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/default-2.png') this.src = 'homepage/2013/styles/img/default-2.png';">
 						</div>
 						<div class="article-text-container">
 							<div class="hit-elem-title">
@@ -1087,7 +1089,10 @@
 				<a href={{canonicalURL}}>
 				<div class ="hit-card-content">
 					<div class="article-image-container">
-						<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/news-default.png') this.src = 'homepage/2013/styles/img/news-default.png';">
+							<!-- media.image.thumbnail.images['16x9']
+							_embedded.mediaThumbnail.images.4x3 -->
+							<!-- onerror="if (this.src != 'homepage/2013/styles/img/default-2.png') this.src = 'homepage/2013/styles/img/default-2.png';" -->
+						<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{media.image.thumbnail.images.16x9}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/default-2.png') this.src = 'homepage/2013/styles/img/default-2.png';">
 					</div>
 					<div class="article-text-container">
 						<div class="hit-elem-title">
@@ -1112,7 +1117,7 @@
 				<a href={{canonicalURL}}>
 				<div class ="hit-card-content">
 					<div class="article-image-container">
-						<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/news-default.png') this.src = 'homepage/2013/styles/img/news-default.png';">
+						<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/audio_default.jpg') {this.src = 'homepage/2013/styles/img/audio_default.jpg'; this.class='no-audio-image'}">
 					</div>
 					<div class="article-text-container">
 						<div class="hit-elem-title">
@@ -1137,7 +1142,7 @@
 				<a href={{canonicalURL}}>
 				<div class ="hit-card-content">
 					<div class="article-image-container">
-						<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{_embedded.mediaThumbnail.images.4x3}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/news-default.png') this.src = 'homepage/2013/styles/img/news-default.png';">
+						<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{media.image.poster.images.16x9}}" alt="{{_embedded.mediaThumbnail.alt}}" onerror="if (this.src != 'homepage/2013/styles/img/default-2.png') this.src = 'homepage/2013/styles/img/default-2.png';">
 					</div>
 					<div class="article-text-container">
 						<div class="hit-elem-title">
