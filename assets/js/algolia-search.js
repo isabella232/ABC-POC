@@ -84,6 +84,15 @@ function app(opts) {
         })
     );
 
+    search.addWidget(
+        instantsearch.widgets.currentRefinedValues({
+          container: '#current-refined-values',
+          clearAll: 'after',
+          clearsQuery: true,
+          attributes: opts.settings.clearRefinedAttributes,
+          onlyListedAttributes: true,
+        })
+      );
 
     search.addWidget(
         instantsearch.widgets.hits({
@@ -109,6 +118,8 @@ function app(opts) {
             showFirstLast: false,
         })
     );
+
+
 
     search.addWidget(bestBetWidget);
     search.start();

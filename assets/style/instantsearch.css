@@ -346,3 +346,43 @@ a:hover {
     color:#5fb3f1 !important; 
 }
 
+.ais-current-refined-values--list {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.ais-current-refined-values--item {
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    color: #fff;
+    background: #00C3C1;
+    margin-right: 10px;
+}
+
+.ais-current-refined-values--item a {
+    color: white;
+}
+
+.ais-current-refined-values--item a:hover {
+    color: white !important;
+}
+
+.ais-current-refined-values--count {
+    display: none;
+}
+
+.ais-current-refined-values--link > div {
+    padding-left: 15px;
+}
+
+.ais-current-refined-values--item::after {
+    content: "\f00d";
+    font-family: FontAwesome;
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 205px;
+  }
+

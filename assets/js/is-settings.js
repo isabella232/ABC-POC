@@ -60,7 +60,12 @@ var newsSettings = {
                     header: 'Author'
                 }
             }
-        ]
+        ],
+        clearRefinedAttributes: [
+            {name: 'genre', label: 'Genre'},
+            {name: 'keywords', label: 'Keyword'},
+            {name: 'attribution', label: 'Author'},
+          ]
     }
 }
 
