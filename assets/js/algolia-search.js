@@ -31,7 +31,6 @@ $("#language-select").change(function (e) {
 });
 
 $("ul#indices-ul > li > a").click(function (e) {
-    console.log('switching indices')
     app({
         appID,
         apiKey,
@@ -48,7 +47,11 @@ function app(opts) {
         apiKey: opts.apiKey,
         indexName: opts.articlesIndexName,
         urlSync: true,
+        // searchParameters: {
+        //     index: opts.articlesIndexName
+        // },
         searchFunction: function (helper) {
+            helper.setIndex(opts.articlesIndexName);
             helper.search();
         }
     }
@@ -60,10 +63,11 @@ function app(opts) {
             }
         })
         )
+        console.log('new search started in articles', search);
+    } else {
+        search = instantsearch(searchOptions);
+        console.log('new search started in other index', search);
     }
-
-
-    else search = instantsearch(searchOptions);
 
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();
@@ -86,18 +90,18 @@ function app(opts) {
         })
     );
 
-    try{
-        console.log('search', search)
-        search.addWidget(
-            instantsearch.widgets.sortBySelector({
-                container: '#sort-by-container',
-                indices: opts.settings.sortByIndices
-            })
-        );
-    }
-    catch (err) {
-        console.log(err);
-    }
+    // try{
+    //     console.log('search', search)
+    //     search.addWidget(
+    //         instantsearch.widgets.sortBySelector({
+    //             container: '#sort-by-container',
+    //             indices: opts.settings.sortByIndices
+    //         })
+    //     );
+    // }
+    // catch (err) {
+    //     console.log(err);
+    // }
 
 
     search.addWidget(
