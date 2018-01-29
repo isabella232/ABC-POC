@@ -246,7 +246,7 @@ select.ais-sort-by-selector {
     width: 100%;
     object-fit: cover;
     float: left;
-    background-color: #828282;
+    background-color: #828282; 
 }
 
 .article-text-container {

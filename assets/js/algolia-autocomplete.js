@@ -94,7 +94,7 @@ autocomplete('#aa-search-input', {
             } catch(e) {
                 console.log('Images missing from record');
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
-                    '<img class="video-thumbnail" src=homepage/2013/styles/img/abc-default.png>' +
+                    '<img class="video-thumbnail" src="homepage/2013/styles/img/abc-default.png">' +
                     '</a></div>' +
                     '<div class="video-title">' + suggestion._highlightResult.title.value +
                     '</div></div>'
