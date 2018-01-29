@@ -87,14 +87,14 @@ function app(opts) {
         })
     );
 
-    // $('#sort-by-container').empty();
-    // console.log('search', search)
-    // search.addWidget(
-    //     instantsearch.widgets.sortBySelector({
-    //         container: '#sort-by-container',
-    //         indices: opts.settings.sortByIndices
-    //     })
-    // );
+    $('#sort-by-container').empty();
+    console.log('search', search)
+    search.addWidget(
+        instantsearch.widgets.sortBySelector({
+            container: '#sort-by-container',
+            indices: opts.settings.sortByIndices
+        })
+    );
 
     search.addWidget(
         instantsearch.widgets.currentRefinedValues({
