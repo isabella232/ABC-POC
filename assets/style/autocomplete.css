@@ -13,11 +13,25 @@
     background-color: rgba(241, 241, 241, 0.35);
   }
 
-  /* .aa-suggestion em {
-    font-weight: 1000;
-    text-decoration: underline;
-    color: #00C3C1;
+  /* #autocomplete-container{
+    background-color: #fff;
+    border: 1px solid rgba(228, 228, 228, 0.6);
+    width: 75vw;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    box-shadow: 0px 3px 13px 0px rgba(60, 60, 60, 0.4);
+    overflow: hidden;
   } */
+
+  #left-promotional {
+    height: 100px;
+    display: none; 
+  }
+
+  #left-promotional a:hover {
+    border-bottom: 0 !important;
+  }
 
   .aa-input-container {
     display: inline-block;
