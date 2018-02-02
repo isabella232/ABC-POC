@@ -23,6 +23,9 @@ new Vue({
         },
     },
     methods: {
+        test: function(){
+            alert("Vue is functioning");
+        },
         selectIndex: function (event) {
             this.currentIndex = $(event.target).text()
             $(event.target).parent().toggleClass('active').siblings().removeClass('active');

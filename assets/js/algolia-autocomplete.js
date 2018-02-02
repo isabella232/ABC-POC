@@ -36,6 +36,11 @@ autocomplete('#aa-search-input', {
                 }
             }
           callback(answer.hits);
+          $('.aa-dataset-news > .aa-stats').empty();
+          $('.aa-dataset-news').append(`<div class="aa-stats">
+          <span>First 5 of ${answer.nbHits} news articles</span>
+          <span class="see-all"><a v-on:click="test" class="aa-link">See all news...</a></span>
+          </div>`)
         }, function() {
           callback([]);
         });
@@ -50,13 +55,20 @@ autocomplete('#aa-search-input', {
                 suggestion.canonicalURL +
                 '"><div class="aa-title-wrapper"><span>' + suggestion._highlightResult.title.value + '</span></div></a>'
         },
-        empty: '<div class="aa-empty">No matching ABC articles.</div>'
+        empty: '<div class="aa-empty">No matching ABC articles.</div>',
     }
 },
 {
-    source: autocomplete.sources.hits(radioIndex, {
-        hitsPerPage: 1
-    }),
+    source: function(query, callback) {
+        radioIndex.search(query, { hitsPerPage: 1}).then(function(answer) {
+          callback(answer.hits);
+          $('.aa-dataset-radio > .aa-stats').empty();
+          console.log('radio hits', answer.nbHits);
+          $('.aa-dataset-radio').append(`<div class="aa-stats"><span>First of ${answer.nbHits} radio hits</span><span class="see-all"><a v-on:click="test" class="aa-link">See all radio...</a></span></div>`)
+        }, function() {
+          callback([]);
+        });
+    },
     displayKey: 'title_t',
     name: 'radio',
     templates: {
@@ -71,14 +83,21 @@ autocomplete('#aa-search-input', {
     }
 },
 {
-    source: autocomplete.sources.hits(iviewIndex, {
-        hitsPerPage: 3
-    }),
+    source: function(query, callback) {
+        iviewIndex.search(query, { hitsPerPage: 3}).then(function(answer) {
+          callback(answer.hits);
+          $('.aa-dataset-iview > .aa-stats').empty();
+          console.log('iview hits', answer.nbHits);
+          $('.aa-dataset-iview').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} iview hits...<a v-on:click="test" class="aa-link">See all iview</a></span></div>`)
+        }, function() {
+          callback([]);
+        });
+    },
     displayKey: 'title_t',
     name: 'iview',
     templates: {
         //'suggestion' templating function used to render a single suggestion
-        header: '<div class="aa-suggestions-category"><img img src="homepage/2013/styles/img/iview-logo.png"></div>',
+        header: '<div class="aa-suggestions-category video-header"><img img src="homepage/2013/styles/img/iview-logo.png"></div>',
         suggestion: function (suggestion) {
             try {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
@@ -99,14 +118,21 @@ autocomplete('#aa-search-input', {
     }
 },
 {
-    source: autocomplete.sources.hits(tvIndex, {
-        hitsPerPage: 3
-    }),
+    source: function(query, callback) {
+        tvIndex.search(query, { hitsPerPage: 3}).then(function(answer) {
+          callback(answer.hits);
+          $('.aa-dataset-tv > .aa-stats').empty();
+          console.log('tv hits', answer.nbHits);
+          $('.aa-dataset-tv').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} television hits...<a v-on:click="test" class="aa-link">See all television</a></span></div>`)
+        }, function() {
+          callback([]);
+        });
+    },
     displayKey: 'title_t',
     name: 'tv',
     templates: {
         //'suggestion' templating function used to render a single suggestion
-        header: '<div class="aa-suggestions-category"><img img src="homepage/2013/styles/img/television-logo.jpeg"></div>',
+        header: '<div class="aa-suggestions-category video-header"><img img src="homepage/2013/styles/img/television-logo.jpeg"></div>',
         suggestion: function (suggestion) {
             try {
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
