@@ -39,7 +39,7 @@ autocomplete('#aa-search-input', {
           $('.aa-dataset-news > .aa-stats').empty();
           $('.aa-dataset-news').append(`<div class="aa-stats">
           <span>First 5 of ${answer.nbHits} news articles</span>
-          <span class="see-all"><a v-on:click="test" class="aa-link">See all news...</a></span>
+          <span class="see-all"><a @click="test" class="aa-link">See all news...</a></span>
           </div>`)
         }, function() {
           callback([]);
@@ -63,7 +63,6 @@ autocomplete('#aa-search-input', {
         radioIndex.search(query, { hitsPerPage: 1}).then(function(answer) {
           callback(answer.hits);
           $('.aa-dataset-radio > .aa-stats').empty();
-          console.log('radio hits', answer.nbHits);
           $('.aa-dataset-radio').append(`<div class="aa-stats"><span>First of ${answer.nbHits} radio hits</span><span class="see-all"><a v-on:click="test" class="aa-link">See all radio...</a></span></div>`)
         }, function() {
           callback([]);
@@ -87,7 +86,6 @@ autocomplete('#aa-search-input', {
         iviewIndex.search(query, { hitsPerPage: 3}).then(function(answer) {
           callback(answer.hits);
           $('.aa-dataset-iview > .aa-stats').empty();
-          console.log('iview hits', answer.nbHits);
           $('.aa-dataset-iview').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} iview hits...<a v-on:click="test" class="aa-link">See all iview</a></span></div>`)
         }, function() {
           callback([]);
@@ -106,7 +104,6 @@ autocomplete('#aa-search-input', {
                     '<div class="video-text-wrapper"><div class="video-title iview-title">' + suggestion._highlightResult.series.title.value +
                     ':</div><div class="video-title">' + suggestion._highlightResult.title.value || '' + '</div></div>'
             } catch (e) {
-                console.log('Images missing from record');
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="homepage/2013/styles/img/abc-default.png"">' +
                     '</a></div>' +
@@ -122,7 +119,6 @@ autocomplete('#aa-search-input', {
         tvIndex.search(query, { hitsPerPage: 3}).then(function(answer) {
           callback(answer.hits);
           $('.aa-dataset-tv > .aa-stats').empty();
-          console.log('tv hits', answer.nbHits);
           $('.aa-dataset-tv').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} television hits...<a v-on:click="test" class="aa-link">See all television</a></span></div>`)
         }, function() {
           callback([]);
@@ -141,7 +137,6 @@ autocomplete('#aa-search-input', {
                     '<div class="video-title">' + suggestion._highlightResult.title.value +
                     '</div></div>'
             } catch (e) {
-                console.log('Images missing from record');
                 return '<div class="video-wrapper"><a class="dropdown" href="' + suggestion.canonicalURL + '">' +
                     '<img class="video-thumbnail" src="homepage/2013/styles/img/abc-default.png">' +
                     '</a></div>' +
