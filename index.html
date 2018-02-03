@@ -44,7 +44,7 @@
 
 				</a>
 				<li v-bind:class="{ hidden: indexSelected }">
-					<div class="aa-input-container" id="aa-input-container">
+					<div @click="aaSelect" class="aa-input-container" id="aa-input-container">
 						<input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search the ABC..." name="search" autocomplete="off"
 						/>
 					</div>
@@ -1208,10 +1208,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 	<script src="assets/js/vue-nav.js"></script>
-	<script src="assets/js/algolia-autocomplete.js"></script>
-	<script src="assets/js/banner-widget.js"></script>
 	<script src="assets/js/is-settings.js"></script>
 	<script src="assets/js/algolia-search.js"></script>
+	<script src="assets/js/algolia-autocomplete.js"></script>
+	<script src="assets/js/banner-widget.js"></script>
 	<!-- /SCRIPTS -->
 </body>
 

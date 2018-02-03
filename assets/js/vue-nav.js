@@ -1,7 +1,8 @@
 Vue.component('nav-item', {
     props: ['index'],
-    template: '<li ><a>{{ index.text }}</a></li>'
+    template: '<li ><a v-bind:value="index.text">{{ index.text }}</a></li>'
 })
+
 
 new Vue({
     el: '#app',
@@ -23,8 +24,12 @@ new Vue({
         },
     },
     methods: {
-        test: function(){
-            alert("Vue is functioning");
+        aaSelect: function(event){           
+            if (event.target.type === 'link'){
+                var index = $(event.target).attr('value');
+                this.currentIndex = index;
+                $(`a[value=${index}]`).parent().toggleClass('active');
+            }
         },
         selectIndex: function (event) {
             this.currentIndex = $(event.target).text()

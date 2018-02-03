@@ -1,7 +1,6 @@
 var bestBetWidget = {
     render: function (options) {
         $(".img-banner").remove();
-        console.log(options.results);
         var userData = options.results._rawResults[0].userData;
         if (userData) {
             if (userData[0].canonicalURL) {
@@ -9,7 +8,6 @@ var bestBetWidget = {
                 var $banner = $('<img class="img-banner" style="width:100%;">').attr('src', `./assets/img/${userData[0].imgSrc}`);
                 $link.append($banner);''
                 $('.hitsContainer').prepend($link);
-
             }
         }
     }

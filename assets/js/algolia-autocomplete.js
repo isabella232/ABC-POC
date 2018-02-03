@@ -13,7 +13,7 @@ var appID = 'Y63Q32NVDL',
     iviewIndex = client.initIndex(iviewIndexName),
     radioIndex = client.initIndex(radioIndexName),
     tvIndex = client.initIndex(tvIndexName);
-    // articleHitSource = autocomplete.sources.hits(articlesIndex, { hitsPerPage: 5 });
+// articleHitSource = autocomplete.sources.hits(articlesIndex, { hitsPerPage: 5 });
 
 autocomplete('#aa-search-input', {
     debug: true,
@@ -23,10 +23,10 @@ autocomplete('#aa-search-input', {
             '<div class="right-wrapper"><div class="aa-dataset-iview"></div><div class="aa-dataset-tv"></div></div>'
     }
 }, [{
-    source: function(query, callback) {
-        articlesIndex.search(query, { hitsPerPage: 5}).then(function(answer) {
+    source: function (query, callback) {
+        articlesIndex.search(query, { hitsPerPage: 5 }).then(function (answer) {
             $('#left-promotional').empty();
-            if(answer.userData){
+            if (answer.userData) {
                 if (answer.userData[0].canonicalURL) {
                     var $link = $(`<a href=${answer.userData[0].canonicalURL}></a>`);
                     var $banner = $('<img class="img-banner" style="width:100%;">').attr('src', `./assets/img/${answer.userData[0].imgSrc}`);
@@ -35,14 +35,24 @@ autocomplete('#aa-search-input', {
                     $('#left-promotional').prepend($link);
                 }
             }
-          callback(answer.hits);
-          $('.aa-dataset-news > .aa-stats').empty();
-          $('.aa-dataset-news').append(`<div class="aa-stats">
+            callback(answer.hits);
+            $('.aa-dataset-news > .aa-stats').empty();
+            $('.aa-dataset-news').append(`<div class="aa-stats">
           <span>First 5 of ${answer.nbHits} news articles</span>
-          <span class="see-all"><a @click="test" class="aa-link">See all news...</a></span>
-          </div>`)
-        }, function() {
-          callback([]);
+          <span class="see-all"><a type="link" value="news" class="aa-link">See all news...</a></span>
+          </div>`);
+            $("a.aa-link").click(function (e) {
+                var index = $(e.target).attr('value');
+                app({
+                    appID,
+                    apiKey,
+                    lang,
+                    articlesIndexName: indices[index].name,
+                    settings: indices[index].settings
+                });
+            });
+        }, function () {
+            callback([]);
         });
     },
     displayKey: 'title_t',
@@ -59,13 +69,23 @@ autocomplete('#aa-search-input', {
     }
 },
 {
-    source: function(query, callback) {
-        radioIndex.search(query, { hitsPerPage: 1}).then(function(answer) {
-          callback(answer.hits);
-          $('.aa-dataset-radio > .aa-stats').empty();
-          $('.aa-dataset-radio').append(`<div class="aa-stats"><span>First of ${answer.nbHits} radio hits</span><span class="see-all"><a v-on:click="test" class="aa-link">See all radio...</a></span></div>`)
-        }, function() {
-          callback([]);
+    source: function (query, callback) {
+        radioIndex.search(query, { hitsPerPage: 1 }).then(function (answer) {
+            callback(answer.hits);
+            $('.aa-dataset-radio > .aa-stats').empty();
+            $('.aa-dataset-radio').append(`<div class="aa-stats"><span>First of ${answer.nbHits} radio hits</span><span class="see-all"><a type="link" value="radio" class="aa-link">See all radio...</a></span></div>`);
+            $("a.aa-link").click(function (e) {
+                var index = $(e.target).attr('value');
+                app({
+                    appID,
+                    apiKey,
+                    lang,
+                    articlesIndexName: indices[index].name,
+                    settings: indices[index].settings
+                });
+            });
+        }, function () {
+            callback([]);
         });
     },
     displayKey: 'title_t',
@@ -82,13 +102,23 @@ autocomplete('#aa-search-input', {
     }
 },
 {
-    source: function(query, callback) {
-        iviewIndex.search(query, { hitsPerPage: 3}).then(function(answer) {
-          callback(answer.hits);
-          $('.aa-dataset-iview > .aa-stats').empty();
-          $('.aa-dataset-iview').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} iview hits...<a v-on:click="test" class="aa-link">See all iview</a></span></div>`)
-        }, function() {
-          callback([]);
+    source: function (query, callback) {
+        iviewIndex.search(query, { hitsPerPage: 3 }).then(function (answer) {
+            callback(answer.hits);
+            $('.aa-dataset-iview > .aa-stats').empty();
+            $('.aa-dataset-iview').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} iview hits...<a type="link" value="iview" class="aa-link">See all iview</a></span></div>`);
+            $("a.aa-link").click(function (e) {
+                var index = $(e.target).attr('value');
+                app({
+                    appID,
+                    apiKey,
+                    lang,
+                    articlesIndexName: indices[index].name,
+                    settings: indices[index].settings
+                });
+            });
+        }, function () {
+            callback([]);
         });
     },
     displayKey: 'title_t',
@@ -115,13 +145,23 @@ autocomplete('#aa-search-input', {
     }
 },
 {
-    source: function(query, callback) {
-        tvIndex.search(query, { hitsPerPage: 3}).then(function(answer) {
-          callback(answer.hits);
-          $('.aa-dataset-tv > .aa-stats').empty();
-          $('.aa-dataset-tv').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} television hits...<a v-on:click="test" class="aa-link">See all television</a></span></div>`)
-        }, function() {
-          callback([]);
+    source: function (query, callback) {
+        tvIndex.search(query, { hitsPerPage: 3 }).then(function (answer) {
+            callback(answer.hits);
+            $('.aa-dataset-tv > .aa-stats').empty();
+            $('.aa-dataset-tv').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} television hits...<a type="link" value="television"  class="aa-link">See all television</a></span></div>`);
+            $("a.aa-link").click(function (e) {
+                var index = $(e.target).attr('value');
+                app({
+                    appID,
+                    apiKey,
+                    lang,
+                    articlesIndexName: indices[index].name,
+                    settings: indices[index].settings
+                });
+            });
+        }, function () {
+            callback([]);
         });
     },
     displayKey: 'title_t',
