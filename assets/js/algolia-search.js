@@ -17,7 +17,8 @@ $("#language-select").change(function (e) {
         apiKey,
         lang: e.target.value,
         articlesIndexName: indices[currIndex].name,
-        settings: indices[currIndex].settings
+        settings: indices[currIndex].settings,
+        query: ''
     });
 });
 
@@ -27,7 +28,8 @@ $("ul#indices-ul > li > a").click(function (e) {
         apiKey,
         lang,
         articlesIndexName: indices[e.target.text].name,
-        settings: indices[e.target.text].settings
+        settings: indices[e.target.text].settings,
+        query: ''
     });
 })
 
@@ -38,15 +40,15 @@ function app(opts) {
         apiKey: opts.apiKey,
         indexName: opts.articlesIndexName,
         urlSync: false,
-        // searchFunction: function (helper) {
-        //     if (helper.getIndex() !== opts.articlesIndexName) {
+        searchFunction: function (helper) {
+            if (helper.getIndex() !== opts.articlesIndexName) {
 
-        //         if (helper.getIndex().slice(0, 6) !== 'newest' && helper.getIndex().slice(0, 6) !== 'oldest')
-        //             helper.clearRefinements().setIndex(opts.articlesIndexName);
-        //     }
-        //     console.log('Current index:', helper.getIndex())
-        //     helper.search();
-        // }
+                if (helper.getIndex().slice(0, 6) !== 'newest' && helper.getIndex().slice(0, 6) !== 'oldest')
+                    helper.clearRefinements().setIndex(opts.articlesIndexName);
+            }
+            //console.log('Current index:', helper.getIndex())
+            helper.setQuery(opts.query).search();
+        }
     }
 
     if (opts.articlesIndexName === 'ABC_TEST_coremedia_article') {

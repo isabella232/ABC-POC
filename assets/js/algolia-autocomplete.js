@@ -43,12 +43,14 @@ autocomplete('#aa-search-input', {
           </div>`);
             $("a.aa-link").click(function (e) {
                 var index = $(e.target).attr('value');
+                var query = $('input.aa-input').val();
                 app({
                     appID,
                     apiKey,
                     lang,
                     articlesIndexName: indices[index].name,
-                    settings: indices[index].settings
+                    settings: indices[index].settings,
+                    query
                 });
             });
         }, function () {
@@ -76,12 +78,14 @@ autocomplete('#aa-search-input', {
             $('.aa-dataset-radio').append(`<div class="aa-stats"><span>First of ${answer.nbHits} radio hits</span><span class="see-all"><a type="link" value="radio" class="aa-link">See all radio...</a></span></div>`);
             $("a.aa-link").click(function (e) {
                 var index = $(e.target).attr('value');
+                var query = $('input.aa-input').val();
                 app({
                     appID,
                     apiKey,
                     lang,
                     articlesIndexName: indices[index].name,
-                    settings: indices[index].settings
+                    settings: indices[index].settings,
+                    query
                 });
             });
         }, function () {
@@ -109,12 +113,14 @@ autocomplete('#aa-search-input', {
             $('.aa-dataset-iview').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} iview hits...<a type="link" value="iview" class="aa-link">See all iview</a></span></div>`);
             $("a.aa-link").click(function (e) {
                 var index = $(e.target).attr('value');
+                var query = $('input.aa-input').val();
                 app({
                     appID,
                     apiKey,
                     lang,
                     articlesIndexName: indices[index].name,
-                    settings: indices[index].settings
+                    settings: indices[index].settings,
+                    query
                 });
             });
         }, function () {
@@ -152,12 +158,14 @@ autocomplete('#aa-search-input', {
             $('.aa-dataset-tv').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} television hits...<a type="link" value="television"  class="aa-link">See all television</a></span></div>`);
             $("a.aa-link").click(function (e) {
                 var index = $(e.target).attr('value');
+                var query = $('input.aa-input').val();
                 app({
                     appID,
                     apiKey,
                     lang,
                     articlesIndexName: indices[index].name,
-                    settings: indices[index].settings
+                    settings: indices[index].settings,
+                    query
                 });
             });
         }, function () {
