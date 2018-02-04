@@ -6,8 +6,12 @@
 }
 
 #nav ul {
+    width: 35%;
+    margin-left: 750px;
+    height: 50px;
+    position: fixed;
     background: none;
-}
+} 
 
 #nav li a {
     padding: 15px 10px;
@@ -15,7 +19,7 @@
 }
 
 #logo-search {
-    margin-left: 200px;
+    margin-left: 10%;
 
 }
 li#nav-logo {
@@ -23,11 +27,6 @@ li#nav-logo {
     top: 5px;
     left: -15px;
 }
-
-#nav ul {
-    width: 35%;
-    margin-left: 770px
-} 
 
 #main-content {
     position:relative;
