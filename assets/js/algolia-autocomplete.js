@@ -50,6 +50,7 @@ autocomplete('#aa-search-input', {
                     lang,
                     articlesIndexName: indices[index].name,
                     settings: indices[index].settings,
+                    callFromAa: true,
                     query
                 });
             });
@@ -85,6 +86,7 @@ autocomplete('#aa-search-input', {
                     lang,
                     articlesIndexName: indices[index].name,
                     settings: indices[index].settings,
+                    callFromAa: true,
                     query
                 });
             });
@@ -120,6 +122,7 @@ autocomplete('#aa-search-input', {
                     lang,
                     articlesIndexName: indices[index].name,
                     settings: indices[index].settings,
+                    callFromAa: true,
                     query
                 });
             });
@@ -165,6 +168,7 @@ autocomplete('#aa-search-input', {
                     lang,
                     articlesIndexName: indices[index].name,
                     settings: indices[index].settings,
+                    callFromAa: true,
                     query
                 });
             });

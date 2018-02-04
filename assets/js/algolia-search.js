@@ -23,13 +23,16 @@ $("#language-select").change(function (e) {
 });
 
 $("ul#indices-ul > li > a").click(function (e) {
+    var query = $('input.ais-search-box--input').val() || '';
+    // console.log('query from new app() call:', query);
     app({
         appID,
         apiKey,
         lang,
         articlesIndexName: indices[e.target.text].name,
         settings: indices[e.target.text].settings,
-        query: ''
+        // callFromIS: true,
+        query
     });
 })
 
@@ -41,13 +44,28 @@ function app(opts) {
         indexName: opts.articlesIndexName,
         urlSync: false,
         searchFunction: function (helper) {
-            if (helper.getIndex() !== opts.articlesIndexName) {
+            // console.log('getStateAsQueryString', helper.getStateAsQueryString())
+            // console.log('getQueryStringFromState', helper)
+            // if (helper.getIndex() !== opts.articlesIndexName) {
 
-                if (helper.getIndex().slice(0, 6) !== 'newest' && helper.getIndex().slice(0, 6) !== 'oldest')
-                    helper.clearRefinements().setIndex(opts.articlesIndexName);
+            //     if (helper.getIndex().slice(0, 6) !== 'newest' && helper.getIndex().slice(0, 6) !== 'oldest')
+            //         helper.clearRefinements().setIndex(opts.articlesIndexName);
+            // }
+            // console.log('Current index:', helper.getIndex())
+            // $('input.ais-search-box--input').val(opts.query)
+            if (opts.query && opts.callFromAa) {
+                helper.setQuery(opts.query).search();
+                opts.callFromAa = false;
+                // } else {
+                //     if (opts.callFromIS) {
+                //         $('input.ais-search-box--input').val(opts.query)
+                //         opts.callFromIs = false;
+                //         helper.setQuery(opts.query).search();
+
+            } else {
+                helper.search();
+                // }
             }
-            //console.log('Current index:', helper.getIndex())
-            helper.setQuery(opts.query).search();
         }
     }
 
