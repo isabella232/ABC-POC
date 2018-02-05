@@ -23,8 +23,12 @@ $("#language-select").change(function (e) {
 });
 
 $("ul#indices-ul > li > a").click(function (e) {
-    var query = $('input.ais-search-box--input').val() || '';
-    // console.log('query from new app() call:', query);
+    var query = '';
+    if($('input.ais-search-box--input').length){
+        query = $('input.ais-search-box--input').val()
+    } else if($('input.aa-input').length){
+            query = $('input.aa-input').val() 
+    }  
     app({
         appID,
         apiKey,
