@@ -3,8 +3,8 @@ var newsSettings = {
     settings: {
         searchPlaceholder: 'Search the ABC for news by title, keyword, or author...',
         sortByIndices: [
-            { name: 'ABC_TEST_coremedia_article', label: 'Relevance' },
-            { name: 'newest-articles', label: 'Newest' },
+            { name: 'ABC_TEST_coremedia_article', label: 'Newest' },
+            // { name: 'newest-articles', label: 'Newest' },
             { name: 'oldest-articles', label: 'Oldest' }
         ],
         templateName: 'article',
@@ -74,8 +74,8 @@ var iviewSettings = {
     settings: {
         searchPlaceholder: 'Search for iView programs by series, episode title, or keyword...',
         sortByIndices: [
-            { name: 'ABC_TEST_iview', label: 'Relevance' },
-            { name: 'newest-iview', label: 'Newest' },
+            { name: 'ABC_TEST_iview', label: 'Newest' },
+            // { name: 'newest-iview', label: 'Newest' },
             { name: 'oldest-iview', label: 'Oldest' }
         ],
         templateName: 'iview',
@@ -145,8 +145,8 @@ var radioSettings = {
     settings: {
         searchPlaceholder: 'Search for radio programs by title or keyword...',
         sortByIndices: [
-            { name: 'ABC_TEST_coremedia_audio', label: 'Relevance' },
-            { name: 'newest-radio', label: 'Newest' },
+            { name: 'ABC_TEST_coremedia_audio', label: 'Newest' },
+            // { name: 'newest-radio', label: 'Newest' },
             { name: 'oldest-radio', label: 'Oldest' }
         ],
         templateName: 'radio',
@@ -216,8 +216,8 @@ var tvSettings = {
     settings: {
         searchPlaceholder: 'Search for television programs by title or keyword...',
         sortByIndices: [
-            { name: 'ABC_TEST_coremedia_video', label: 'Relevance' },
-            { name: 'newest-tv', label: 'Newest' },
+            { name: 'ABC_TEST_coremedia_video', label: 'Newest' },
+            // { name: 'newest-tv', label: 'Newest' },
             { name: 'oldest-tv', label: 'Oldest' }
         ],
         templateName: 'tv',
