@@ -31,7 +31,7 @@ $("ul#indices-ul > li > a").click(function (e) {
         lang,
         articlesIndexName: indices[e.target.text].name,
         settings: indices[e.target.text].settings,
-        // callFromIS: true,
+        callFromIS: true,
         query
     });
 })
@@ -56,15 +56,14 @@ function app(opts) {
             if (opts.query && opts.callFromAa) {
                 helper.setQuery(opts.query).search();
                 opts.callFromAa = false;
-                // } else {
-                //     if (opts.callFromIS) {
-                //         $('input.ais-search-box--input').val(opts.query)
-                //         opts.callFromIs = false;
-                //         helper.setQuery(opts.query).search();
-
             } else {
-                helper.search();
-                // }
+                if (opts.query && opts.callFromIS) {
+                    helper.setQuery(opts.query).search();
+                    $('input.ais-search-box--input').val(opts.query);
+                    opts.callFromIS = false;
+                } else {
+                    helper.search();
+                }
             }
         }
     }
