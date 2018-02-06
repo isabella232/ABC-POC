@@ -23,8 +23,6 @@ $("#language-select").change(function (e) {
 });
 
 $("#full-text-select").change(function (e) {
-    console.log(e.target.value)
-    console.log('from click handler', $('input.ais-search-box--input').val())
     if (e.target.value === 'on') {
         app({
             appID,
@@ -103,7 +101,6 @@ function app(opts) {
 
     if (opts.indexName === 'ABC_TEST_coremedia_article') {
         let searchableArr = opts.restrict ? opts.restrict : ['title', 'keywords', 'synopsis', 'text'];
-        console.log('searchable Attributes', searchableArr, 'query', opts.query);
         search = instantsearch(Object.assign(searchOptions, {
             searchParameters: {
                 filters: `lang:${opts.lang}`,
@@ -114,7 +111,6 @@ function app(opts) {
     } else {
         search = instantsearch(searchOptions);
     }
-    console.log('search', search);
 
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();
