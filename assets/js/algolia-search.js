@@ -16,24 +16,53 @@ $("#language-select").change(function (e) {
         appID,
         apiKey,
         lang: e.target.value,
-        articlesIndexName: indices[currIndex].name,
+        indexName: indices[currIndex].name,
         settings: indices[currIndex].settings,
         query: ''
     });
 });
 
+$("#full-text-select").change(function (e) {
+    console.log(e.target.value)
+    console.log('from click handler', $('input.ais-search-box--input').val())
+    if (e.target.value === 'on') {
+        app({
+            appID,
+            apiKey,
+            lang: $('#language-select option:selected').val(),
+            indexName: indices[currIndex].name,
+            settings: indices[currIndex].settings,
+            query: $('input.ais-search-box--input').val(),
+            callFromIS: true,
+        });
+    }
+    else {
+        app({
+            appID,
+            apiKey,
+            lang: $('#language-select option:selected').val(),
+            indexName: indices[currIndex].name,
+            settings: indices[currIndex].settings,
+            query: $('input.ais-search-box--input').val(),
+            restrict: ['title', 'keywords', 'synopsis'],
+            callFromIS: true,
+        });
+    }
+
+});
+
 $("ul#indices-ul > li > a").click(function (e) {
     var query = '';
-    if($('input.ais-search-box--input').length){
+    if ($('input.ais-search-box--input').length) {
         query = $('input.ais-search-box--input').val()
-    } else if($('input.aa-input').length){
-            query = $('input.aa-input').val() 
-    }  
+    } else if ($('input.aa-input').length) {
+        query = $('input.aa-input').val()
+    }
     app({
         appID,
         apiKey,
         lang,
-        articlesIndexName: indices[e.target.text].name,
+        indexName: indices[e.target.text].name,
         settings: indices[e.target.text].settings,
         callFromIS: true,
         query
@@ -45,15 +74,15 @@ function app(opts) {
     var searchOptions = {
         appId: opts.appID,
         apiKey: opts.apiKey,
-        indexName: opts.articlesIndexName,
+        indexName: opts.indexName,
         urlSync: false,
         searchFunction: function (helper) {
             // console.log('getStateAsQueryString', helper.getStateAsQueryString())
             // console.log('getQueryStringFromState', helper)
-            // if (helper.getIndex() !== opts.articlesIndexName) {
+            // if (helper.getIndex() !== opts.indexName) {
 
             //     if (helper.getIndex().slice(0, 6) !== 'newest' && helper.getIndex().slice(0, 6) !== 'oldest')
-            //         helper.clearRefinements().setIndex(opts.articlesIndexName);
+            //         helper.clearRefinements().setIndex(opts.indexName);
             // }
             // console.log('Current index:', helper.getIndex())
             // $('input.ais-search-box--input').val(opts.query)
@@ -72,16 +101,20 @@ function app(opts) {
         }
     }
 
-    if (opts.articlesIndexName === 'ABC_TEST_coremedia_article') {
+    if (opts.indexName === 'ABC_TEST_coremedia_article') {
+        let searchableArr = opts.restrict ? opts.restrict : ['title', 'keywords', 'synopsis', 'text'];
+        console.log('searchable Attributes', searchableArr, 'query', opts.query);
         search = instantsearch(Object.assign(searchOptions, {
             searchParameters: {
-                filters: `lang:${opts.lang}`
+                filters: `lang:${opts.lang}`,
+                restrictSearchableAttributes: searchableArr
             }
         })
         );
     } else {
         search = instantsearch(searchOptions);
     }
+    console.log('search', search);
 
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();

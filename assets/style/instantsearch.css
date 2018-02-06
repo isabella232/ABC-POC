@@ -313,6 +313,14 @@ li.hidden {
 }
 
 #lang-selector {
+    margin-left: -150px !important;
+}
+
+#full-text-selector {
+    margin-left: -50px !important;
+}
+
+#lang-selector, #full-text-selector {
     display: flex;
     padding: 0 25px !important;
     margin-top: 10px !important;

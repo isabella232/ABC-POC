@@ -65,6 +65,21 @@
 						</div>
 					</span>
 				</li>
+				<li v-bind:class="{ hidden: !newsSelected }" id="full-text-selector">
+					<span id="lang">Full Text:</span>
+					<span>
+						<div>
+							<div class="ais-root ais-sort-by-selector">
+								<div class="ais-body">
+									<select id="full-text-select" class="ais-sort-by-selector">
+										<option class="ais-sort-by-selector--item" selected value="on">on</option>
+										<option class="ais-sort-by-selector--item" value="off">off</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</span>
+				</li>
 			</div>
 			<ul @click="selectIndex($event)" id="indices-ul" role="presentation">
 				<nav-item v-for="item in indices" v-bind:index="item" v-bind:key="item.id">
