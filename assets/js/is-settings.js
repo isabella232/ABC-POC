@@ -288,44 +288,43 @@ var heywireSettings = {
         searchPlaceholder: 'Search Heywire for news by title, keyword, or author...',
         sortByIndices: [
             { name: 'media_aggregate', label: 'Newest' },
-            // { name: 'newest-articles', label: 'Newest' },
-            // { name: 'oldest-articles', label: 'Oldest' }
+            { name: 'oldest-aggregate', label: 'Oldest' }
         ],
         templateName: 'heywire',
         refinementLists: [
-            // {
-            //     container: '#genre-facet',
-            //     attributeName: 'genre',
-            //     operator: 'or',
-            //     limit: 5,
-            //     showMore: {
-            //         templates: {
-            //             active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-            //             inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-            //         }
-            //     },
-            //     templates: {
-            //         header: 'Genre'
-            //     }
-            // },
-            // {
-            //     container: '#keyword-facet',
-            //     attributeName: 'keywords',
-            //     operator: 'or',
-            //     limit: 5,
-            //     searchForFacetValues: {
-            //         placeholder: 'Search for keywords'
-            //     },
-            //     showMore: {
-            //         templates: {
-            //             active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
-            //             inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
-            //         }
-            //     },
-            //     templates: {
-            //         header: 'Keywords'
-            //     }
-            // },
+            {
+                container: '#genre-facet',
+                attributeName: 'docType',
+                operator: 'or',
+                limit: 5,
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Media Type'
+                }
+            },
+            {
+                container: '#keyword-facet',
+                attributeName: 'keywords',
+                operator: 'or',
+                limit: 5,
+                searchForFacetValues: {
+                    placeholder: 'Search for keywords'
+                },
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Keywords'
+                }
+            },
             // {
             //     container: '#author-facet',
             //     attributeName: 'attribution',
@@ -346,9 +345,8 @@ var heywireSettings = {
             // }
         ],
         clearRefinedAttributes: [
-            // { name: 'genre', label: 'Genre' },
-            // { name: 'keywords', label: 'Keyword' },
-            // { name: 'attribution', label: 'Author' },
+            { name: 'docType', label: 'Media Type' },
+            { name: 'keywords', label: 'Keyword' },
         ]
     }
 }

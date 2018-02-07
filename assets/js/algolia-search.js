@@ -85,15 +85,19 @@ function app(opts) {
             // }
             // console.log('Current index:', helper.getIndex())
             // $('input.ais-search-box--input').val(opts.query)
+        
             if (opts.query && opts.callFromAa) {
                 helper.setQuery(opts.query).search();
                 opts.callFromAa = false;
+                console.log(helper.state)
             } else {
                 if (opts.query && opts.callFromIS) {
                     helper.setQuery(opts.query).search();
                     $('input.ais-search-box--input').val(opts.query);
                     opts.callFromIS = false;
+                    console.log(helper.state)
                 } else {
+                    console.log(helper.state)
                     helper.search();
                 }
             }
@@ -110,7 +114,6 @@ function app(opts) {
         }));
         break;
         case 'media_aggregate':
-        console.log('its working')
         search = instantsearch(Object.assign(searchOptions, {
             searchParameters: {
                 filters: 'section:heywire',
@@ -120,18 +123,6 @@ function app(opts) {
         default:
         search = instantsearch(searchOptions);
     }
-    // if (opts.indexName === 'ABC_TEST_coremedia_article') {
-    //     let searchableArr = opts.restrict ? opts.restrict : ['title', 'keywords', 'synopsis', 'text'];
-    //     search = instantsearch(Object.assign(searchOptions, {
-    //         searchParameters: {
-    //             filters: `lang:${opts.lang}`,
-    //             restrictSearchableAttributes: searchableArr
-    //         }
-    //     })
-    //     );
-    // } else {
-    //     search = instantsearch(searchOptions);
-    // }
 
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();
