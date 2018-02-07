@@ -6,13 +6,15 @@ var appID = 'Y63Q32NVDL',
     iviewIndexName = 'ABC_TEST_iview',
     radioIndexName = 'ABC_TEST_coremedia_audio',
     tvIndexName = 'ABC_TEST_coremedia_video',
+    heywireIndexName = 'media_aggregate',
 
     client = algoliasearch(appID, apiKey),
 
     articlesIndex = client.initIndex(articlesIndexName),
     iviewIndex = client.initIndex(iviewIndexName),
     radioIndex = client.initIndex(radioIndexName),
-    tvIndex = client.initIndex(tvIndexName);
+    tvIndex = client.initIndex(tvIndexName),
+    heywireIndex = client.initIndex(heywireIndexName);
 // articleHitSource = autocomplete.sources.hits(articlesIndex, { hitsPerPage: 5 });
 
 autocomplete('#aa-search-input', {

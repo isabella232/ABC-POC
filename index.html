@@ -1175,7 +1175,35 @@
 			</div>
 		</div>
 	  </script>
-
+	  <script type="text/html" id="heywire-template">
+		<div class="hit">
+			<div class="hit-card col-xs-12">
+				<a href={{canonicalURL}}>
+					<div class ="hit-card-content">
+						<div class="article-image-container">
+							<!-- <p>{{{_embedded.mediaThumbnail.images.4x3}}}</p>
+							<p>{{{_embedded.mediaRelated.0.media.image.primary.images.4x3}}}</p> -->
+							<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{imgSrc}}" onerror="if (this.src != 'homepage/2013/styles/img/default-2.png') this.src = 'homepage/2013/styles/img/default-2.png';">
+						</div>
+						<div class="article-text-container">
+							<div class="hit-elem-title">
+								<span>{{{_highlightResult.title.value}}}</span>
+							</div>
+							<div class="hit-elem-title">
+								<div class="instant-article-sub">
+									<span class="article-attribution">{{{_highlightResult.attribution.value}}}</span>
+									<span class="article-date">{{{dates.displayPublished}}}</span>    
+								</div>
+							</div>
+							<!-- <p>mediaRelated: {{{_embedded.mediaRelated.0.media.image.primary.images.4x3}}}</p>
+							<p>thumbnail: {{{_embedded.mediaThumbnail.images.4x3}}}</p> -->
+							<p class="article-synopsis">{{{_snippetResult.synopsis.value}}}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	  </script>
 
 	<script type="text/html" id="empty-template">
 		<div class="no---results-wrapper">

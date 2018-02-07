@@ -13,6 +13,7 @@ new Vue({
             { id: 1, text: 'iview' },
             { id: 2, text: 'radio' },
             { id: 3, text: 'television' },
+            { id: 4, text: 'heywire'}
         ]
     },
     computed: {

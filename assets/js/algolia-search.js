@@ -6,7 +6,8 @@ var appID = 'Y63Q32NVDL',
         news: newsSettings,
         iview: iviewSettings,
         radio: radioSettings,
-        television: tvSettings
+        television: tvSettings,
+        heywire: heywireSettings
     },
     lang = 'en',
     currIndex = 'news';
@@ -98,19 +99,39 @@ function app(opts) {
             }
         }
     }
-
-    if (opts.indexName === 'ABC_TEST_coremedia_article') {
+    switch (opts.indexName) {
+        case 'ABC_TEST_coremedia_article':
         let searchableArr = opts.restrict ? opts.restrict : ['title', 'keywords', 'synopsis', 'text'];
         search = instantsearch(Object.assign(searchOptions, {
             searchParameters: {
                 filters: `lang:${opts.lang}`,
                 restrictSearchableAttributes: searchableArr
             }
-        })
-        );
-    } else {
+        }));
+        break;
+        case 'media_aggregate':
+        console.log('its working')
+        search = instantsearch(Object.assign(searchOptions, {
+            searchParameters: {
+                filters: 'section:heywire',
+            }
+        }));
+        break;
+        default:
         search = instantsearch(searchOptions);
     }
+    // if (opts.indexName === 'ABC_TEST_coremedia_article') {
+    //     let searchableArr = opts.restrict ? opts.restrict : ['title', 'keywords', 'synopsis', 'text'];
+    //     search = instantsearch(Object.assign(searchOptions, {
+    //         searchParameters: {
+    //             filters: `lang:${opts.lang}`,
+    //             restrictSearchableAttributes: searchableArr
+    //         }
+    //     })
+    //     );
+    // } else {
+    //     search = instantsearch(searchOptions);
+    // }
 
     if ($('.ais-search-box').length) {
         $('.ais-search-box').remove();

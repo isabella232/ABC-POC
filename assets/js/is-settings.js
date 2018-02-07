@@ -282,3 +282,74 @@ var tvSettings = {
     }
 }
 
+var heywireSettings = {
+    name: 'media_aggregate',
+    settings: {
+        searchPlaceholder: 'Search Heywire for news by title, keyword, or author...',
+        sortByIndices: [
+            { name: 'media_aggregate', label: 'Newest' },
+            // { name: 'newest-articles', label: 'Newest' },
+            // { name: 'oldest-articles', label: 'Oldest' }
+        ],
+        templateName: 'heywire',
+        refinementLists: [
+            // {
+            //     container: '#genre-facet',
+            //     attributeName: 'genre',
+            //     operator: 'or',
+            //     limit: 5,
+            //     showMore: {
+            //         templates: {
+            //             active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            //             inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+            //         }
+            //     },
+            //     templates: {
+            //         header: 'Genre'
+            //     }
+            // },
+            // {
+            //     container: '#keyword-facet',
+            //     attributeName: 'keywords',
+            //     operator: 'or',
+            //     limit: 5,
+            //     searchForFacetValues: {
+            //         placeholder: 'Search for keywords'
+            //     },
+            //     showMore: {
+            //         templates: {
+            //             active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            //             inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+            //         }
+            //     },
+            //     templates: {
+            //         header: 'Keywords'
+            //     }
+            // },
+            // {
+            //     container: '#author-facet',
+            //     attributeName: 'attribution',
+            //     operator: 'or',
+            //     limit: 5,
+            //     searchForFacetValues: {
+            //         placeholder: 'Search for authors'
+            //     },
+            //     showMore: {
+            //         templates: {
+            //             active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            //             inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+            //         }
+            //     },
+            //     templates: {
+            //         header: 'Author'
+            //     }
+            // }
+        ],
+        clearRefinedAttributes: [
+            // { name: 'genre', label: 'Genre' },
+            // { name: 'keywords', label: 'Keyword' },
+            // { name: 'attribution', label: 'Author' },
+        ]
+    }
+}
+
