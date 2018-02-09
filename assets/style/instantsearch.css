@@ -267,8 +267,8 @@ select.ais-sort-by-selector {
     color: #828282;
 }
 
-.article-attribution {
-    padding-right: 10px;
+.instant-article-sub > span + span {
+    padding-left: 10px
 }
 
 #pagination-container {
