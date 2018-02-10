@@ -322,7 +322,7 @@ li.hidden {
 
 #lang-selector, #full-text-selector {
     display: flex;
-    padding: 0 25px !important;
+    padding: 0 5px !important;
     margin-top: 10px !important;
     color: white;
 }
@@ -394,7 +394,6 @@ a:hover {
     top: 205px;
   }
 
-  /* img[src="homepage/2013/styles/img/news-default.png"] {
-      display: none;
-  } */
-
+p.article-synopsis {
+    max-height: 50px;
+}

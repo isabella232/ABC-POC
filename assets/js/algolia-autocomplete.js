@@ -7,6 +7,7 @@ var appID = 'Y63Q32NVDL',
     radioIndexName = 'ABC_TEST_coremedia_audio',
     tvIndexName = 'ABC_TEST_coremedia_video',
     heywireIndexName = 'media_aggregate',
+    aboutIndexName = 'about',
 
     client = algoliasearch(appID, apiKey),
 
@@ -14,6 +15,7 @@ var appID = 'Y63Q32NVDL',
     iviewIndex = client.initIndex(iviewIndexName),
     radioIndex = client.initIndex(radioIndexName),
     tvIndex = client.initIndex(tvIndexName),
+    aboutIndex = client.initIndex(aboutIndexName),
     heywireIndex = client.initIndex(heywireIndexName);
 // articleHitSource = autocomplete.sources.hits(articlesIndex, { hitsPerPage: 5 });
 

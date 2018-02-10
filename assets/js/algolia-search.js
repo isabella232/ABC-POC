@@ -7,7 +7,8 @@ var appID = 'Y63Q32NVDL',
         iview: iviewSettings,
         radio: radioSettings,
         television: tvSettings,
-        heywire: heywireSettings
+        heywire: heywireSettings,
+        about: aboutSettings
     },
     lang = 'en',
     currIndex = 'news';

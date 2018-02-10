@@ -351,3 +351,70 @@ var heywireSettings = {
     }
 }
 
+var aboutSettings = {
+    name: 'about',
+    settings: {
+        searchPlaceholder: 'Search about.abc.net.au',
+        sortByIndices: [
+            { name: 'about', label: 'Relevance' },
+        ],
+        templateName: 'about',
+        refinementLists: [
+            {
+                container: '#genre-facet',
+                attributeName: 'section',
+                operator: 'or',
+                limit: 5,
+                showMore: {
+                    templates: {
+                        active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+                        inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+                    }
+                },
+                templates: {
+                    header: 'Section'
+                }
+            },
+            // {
+            //     container: '#keyword-facet',
+            //     attributeName: 'keywords',
+            //     operator: 'or',
+            //     limit: 5,
+            //     searchForFacetValues: {
+            //         placeholder: 'Search for keywords'
+            //     },
+            //     showMore: {
+            //         templates: {
+            //             active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            //             inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+            //         }
+            //     },
+            //     templates: {
+            //         header: 'Keywords'
+            //     }
+            // },
+            // {
+            //     container: '#author-facet',
+            //     attributeName: 'attribution',
+            //     operator: 'or',
+            //     limit: 5,
+            //     searchForFacetValues: {
+            //         placeholder: 'Search for authors'
+            //     },
+            //     showMore: {
+            //         templates: {
+            //             active: '<div class="show-more"><button class="ais-RefinementList__showMore">Show less</button></div>',
+            //             inactive: '<div class="show-more"><button class="ais-RefinementList__showMore">Show more</button></div>'
+            //         }
+            //     },
+            //     templates: {
+            //         header: 'Author'
+            //     }
+            // }
+        ],
+        clearRefinedAttributes: [
+            { name: 'section', label: 'Section' },
+        ]
+    }
+}
+

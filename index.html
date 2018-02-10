@@ -1205,6 +1205,29 @@
 		</div>
 	  </script>
 
+	  <script type="text/html" id="about-template">
+		<div class="hit">
+			<div class="hit-card col-xs-12">
+				<a href="{{objectID}}">
+					<div class ="hit-card-content">
+						<div class="article-image-container">
+							<!-- <p>{{{_embedded.mediaThumbnail.images.4x3}}}</p>
+							<p>{{{_embedded.mediaRelated.0.media.image.primary.images.4x3}}}</p> -->
+							<img src="https://res.cloudinary.com/algolia-maria/image/fetch/{{image}}" onerror="if (this.src != 'homepage/2013/styles/img/default-2.png') this.src = 'homepage/2013/styles/img/default-2.png';">
+						</div>
+						<div class="article-text-container">
+							<div class="hit-elem-title">
+								<span>{{{_highlightResult.title.value}}}</span>
+							</div>
+							<p class="article-synopsis">{{{_snippetResult.description.value}}}</p>
+							<p class="article-synopsis">{{{content.0}}}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	  </script>
+
 	<script type="text/html" id="empty-template">
 		<div class="no---results-wrapper">
 			<span class="title">No results found matching <em>{{{query}}}</em></span>
