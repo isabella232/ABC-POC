@@ -1208,7 +1208,7 @@
 	  <script type="text/html" id="about-template">
 		<div class="hit">
 			<div class="hit-card col-xs-12">
-				<a href="{{objectID}}">
+				<a href="http://about.abc.net.au{{objectID}}">
 					<div class ="hit-card-content">
 						<div class="article-image-container">
 							<!-- <p>{{{_embedded.mediaThumbnail.images.4x3}}}</p>
@@ -1220,7 +1220,7 @@
 								<span>{{{_highlightResult.title.value}}}</span>
 							</div>
 							<p class="article-synopsis">{{{_snippetResult.description.value}}}</p>
-							<p class="article-synopsis">{{{content.0}}}</p>
+							<p class="article-synopsis">{{{_snippetResult.content.value}}}</p>
 						</div>
 					</div>
 				</a>
