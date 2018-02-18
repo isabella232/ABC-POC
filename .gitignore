@@ -1,5 +1,10 @@
+aggregateText.js
+articleCleanSplit.js
+splitText.js
+splitTextRecords.js
 indexConfig.js
 snippets.js
 dataClean.js
 aggregate.js
 articleImage.js
+node_modules
