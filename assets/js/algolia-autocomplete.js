@@ -41,7 +41,7 @@ autocomplete('#aa-search-input', {
                 }
             }
             callback(answer.hits);
-            $('.aa-dataset-news > .aa-stats').empty();
+            $('.aa-dataset-news > .aa-stats').remove();
             $('.aa-dataset-news').append(`<div class="aa-stats">
           <span>First 5 of ${answer.nbHits} news articles</span>
           <span class="see-all"><a type="link" value="news" class="aa-link">See all news...</a></span>
@@ -68,7 +68,7 @@ autocomplete('#aa-search-input', {
     source: function (query, callback) {
         radioIndex.search(query, { hitsPerPage: 1 }).then(function (answer) {
             callback(answer.hits);
-            $('.aa-dataset-radio > .aa-stats').empty();
+            $('.aa-dataset-radio > .aa-stats').remove();
             $('.aa-dataset-radio').append(`<div class="aa-stats"><span>First of ${answer.nbHits} radio hits</span><span class="see-all"><a type="link" value="radio" class="aa-link">See all radio...</a></span></div>`);
             // $("a.aa-link").click(function (e) {
             //     var index = $(e.target).attr('value');
@@ -105,7 +105,7 @@ autocomplete('#aa-search-input', {
     source: function (query, callback) {
         iviewIndex.search(query, { hitsPerPage: 3 }).then(function (answer) {
             callback(answer.hits);
-            $('.aa-dataset-iview > .aa-stats').empty();
+            $('.aa-dataset-iview > .aa-stats').remove();
             $('.aa-dataset-iview').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} iview hits...<a type="link" value="iview" class="aa-link">See all iview</a></span></div>`);
             // $("a.aa-link").click(function (e) {
             //     var index = $(e.target).attr('value');
@@ -152,7 +152,7 @@ autocomplete('#aa-search-input', {
     source: function (query, callback) {
         tvIndex.search(query, { hitsPerPage: 3 }).then(function (answer) {
             callback(answer.hits);
-            $('.aa-dataset-tv > .aa-stats').empty();
+            $('.aa-dataset-tv > .aa-stats').remove();
             $('.aa-dataset-tv').append(`<div class="aa-stats" ><span class="see-all">First 3 of ${answer.nbHits} television hits...<a type="link" value="television"  class="aa-link">See all television</a></span></div>`);
             // $("a.aa-link").click(function (e) {
             //     var index = $(e.target).attr('value');
