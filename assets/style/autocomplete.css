@@ -104,10 +104,11 @@
 
   .aa-suggestions-category {
     border-bottom: 1px solid rgba(228, 228, 228, 0.6);
+    border-top: 1px solid rgba(228, 228, 228, 0.6);
     padding: 6px 12px;
     /* background-color: #141618; */
     text-align: center;
-    margin: 10px 0px;
+    margin: 10px 0px 15px 0px;
   }
 
   #aa-news-header {
@@ -249,8 +250,12 @@
   }
 
   .video-header {
-    text-align: left;
+    /* text-align: left; */
     padding-left: 50px;
   }
 
+  .video-header img {
+    /* text-align: left; */
+    padding-top: 10px;
+  }
 
