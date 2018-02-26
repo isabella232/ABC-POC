@@ -24,8 +24,8 @@ autocomplete('#aa-search-input', {
     debug: true,
     hint: true,
     templates: {
-        dropdownMenu: '<div class="left-wrapper"><div id="left-promotional" class="promotional"></div><div class="aa-dataset-iview"></div><div class="aa-dataset-tv"></div></div>' +
-            '<div class="right-wrapper"><div class="aa-dataset-news"></div><div class="aa-dataset-radio"></div></div>'
+        dropdownMenu: '<div class="left-wrapper"><div class="aa-dataset-iview"></div><div class="aa-dataset-tv"></div></div>' +
+            '<div class="right-wrapper"><div id="left-promotional" class="promotional"></div><div class="aa-dataset-news"></div><div class="aa-dataset-radio"></div></div>'
     }
 }, [{
     source: function (query, callback) {
