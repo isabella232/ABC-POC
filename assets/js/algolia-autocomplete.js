@@ -2,6 +2,7 @@
 
 var appID = 'Y63Q32NVDL',
     apiKey = '45bce7c03e206c4f2618e69a9f6acfc1',
+    // articlesIndexName = 'split-text_articles',
     articlesIndexName = 'ABC_TEST_coremedia_article',
     iviewIndexName = 'ABC_TEST_iview',
     radioIndexName = 'ABC_TEST_coremedia_audio',

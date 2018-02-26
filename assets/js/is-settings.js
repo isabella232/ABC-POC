@@ -5,7 +5,7 @@ var newsSettings = {
         sortByIndices: [
             { name: 'ABC_TEST_coremedia_article', label: 'Newest' },
             // { name: 'newest-articles', label: 'Newest' },
-            { name: 'oldest-articles', label: 'Oldest' }
+            { name: 'oldest_articles', label: 'Oldest' }
         ],
         templateName: 'article',
         refinementLists: [
