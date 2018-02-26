@@ -99,6 +99,7 @@
   .aa-suggestion {
     padding: 6px 12px;
     cursor: pointer;
+    font-size: 0.9em;
   }
 
   .aa-suggestions-category {
@@ -118,7 +119,7 @@
   }
 
   .aa-suggestions-category img {
-    height: 50px;
+    height: 35px;
   }
 
   .aa-suggestions-category img#news {
@@ -137,12 +138,12 @@
   }
 
   .left-wrapper {
-    width: 35%;
-    margin-left: 25px !important;
+    width: 60%;
   }
 
   .right-wrapper {
-    width: 60%;
+    width: 35%;
+    margin-left: 25px !important;
   }
 
   .aa-dataset-iview span, .aa-dataset-tv span {

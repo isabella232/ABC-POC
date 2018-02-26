@@ -24,8 +24,8 @@ autocomplete('#aa-search-input', {
     debug: true,
     hint: true,
     templates: {
-        dropdownMenu: '<div class="left-wrapper"><div id="left-promotional" class="promotional"></div><div class="aa-dataset-news"></div><div class="aa-dataset-radio"></div></div>' +
-            '<div class="right-wrapper"><div class="aa-dataset-iview"></div><div class="aa-dataset-tv"></div></div>'
+        dropdownMenu: '<div class="left-wrapper"><div id="left-promotional" class="promotional"></div><div class="aa-dataset-iview"></div><div class="aa-dataset-tv"></div></div>' +
+            '<div class="right-wrapper"><div class="aa-dataset-news"></div><div class="aa-dataset-radio"></div></div>'
     }
 }, [{
     source: function (query, callback) {
@@ -92,7 +92,7 @@ autocomplete('#aa-search-input', {
     name: 'radio',
     templates: {
         //'suggestion' templating function used to render a single suggestion
-        header: '<div id="aa-radio-header" class="aa-suggestions-category"><img src="homepage/2013/styles/img/radio-logo.png" style="height: 40px;"></div>',
+        header: '<div id="aa-radio-header" class="aa-suggestions-category"><img src="homepage/2013/styles/img/radio-logo.png" ></div>',
         suggestion: function (suggestion) {
             return '<a href="' +
                 suggestion.canonicalURL +
