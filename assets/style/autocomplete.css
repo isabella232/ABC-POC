@@ -18,6 +18,8 @@
     font-size: 14px;
     margin: 5px;
     padding-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .aa-link {
@@ -195,13 +197,14 @@
 
   .video-title {
     width: 200px;
-    font-size: 16px;
+    font-size: 0.9em;
     text-align: left;
+    margin-top: 2px;
   }
 
   .iview-title {
     font-weight: 600;
-    font-size: 17px;
+    font-size: 1em;
     padding: 5px 0;
   }
 
