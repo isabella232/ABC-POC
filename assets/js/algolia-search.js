@@ -90,15 +90,12 @@ function app(opts) {
             if (opts.query && opts.callFromAa) {
                 helper.setQuery(opts.query).search();
                 opts.callFromAa = false;
-                console.log(helper.state)
             } else {
                 if (opts.query && opts.callFromIS) {
                     helper.setQuery(opts.query).search();
                     $('input.ais-search-box--input').val(opts.query);
                     opts.callFromIS = false;
-                    console.log(helper.state)
                 } else {
-                    console.log(helper.state)
                     helper.search();
                 }
             }
@@ -122,7 +119,9 @@ function app(opts) {
         }));
         break;
         default:
+        console.log('options', searchOptions)
         search = instantsearch(searchOptions);
+        console.log('DEFAULT', search)
     }
 
     if ($('.ais-search-box').length) {

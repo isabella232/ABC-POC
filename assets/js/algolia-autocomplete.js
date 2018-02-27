@@ -207,7 +207,7 @@ function clickHandler() {
             appID,
             apiKey,
             lang,
-            articlesIndexName: indices[index].name,
+            indexName: indices[index].name,
             settings: indices[index].settings,
             callFromAa: true,
             query
